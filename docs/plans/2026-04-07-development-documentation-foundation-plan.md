@@ -13,7 +13,7 @@ maintenance gates.
 
 Source specs:
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-1],
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-1],
   [DOM-2], [DOM-3], [DOM-4], [DOM-5], [DOM-6], [DOM-7], [DOM-8], [DOM-9],
   [DOM-10]
 
@@ -48,16 +48,17 @@ Files to modify:
 - `docs/agent-context/runbooks/testing-patterns.md`
 - `docs/agent-context/runbooks/maintaining-traceability.md`
 - `docs/specs/README.md`
-- `docs/specs/00-development-documentation-operating-model.md`
+- `docs/specs/01-development-documentation-operating-model.md`
 - `docs/plans/README.md`
 - `docs/plans/2026-04-07-development-documentation-foundation-plan.md`
 - `docs/implementation/README.md`
-- `docs/implementation/00-documentation-system.md`
-- `docs/implementation/01-repository-map.md`
+- `docs/implementation/00-implementation-index.md`
+- `docs/implementation/01-documentation-system.md`
+- `docs/implementation/02-repository-map.md`
 
 Style and guidance:
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-2],
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-2],
   [DOM-4], [DOM-8]
 - `docs/agent-context/principles.md`
 - `docs/agent-context/engineering-principles.md`
@@ -89,7 +90,7 @@ Reuse:
      - `CLAUDE.md`
      - `docs/README.md`
    - Read first:
-     - `docs/specs/00-development-documentation-operating-model.md` [DOM-1],
+     - `docs/specs/01-development-documentation-operating-model.md` [DOM-1],
        [DOM-2], [DOM-3]
    - Reuse:
      - one canonical read order
@@ -104,7 +105,7 @@ Reuse:
    - Files to touch:
      - `docs/agent-context/*`
    - Read first:
-     - `docs/specs/00-development-documentation-operating-model.md` [DOM-3],
+     - `docs/specs/01-development-documentation-operating-model.md` [DOM-3],
        [DOM-4], [DOM-5], [DOM-6], [DOM-7], [DOM-8]
    - Reuse:
      - one canonical context index
@@ -122,7 +123,7 @@ Reuse:
      - `docs/plans/*`
      - `docs/implementation/*`
    - Read first:
-     - `docs/specs/00-development-documentation-operating-model.md`
+     - `docs/specs/01-development-documentation-operating-model.md`
      - `docs/agent-context/runbooks/writing-plans.md`
      - `docs/agent-context/runbooks/writing-specs.md`
      - `docs/agent-context/runbooks/writing-implementation-docs.md`
@@ -140,9 +141,9 @@ Reuse:
    - Outcome: reusable lessons and an orientation map exist from day one.
    - Files to touch:
      - `docs/lessons.md`
-     - `docs/implementation/01-repository-map.md`
+     - `docs/implementation/02-repository-map.md`
    - Read first:
-     - `docs/specs/00-development-documentation-operating-model.md` [DOM-2],
+     - `docs/specs/01-development-documentation-operating-model.md` [DOM-2],
        [DOM-9]
    - Constraints:
      - keep lessons short and reusable

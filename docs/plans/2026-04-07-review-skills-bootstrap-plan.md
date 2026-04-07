@@ -12,7 +12,7 @@ post-use improvement loop for skills and runbooks.
 
 Source specs:
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-1],
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-1],
   [DOM-2], [DOM-3], [DOM-5], [DOM-8], [DOM-11], [DOM-12], [DOM-13]
 
 Read first:
@@ -22,7 +22,7 @@ Read first:
 - `docs/agent-context/README.md`
 - `docs/agent-context/runbooks/writing-plans.md`
 - `docs/agent-context/runbooks/maintaining-traceability.md`
-- `docs/implementation/00-documentation-system.md`
+- `docs/implementation/01-documentation-system.md`
 
 ## Context and Key Files
 
@@ -40,16 +40,16 @@ Files to modify:
 - `docs/agent-context/runbooks/writing-plans.md`
 - `docs/agent-context/runbooks/maintaining-traceability.md`
 - `docs/specs/README.md`
-- `docs/specs/00-development-documentation-operating-model.md`
-- `docs/implementation/00-documentation-system.md`
-- `docs/implementation/01-repository-map.md`
+- `docs/specs/01-development-documentation-operating-model.md`
+- `docs/implementation/01-documentation-system.md`
+- `docs/implementation/02-repository-map.md`
 
 Files to add:
 
 - `docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md`
 - `docs/agent-context/runbooks/skills-lifecycle.md`
 - `docs/plans/2026-04-07-review-skills-bootstrap-plan.md`
-- `docs/implementation/02-agent-inventory.md`
+- `docs/implementation/03-agent-inventory.md`
 - `skills/README.md`
 - `skills/_template/SKILL.md`
 
@@ -57,7 +57,7 @@ Style and guidance:
 
 - `docs/agent-context/principles.md`
 - `docs/agent-context/engineering-principles.md`
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-11],
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-11],
   [DOM-12], [DOM-13]
 
 Reuse:
@@ -84,7 +84,7 @@ Reuse:
      - `AGENTS.md`
      - `CLAUDE.md`
      - `docs/README.md`
-     - `docs/specs/00-development-documentation-operating-model.md`
+     - `docs/specs/01-development-documentation-operating-model.md`
    - Read first:
      - the governing spec
      - the root guidance files
@@ -134,12 +134,12 @@ Reuse:
    - Outcome: the repository is ready to record available agents and reusable
      workflow skills.
    - Files to add:
-     - `docs/implementation/02-agent-inventory.md`
+     - `docs/implementation/03-agent-inventory.md`
      - `skills/README.md`
      - `skills/_template/SKILL.md`
    - Files to touch:
-     - `docs/implementation/00-documentation-system.md`
-     - `docs/implementation/01-repository-map.md`
+     - `docs/implementation/01-documentation-system.md`
+     - `docs/implementation/02-repository-map.md`
    - Tests:
      - inspect for clear ownership, current availability notes, and skill
        conventions
@@ -199,13 +199,13 @@ Reviewer preference:
 
 Reviewer inputs:
 
-- `docs/specs/00-development-documentation-operating-model.md`
+- `docs/specs/01-development-documentation-operating-model.md`
 - this plan
 - `docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md`
 - `docs/agent-context/runbooks/skills-lifecycle.md`
 - `docs/agent-context/runbooks/writing-plans.md`
 - `docs/agent-context/runbooks/maintaining-traceability.md`
-- `docs/implementation/02-agent-inventory.md`
+- `docs/implementation/03-agent-inventory.md`
 - root guidance and skills scaffold files touched by this plan
 
 Review prompt:

@@ -55,7 +55,7 @@ Common agent-confusing failure modes:
   intended post-deploy observation, not just local test results.
 - Prefer an independent review pass for non-trivial plans and completed work
   (see [DOM-5] and [DOM-11] in
-  `docs/specs/00-development-documentation-operating-model.md`).
+  `docs/specs/01-development-documentation-operating-model.md`).
 
 ## Document Traceability
 

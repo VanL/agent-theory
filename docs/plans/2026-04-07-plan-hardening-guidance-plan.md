@@ -14,7 +14,7 @@ boundaries.
 
 Source specs:
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-5],
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-5],
   [DOM-8], [DOM-10], [DOM-11]
 
 External input:
@@ -58,11 +58,11 @@ Files to modify:
 - `docs/agent-context/engineering-principles.md`
 - `docs/agent-context/runbooks/writing-plans.md`
 - `docs/agent-context/runbooks/hardening-plans.md`
-- `docs/specs/00-development-documentation-operating-model.md`
+- `docs/specs/01-development-documentation-operating-model.md`
 - `docs/README.md`
 - `docs/plans/README.md`
-- `docs/implementation/00-documentation-system.md`
-- `docs/implementation/01-repository-map.md`
+- `docs/implementation/01-documentation-system.md`
+- `docs/implementation/02-repository-map.md`
 - `docs/lessons.md`
 
 Style and guidance:
@@ -87,7 +87,7 @@ Current roles:
   planning runbook
 - `docs/agent-context/runbooks/hardening-plans.md` is the companion runbook
   for risky-work rewrite criteria and examples
-- `docs/specs/00-development-documentation-operating-model.md` is the governing
+- `docs/specs/01-development-documentation-operating-model.md` is the governing
   documentation contract
 - `docs/README.md`, `docs/plans/README.md`, and the implementation notes are
   navigational and explanatory surfaces
@@ -112,7 +112,7 @@ Current roles:
 1. Update the governing planning requirements in the spec.
    - Outcome: the spec names the plan-hardening expectations explicitly.
    - Files to touch:
-     - `docs/specs/00-development-documentation-operating-model.md`
+     - `docs/specs/01-development-documentation-operating-model.md`
    - Read first:
      - current [DOM-5] and [DOM-10]
    - Update:
@@ -195,8 +195,8 @@ Current roles:
    - Files to touch:
      - `docs/README.md`
      - `docs/plans/README.md`
-     - `docs/implementation/00-documentation-system.md`
-     - `docs/implementation/01-repository-map.md`
+     - `docs/implementation/01-documentation-system.md`
+     - `docs/implementation/02-repository-map.md`
      - `docs/lessons.md`
    - Tests:
      - inspect that planning entry points now mention the hardening material
@@ -238,7 +238,7 @@ Run:
 find docs/agent-context/runbooks docs/plans docs/specs docs/implementation -type f | sort
 rg -n "hardening-plans" AGENTS.md README.md docs
 rg -n "hidden couplings?|what must not change|one-way doors?|rollback|rollout|observable success|comprehension questions?" docs
-rg -n "stop-and-re-evaluate|what should not be mocked|post-deploy" docs/agent-context/runbooks/writing-plans.md docs/specs/00-development-documentation-operating-model.md docs/agent-context/runbooks/hardening-plans.md
+rg -n "stop-and-re-evaluate|what should not be mocked|post-deploy" docs/agent-context/runbooks/writing-plans.md docs/specs/01-development-documentation-operating-model.md docs/agent-context/runbooks/hardening-plans.md
 rg -n " +$|\t+$|^<<<<<<<|^=======|^>>>>>>>" docs README.md AGENTS.md CLAUDE.md || true
 ```
 
@@ -267,10 +267,10 @@ Reviewer inputs:
 - `docs/agent-context/engineering-principles.md`
 - `docs/agent-context/runbooks/writing-plans.md`
 - `docs/agent-context/runbooks/hardening-plans.md`
-- `docs/specs/00-development-documentation-operating-model.md`
+- `docs/specs/01-development-documentation-operating-model.md`
 - `docs/plans/README.md`
-- `docs/implementation/00-documentation-system.md`
-- `docs/implementation/01-repository-map.md`
+- `docs/implementation/01-documentation-system.md`
+- `docs/implementation/02-repository-map.md`
 - `docs/lessons.md`
 
 Review prompt:
@@ -306,7 +306,7 @@ Review result:
     work is not blocked on that path alone
 - Claude follow-up review finding accepted:
   - add the missing backlink from
-    `docs/specs/00-development-documentation-operating-model.md` to this plan
+    `docs/specs/01-development-documentation-operating-model.md` to this plan
   - align the risky-change wording in the spec more closely with the runbooks
 - Final confidence:
   - after the revisions above, the review concerns are addressed and the plan

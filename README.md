@@ -3,6 +3,22 @@
 This repository is set up as a reusable, repo-owned documentation system for
 agentic software development.
 
+It also includes a scaffold command for installing the neutral starter set into
+another repository without trying to merge or infer repo-specific guidance:
+
+```bash
+./bin/bootstrap-agent-guidance /path/to/target-repo
+```
+
+The bootstrap is create-only by default. Use `--dry-run` to inspect actions and
+`--force` only when you want to overwrite existing scaffold files deliberately.
+It is intentionally non-transactional and intentionally non-magical: if a run
+fails or if you are updating an existing install, inspect the target and diff
+before re-running with `--force`. The target repo still needs human adaptation,
+especially in `AGENTS.md`, `docs/README.md`,
+`docs/agent-context/engineering-principles.md`, and the implementation-doc
+placeholders.
+
 The operating model is:
 
 - shared agent context is loaded at session start
@@ -21,8 +37,9 @@ The operating model is:
 
 1. Read `AGENTS.md`.
 2. Read `docs/agent-context/README.md`.
-3. Read `docs/specs/00-development-documentation-operating-model.md`.
-4. Read `docs/implementation/00-documentation-system.md`.
+3. Read `docs/specs/00-specs-index.md`.
+4. Read `docs/specs/01-development-documentation-operating-model.md`.
+5. Read `docs/implementation/00-implementation-index.md`.
 
 ## Layout
 
@@ -41,3 +58,8 @@ This repository currently contains the guidance system itself. As product code
 is added, keep the same traceability loop intact:
 
 `spec section <-> plan <-> implementation doc <-> code`
+
+## Related Projects
+
+- [agent-mcp](https://github.com/VanL/agent-mcp): MCP tooling and related
+  agent-facing infrastructure

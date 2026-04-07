@@ -285,3 +285,4 @@ Requirements:
 - `docs/plans/2026-04-07-development-documentation-foundation-plan.md`
 - `docs/plans/2026-04-07-plan-hardening-guidance-plan.md`
 - `docs/plans/2026-04-07-review-skills-bootstrap-plan.md`
+- `docs/plans/2026-04-07-specs-index-renumbering-plan.md`

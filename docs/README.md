@@ -20,7 +20,7 @@ Read:
 
 1. `../AGENTS.md`
 2. `agent-context/README.md`
-3. `implementation/02-agent-inventory.md`, if it exists
+3. `implementation/03-agent-inventory.md`, if it exists
 4. the relevant spec in `specs/`
 5. the active plan in `plans/`, if one exists
 6. the relevant implementation note in `implementation/`

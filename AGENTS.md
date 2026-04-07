@@ -26,7 +26,7 @@ in `docs/agent-context/decision-hierarchy.md`.
 - Durable lessons learned live in `docs/lessons.md`.
 - Documentation maintenance is part of the definition of done for each change.
 - Non-trivial changes should start with a dated plan in `docs/plans/`
-  (see [DOM-5] in `docs/specs/00-development-documentation-operating-model.md`).
+  (see [DOM-5] in `docs/specs/01-development-documentation-operating-model.md`).
 - Risky or boundary-crossing changes should also read
   `docs/agent-context/runbooks/hardening-plans.md` and treat its checklist as
   required, not optional. Risky includes async or deferred work, contract
@@ -55,10 +55,12 @@ in `docs/agent-context/decision-hierarchy.md`.
 Start with:
 
 1. `docs/README.md`
-2. `docs/specs/00-development-documentation-operating-model.md`
-3. `docs/implementation/00-documentation-system.md`
-4. `docs/implementation/01-repository-map.md`
-5. `docs/implementation/02-agent-inventory.md`
+2. `docs/specs/00-specs-index.md`
+3. `docs/specs/01-development-documentation-operating-model.md`
+4. `docs/implementation/00-implementation-index.md`
+5. `docs/implementation/01-documentation-system.md`
+6. `docs/implementation/02-repository-map.md`
+7. `docs/implementation/03-agent-inventory.md`
 
 ## Definition of Done
 

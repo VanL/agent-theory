@@ -12,11 +12,11 @@ documentation operating model.
 
 ## Governing Spec References
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-2]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-3]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-4]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-7]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-8]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-2]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-3]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-4]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-7]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-8]
 
 ## Design Rationale
 
@@ -44,6 +44,15 @@ Some recurring workflow knowledge is too detailed or task-shaped to live only
 in broad runbooks. The `skills/` directory exists so repeated operational
 knowledge such as running, testing, debugging, or release flows can become a
 reusable instruction surface instead of remaining buried in lessons or plans.
+
+### Bootstrap Scaffold
+
+The repository also includes a small scaffold command in
+`bin/bootstrap-agent-guidance` so the neutral starter set can be installed into
+another repository. The command is intentionally simple: it copies the reusable
+starter corpus, generates a few repo-owned placeholder docs, and stops. It does
+not attempt to merge with existing `AGENTS.md` files or infer repo-specific
+engineering rules.
 
 ### Separate Specs, Plans, and Implementation Docs
 
@@ -79,14 +88,17 @@ These roles should stay distinct even as the repository grows.
 |------|---------|
 | `AGENTS.md` | Primary agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
+| `bin/bootstrap-agent-guidance` | Scaffold command for installing the neutral starter set into another repository |
 | `docs/agent-context/README.md` | Shared context hub |
-| `docs/specs/00-development-documentation-operating-model.md` | Governing operating-model spec |
+| `docs/specs/00-specs-index.md` | Numbered entry point for specs |
+| `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
 | `docs/agent-context/runbooks/hardening-plans.md` | Required companion for risky or boundary-crossing implementation plans |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan modeling the workflow |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan adding review, skills, and bootstrap guidance |
 | `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that hardened the repository's planning guidance |
-| `docs/implementation/01-repository-map.md` | Quick pointer map for important docs |
-| `docs/implementation/02-agent-inventory.md` | Current observed agent availability and refresh guidance |
+| `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
+| `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
+| `docs/implementation/03-agent-inventory.md` | Current observed agent availability and refresh guidance |
 | `skills/README.md` | Skill directory conventions and promotion criteria |
 
 ## Change Guidance

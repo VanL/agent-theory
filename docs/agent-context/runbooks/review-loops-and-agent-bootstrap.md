@@ -36,7 +36,7 @@ Verification method:
 
 The repository inventory lives in:
 
-- `docs/implementation/02-agent-inventory.md`
+- `docs/implementation/03-agent-inventory.md`
 
 ## 2. Independent Review Requirement
 

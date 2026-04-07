@@ -9,9 +9,9 @@ Keep it lightweight and refresh it when tooling changes materially.
 
 ## Governing Spec References
 
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-3]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-11]
-- `docs/specs/00-development-documentation-operating-model.md` [DOM-13]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-3]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-11]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-13]
 
 ## Verification Method
 

@@ -1,0 +1,544 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import os
+import shutil
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from typing import List
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+COPIED_FILES = [
+    "AGENTS.md",
+    "docs/README.md",
+    "docs/agent-context/README.md",
+    "docs/agent-context/context.index.yaml",
+    "docs/agent-context/decision-hierarchy.md",
+    "docs/agent-context/engineering-principles.md",
+    "docs/agent-context/lessons.md",
+    "docs/agent-context/principles.md",
+    "docs/agent-context/runbooks/hardening-plans.md",
+    "docs/agent-context/runbooks/maintaining-traceability.md",
+    "docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md",
+    "docs/agent-context/runbooks/skills-lifecycle.md",
+    "docs/agent-context/runbooks/testing-patterns.md",
+    "docs/agent-context/runbooks/writing-implementation-docs.md",
+    "docs/agent-context/runbooks/writing-plans.md",
+    "docs/agent-context/runbooks/writing-specs.md",
+    "docs/implementation/README.md",
+    "docs/plans/README.md",
+    "docs/specs/00-specs-index.md",
+    "docs/specs/01-development-documentation-operating-model.md",
+    "docs/specs/README.md",
+    "skills/README.md",
+    "skills/_template/SKILL.md",
+]
+
+GENERATED_FILES = {
+    "docs/implementation/00-implementation-index.md": "implementation_index",
+    "docs/implementation/01-documentation-system.md": "documentation_system",
+    "docs/implementation/02-repository-map.md": "repository_map",
+    "docs/implementation/03-agent-inventory.md": "agent_inventory",
+    "docs/lessons.md": "lessons",
+}
+
+ALIAS_TARGET = ("CLAUDE.md", "AGENTS.md")
+
+
+@dataclass
+class Action:
+    kind: str
+    path: str
+    detail: str = ""
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Scaffold the project-neutral agent-guidance starter set into a "
+            "target repository. Create-only by default; existing files are "
+            "left alone unless --force is given."
+        )
+    )
+    parser.add_argument("target_dir", help="Repository root that should receive the scaffold")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print planned actions without writing files.",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite existing scaffold files in the target.",
+    )
+    return parser.parse_args()
+
+
+def target_repo_name(target_root: Path) -> str:
+    return target_root.resolve().name or "repository"
+
+
+def render_implementation_index() -> str:
+    return """# Implementation Index
+
+This directory contains implementation-facing documentation: rationale,
+boundaries, repository maps, and change guidance for the current system.
+
+Use this numbered index as the canonical starting point for implementation
+docs. Keep `README.md` as a thin pointer so directory browsing and numbered
+read order stay aligned instead of competing.
+
+## Rules
+
+- Implementation docs explain why the current design exists.
+- Implementation docs cite governing spec sections.
+- Implementation docs should help future editors decide where to read and edit.
+- Implementation docs should be updated when rationale or ownership changes.
+
+## Recommended Starting Points
+
+1. `01-documentation-system.md`
+2. `02-repository-map.md`
+3. `03-agent-inventory.md`
+"""
+
+
+def render_documentation_system(repo_name: str) -> str:
+    return f"""# Documentation System
+
+## Purpose and Scope
+
+This document explains why the repository is organized around shared agent
+context, specs, dated plans, implementation docs, reusable skills,
+independent reviews, and a lessons ledger.
+
+This file is part of the starter scaffold installed from the agent-guidance
+repository. Keep it project-owned and adapt it as real product code and
+repo-specific boundaries appear.
+
+## Governing Spec References
+
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-2]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-3]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-4]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-7]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-8]
+
+## Design Rationale
+
+### Shared Agent Context
+
+The repository keeps durable guidance in `docs/agent-context/` so multiple
+agent tools can consume one source of truth. Root files such as `AGENTS.md`
+and tool-specific aliases are intentionally thin entry points rather than
+separate policy documents.
+
+### Separate Specs, Plans, and Implementation Docs
+
+The split exists because each document answers a different question:
+
+- specs answer what should be true
+- plans answer how a specific change will be executed without breaking
+  load-bearing boundaries
+- implementation docs answer why the current design exists and where it lives
+
+Combining those roles makes documents harder to trust and easier to let drift.
+
+### Documentation As a Delivery Gate
+
+The repository treats documentation maintenance as part of completion because
+the main failure mode in agentic development is silent drift between intent,
+execution, and implementation.
+
+### Scaffold Boundary
+
+The bootstrap script installs only the neutral starter surface. It does not
+infer repo-specific engineering principles, merge with existing docs, or decide
+what your product architecture should be.
+
+## Boundaries and Invariants
+
+- `docs/agent-context/` is the canonical shared context surface.
+- `docs/specs/` is the source of truth for intended behavior.
+- `docs/plans/` contains dated execution records.
+- `docs/implementation/` explains rationale and important edit points.
+- `skills/` stores reusable task-scoped workflow instructions.
+- `docs/lessons.md` is the one canonical lessons ledger.
+
+These roles should stay distinct even as {repo_name} grows.
+
+## Key Files
+
+| Path | Purpose |
+|------|---------|
+| `AGENTS.md` | Primary agent entry point |
+| `CLAUDE.md` | Alias for tools that expect Claude-style root guidance |
+| `docs/agent-context/README.md` | Shared context hub |
+| `docs/specs/00-specs-index.md` | Numbered entry point for specs |
+| `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
+| `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
+| `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
+| `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
+| `skills/README.md` | Skill directory conventions and promotion criteria |
+
+## Change Guidance
+
+When future work adds product code:
+
+1. add or update the governing spec first
+2. create a dated plan for non-trivial work
+3. for risky work, harden the plan before implementation by making invariants,
+   hidden couplings, anti-mocking guidance, rollback or rollout, and one-way
+   doors explicit
+4. run independent plan review and feed the results back into the plan
+5. add or update the relevant implementation note for the touched area
+6. update the repository map when new entry points become important
+7. decide whether repeated workflow knowledge should become or update a skill
+8. capture reusable corrections in `docs/lessons.md`
+"""
+
+
+def render_repository_map() -> str:
+    return """# Repository Map
+
+Quick pointers to the key guidance documents in this repository.
+
+## Root Entry Points
+
+| Path | Purpose |
+|------|---------|
+| `AGENTS.md` | Canonical agent entry point |
+| `CLAUDE.md` | Alias for tools that expect Claude-style root guidance |
+
+## Shared Agent Context
+
+| Path | Purpose |
+|------|---------|
+| `docs/agent-context/README.md` | Context hub and read order |
+| `docs/agent-context/context.index.yaml` | Machine-readable context index |
+| `docs/agent-context/decision-hierarchy.md` | Conflict-resolution order |
+| `docs/agent-context/principles.md` | Shared execution principles |
+| `docs/agent-context/engineering-principles.md` | Engineering rules and warning signs |
+
+## Runbooks
+
+| Path | Purpose |
+|------|---------|
+| `docs/agent-context/runbooks/writing-plans.md` | Plan-writing standard |
+| `docs/agent-context/runbooks/hardening-plans.md` | Required hardening checklist for risky or boundary-crossing plans |
+| `docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md` | Independent review workflow and agent bootstrap |
+| `docs/agent-context/runbooks/writing-specs.md` | Spec-writing standard |
+| `docs/agent-context/runbooks/writing-implementation-docs.md` | Implementation-doc standard |
+| `docs/agent-context/runbooks/testing-patterns.md` | Testing and verification guidance |
+| `docs/agent-context/runbooks/maintaining-traceability.md` | Documentation-maintenance gate |
+| `docs/agent-context/runbooks/skills-lifecycle.md` | Skill promotion and maintenance guidance |
+
+## Core Documentation Corpus
+
+| Path | Purpose |
+|------|---------|
+| `docs/specs/00-specs-index.md` | Numbered entry point for specs |
+| `docs/specs/01-development-documentation-operating-model.md` | Governing spec for the documentation workflow |
+| `docs/plans/README.md` | Plan directory rules |
+| `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
+| `docs/implementation/01-documentation-system.md` | Why the documentation system is shaped this way |
+| `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
+| `docs/lessons.md` | Canonical lessons ledger |
+
+## Skills
+
+| Path | Purpose |
+|------|---------|
+| `skills/README.md` | Skill directory purpose and conventions |
+| `skills/_template/SKILL.md` | Starter template for new reusable skills |
+
+## Update Guidance
+
+When the repository grows:
+
+- add new important entry points here
+- keep descriptions short and navigational
+- prefer linking to the document that explains a concept, not every file that
+  happens to mention it
+"""
+
+
+def render_agent_inventory() -> str:
+    return """# Agent Inventory
+
+## Purpose and Scope
+
+This document records which agent families are currently available in the
+environment and which ones are preferred for independent review work.
+
+Keep it lightweight and refresh it when tooling changes materially.
+
+## Governing Spec References
+
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-3]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-11]
+- `docs/specs/01-development-documentation-operating-model.md` [DOM-13]
+
+## Verification Method
+
+To refresh this inventory:
+
+1. run a small read-only review or no-op prompt against each available agent
+   interface
+2. record whether it is:
+   - verified usable
+   - present but blocked by credentials or configuration
+   - present but currently failing at invocation time
+3. update the refresh date and notes
+
+## Current Observed Availability
+
+Last refreshed: not yet refreshed in this repository
+
+| Agent family | Status | Notes |
+|--------------|--------|-------|
+| Claude | not yet checked | |
+| Codex | not yet checked | |
+| Gemini | not yet checked | |
+| Qwen | not yet checked | |
+| Kimi | not yet checked | |
+
+## Review Preference
+
+For plan review and final review:
+
+1. prefer a different agent family than the authoring agent
+2. if several are available, prefer one that has not already shaped the plan
+3. if only one family is available, note that limitation and do a stricter
+   fresh-eyes review
+
+## Refresh Guidance
+
+Update this file when:
+
+- the available tool surface changes
+- a new agent family becomes available
+- an existing agent family is removed
+- review workflow preferences change materially
+"""
+
+
+def render_lessons() -> str:
+    return """# Lessons Learned
+
+Use this file for durable, project-level lessons that should influence future
+sessions.
+
+## When To Add A Lesson
+
+- A correction exposed a repeated failure mode.
+- A missing document or runbook caused rework.
+- A plan or spec was too ambiguous to execute safely.
+- A completed change revealed a stronger general rule than the repo previously
+  encoded.
+
+## Starter Lessons
+
+- Keep canonical agent guidance in shared repo-owned docs and make root agent
+  files point to that context instead of carrying divergent copies.
+- Non-trivial plans must be executable by a zero-context engineer: exact
+  source references, exact files, invariants, verification commands, and a
+  fresh-eyes review are required.
+- Specs define intended behavior; implementation docs explain why the current
+  design exists. Blending those roles causes drift.
+- Documentation maintenance is part of the completion gate. If code changes
+  without plan/spec/implementation alignment, the work is incomplete.
+- Non-trivial plans should be reviewed by an independent agent, and the
+  authoring agent should answer each review point by updating the plan or
+  documenting why the current path is still the best choice.
+- Prefer symlinks from tool-specific root guidance files such as `CLAUDE.md`
+  to `AGENTS.md` when the environment supports them; thin pointer files are the
+  fallback.
+- Optimize docs for agent usability, not just human readability. If something
+  is human-clear but agent-ambiguous, call it out and suggest a specific fix.
+  Check for missing owner, boundary, verification, or required action.
+"""
+
+
+GENERATORS = {
+    "implementation_index": lambda _repo_name: render_implementation_index(),
+    "documentation_system": render_documentation_system,
+    "repository_map": lambda _repo_name: render_repository_map(),
+    "agent_inventory": lambda _repo_name: render_agent_inventory(),
+    "lessons": lambda _repo_name: render_lessons(),
+}
+
+
+def pointer_file_contents() -> str:
+    return """# Alias Pointer
+
+This file should symlink to `AGENTS.md` when the environment supports symlinks.
+
+See `AGENTS.md`.
+"""
+
+
+def validate_target(target_root: Path) -> None:
+    if target_root == REPO_ROOT:
+        raise SystemExit(
+            "Refusing to scaffold into the source repository itself. "
+            "Choose a different target directory."
+        )
+
+
+def validate_source_files() -> None:
+    missing = [rel_path for rel_path in COPIED_FILES if not (REPO_ROOT / rel_path).is_file()]
+    if missing:
+        formatted = "\n".join(f"- {rel_path}" for rel_path in missing)
+        raise SystemExit(
+            "Scaffold source is incomplete. The following required files are missing:\n"
+            f"{formatted}"
+        )
+
+
+def ensure_parent(path: Path, dry_run: bool) -> None:
+    if dry_run:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+
+def remove_existing(path: Path, dry_run: bool) -> None:
+    if dry_run:
+        return
+    if path.is_symlink() or path.is_file():
+        path.unlink()
+    elif path.is_dir():
+        raise SystemExit(
+            f"Refusing to remove directory {path}. "
+            "The scaffold only overwrites file or symlink paths."
+        )
+
+
+def copy_file(rel_path: str, target_root: Path, force: bool, dry_run: bool) -> Action:
+    src = REPO_ROOT / rel_path
+    dest = target_root / rel_path
+
+    if dest.exists() or dest.is_symlink():
+        if not force:
+            return Action("skip", rel_path, "exists")
+        remove_existing(dest, dry_run)
+        kind = "overwrite"
+    else:
+        kind = "create"
+
+    ensure_parent(dest, dry_run)
+    if not dry_run:
+        shutil.copy2(src, dest)
+    return Action(kind, rel_path)
+
+
+def write_generated(rel_path: str, content: str, target_root: Path, force: bool, dry_run: bool) -> Action:
+    dest = target_root / rel_path
+
+    if dest.exists() or dest.is_symlink():
+        if not force:
+            return Action("skip", rel_path, "exists")
+        remove_existing(dest, dry_run)
+        kind = "overwrite"
+    else:
+        kind = "create"
+
+    ensure_parent(dest, dry_run)
+    if not dry_run:
+        dest.write_text(content, encoding="utf-8")
+    return Action(kind, rel_path, "generated")
+
+
+def ensure_alias(target_root: Path, force: bool, dry_run: bool) -> Action:
+    alias_name, target_name = ALIAS_TARGET
+    alias_path = target_root / alias_name
+
+    if alias_path.is_symlink() and os.readlink(alias_path) == target_name:
+        return Action("skip", alias_name, "correct symlink already present")
+
+    if alias_path.exists() or alias_path.is_symlink():
+        if not force:
+            return Action("skip", alias_name, "exists")
+        remove_existing(alias_path, dry_run)
+
+    ensure_parent(alias_path, dry_run)
+
+    if dry_run:
+        return Action("create", alias_name, f"symlink to {target_name}")
+
+    try:
+        alias_path.symlink_to(target_name)
+        return Action("create", alias_name, f"symlink to {target_name}")
+    except OSError:
+        alias_path.write_text(pointer_file_contents(), encoding="utf-8")
+        return Action("create", alias_name, "pointer-file fallback")
+
+
+def print_action(action: Action) -> None:
+    if action.detail:
+        print(f"{action.kind.upper():>10}  {action.path}  [{action.detail}]")
+    else:
+        print(f"{action.kind.upper():>10}  {action.path}")
+
+
+def print_follow_up(target_root: Path) -> None:
+    print("\nManual follow-up:")
+    print(f"- Adapt {target_root / 'AGENTS.md'} to your real repo conventions, completion gates, and doc layout.")
+    print(f"- Review {target_root / 'docs/README.md'} so the session and planning flow matches the target repo.")
+    print(f"- Adapt {target_root / 'docs/agent-context/engineering-principles.md'} to real code paths and invariants.")
+    print(f"- Refresh {target_root / 'docs/implementation/02-repository-map.md'} with actual product entry points.")
+    print(f"- Refresh {target_root / 'docs/implementation/03-agent-inventory.md'} in the target environment.")
+    print(f"- Update {target_root / 'docs/lessons.md'} with repo-specific durable lessons as they appear.")
+    print("- Add repo-specific runbooks or skills for running, testing, debugging, and release work.")
+    print("- Add other tool-specific root aliases only when a real consumer needs them; do not create them speculatively.")
+    print("- Write the first dated plan before the first non-trivial change in the target repo.")
+    print("- Re-running with --force overwrites scaffold files, including root entry points and aliases; diff first.")
+    print("- A rerun without --force is safe because existing files are skipped.")
+    print("- The scaffold is not transactional. If a run fails partway through, inspect the target and rerun deliberately.")
+
+
+def main() -> int:
+    args = parse_args()
+    target_root = Path(args.target_dir).expanduser().resolve()
+    repo_name = target_repo_name(target_root)
+
+    validate_target(target_root)
+    validate_source_files()
+
+    actions: List[Action] = []
+
+    if not args.dry_run:
+        target_root.mkdir(parents=True, exist_ok=True)
+
+    for rel_path in COPIED_FILES:
+        actions.append(copy_file(rel_path, target_root, args.force, args.dry_run))
+
+    for rel_path, generator_name in GENERATED_FILES.items():
+        content = GENERATORS[generator_name](repo_name)
+        actions.append(write_generated(rel_path, content, target_root, args.force, args.dry_run))
+
+    actions.append(ensure_alias(target_root, args.force, args.dry_run))
+
+    print(
+        f"Scaffolding agent-guidance into {target_root}"
+        + (" [dry-run]" if args.dry_run else "")
+    )
+    for action in actions:
+        print_action(action)
+
+    created = sum(action.kind == "create" for action in actions)
+    overwritten = sum(action.kind == "overwrite" for action in actions)
+    skipped = sum(action.kind == "skip" for action in actions)
+    print(
+        f"\nSummary: created={created} overwritten={overwritten} skipped={skipped}"
+    )
+    print_follow_up(target_root)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

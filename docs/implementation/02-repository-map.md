@@ -9,6 +9,7 @@ Quick pointers to the key documents in this repository.
 | `README.md` | Top-level overview |
 | `AGENTS.md` | Canonical agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
+| `bin/bootstrap-agent-guidance` | Scaffold command for installing the neutral starter set into another repository |
 
 ## Shared Agent Context
 
@@ -37,12 +38,14 @@ Quick pointers to the key documents in this repository.
 
 | Path | Purpose |
 |------|---------|
-| `docs/specs/00-development-documentation-operating-model.md` | Governing spec for this repository's doc workflow |
+| `docs/specs/00-specs-index.md` | Numbered entry point for specs |
+| `docs/specs/01-development-documentation-operating-model.md` | Governing spec for this repository's doc workflow |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan that created the scaffold |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan that added review loops, skills, and bootstrap guidance |
 | `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that strengthened the planning quality bar |
-| `docs/implementation/00-documentation-system.md` | Why the documentation system is shaped this way |
-| `docs/implementation/02-agent-inventory.md` | Current observed agent availability and review preference |
+| `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
+| `docs/implementation/01-documentation-system.md` | Why the documentation system is shaped this way |
+| `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `docs/lessons.md` | Canonical lessons ledger |
 
 ## Skills
