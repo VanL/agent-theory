@@ -86,6 +86,23 @@ For risky work, name up front:
 If the plan only names the center of the change, implementation will usually
 drift at the boundaries.
 
+## 10. Prove the Problem with a Failing Test First
+
+Write a failing test that proves the problem exists, watch it fail, then make it
+pass. If you cannot write the failing test, you do not understand the problem
+well enough to fix it. If something is hard to test, that is information about
+the design, not permission to skip the test.
+
+This complements principle 4: that principle is about *what* to test (prefer real
+behavior over mocks); this one is about *when and why* — start from a failing
+proof. Generate fixtures through production code paths, not synthesis.
+
+## 11. Update All Consumers in the Same Change
+
+When you rename a key, tighten a schema, or change a contract, update every
+producer and consumer in the same change. A partial rename passes isolated checks
+and fails at runtime; the synchronized update is the fix.
+
 ## Warning Signs
 
 Sessions usually go sideways when one of these happens:
@@ -98,3 +115,17 @@ Sessions usually go sideways when one of these happens:
 - the plan says what to build but not what must stay true
 - rollback, rollout, or anti-mocking posture is left for the implementer to
   improvise
+- a regression is called "pre-existing" without running it on the base branch to
+  prove it
+
+## The Meta-Principle: Compound Knowledge
+
+Every rule above is an instance of one idea: each unit of engineering work should
+make the next one easier. A canonical converter means the next agent does not
+re-derive the format. A blast-radius note means the next change knows its impact
+zone. A failing test means the next debugging session starts from known-good. A
+lesson written down means the next session does not repeat the mistake.
+
+Treat the guidance docs, the lessons file, and explicit plan boundaries as
+compound knowledge — maintain them so the system gets easier to work on correctly
+over time.
