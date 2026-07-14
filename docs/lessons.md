@@ -3,6 +3,9 @@
 Use this file for durable, project-level lessons that should influence future
 sessions.
 
+Startup context is the Golden Rules plus entries after the watermark in
+`docs/coalescing.md`; the rest of this ledger is searchable history.
+
 ## When To Add A Lesson
 
 - A correction exposed a repeated failure mode.
@@ -54,9 +57,32 @@ incident log; these are the durable rules distilled from it.
     change keep the diff to the lines the task requires and do not let a formatter
     reflow untouched code; keep formatting-only churn in its own change; if a line
     changed only because "I was in there," revert it.
+13. **Enumerable contracts get executable gates.** Any list a document asserts
+    — issue codes, exit codes, edge cases, config keys — must be mirrored by a
+    machine check that enumerates it (a firing test per element, a no-op
+    prevention test per key). Prose binds only what gets checked; agents
+    comply uniformly with gates and unevenly with everything else. (See
+    engineering-principles §12 and testing-patterns Pattern 6.)
 
 ## Lessons
 
+- 2026-07-06: Large cohesive files are deliberate, not neglected debt — file
+  size alone is never a split reason or a review finding. What binds instead
+  are two floors: every implicit coupling gets an explicit marker or an
+  enforcing helper at the edit point, and every state machine (live runtime
+  coupling) gets a name and a contract test. Extraction is justified to create
+  that testable boundary, not to shrink a file; splitting structurally coupled
+  code manufactures false seams that breed parallel-implementation drift.
+  Distilled as engineering-principles §14 (Cohesion Over File Size).
+- 2026-07-02: Verification-lessons fold from the four-way backstitch
+  implementation bake-off (four agents, same baseline, all passed automated
+  gates, all diverged on everything unchecked — and each violated its own
+  declared contract somewhere). Distilled here as Golden Rule 13,
+  engineering-principles §12/§13 and the §8 reproduce-claims amendment,
+  testing-patterns Patterns 5–6, the adversarial-acceptance-probes runbook,
+  the decision-hierarchy baseline/deviation/claims additions, and the
+  writing-plans deviation log. Full incident record: the backstitch repo's
+  `docs/lessons.md`.
 - 2026-04-07: Keep canonical agent guidance in shared repo-owned docs and make
   root agent files point to that context instead of carrying divergent copies.
 - 2026-04-07: Non-trivial plans must be executable by a zero-context engineer:

@@ -1,0 +1,11 @@
+# Backstitch traceability configuration for this docs-only corpus.
+# Schema targets the canonical spec (backstitch docs/specs/03) — the
+# [profile] table form. This repo has no implementation code; specs here
+# are process/meta documentation, so mapping obligations are suppressed
+# via meta classification (spec 04 [EXC-3]) rather than hidden.
+
+[profile]
+spec_roots = ["docs/specs"]
+plan_roots = ["docs/plans"]
+code_roots = []
+meta_spec_globs = ["docs/specs/*.md"]

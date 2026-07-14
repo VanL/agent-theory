@@ -21,6 +21,7 @@ COPIED_FILES = [
     "docs/agent-context/engineering-principles.md",
     "docs/agent-context/lessons.md",
     "docs/agent-context/principles.md",
+    "docs/agent-context/runbooks/adversarial-acceptance-probes.md",
     "docs/agent-context/runbooks/hardening-plans.md",
     "docs/agent-context/runbooks/maintaining-traceability.md",
     "docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md",
@@ -36,9 +37,11 @@ COPIED_FILES = [
     "docs/specs/README.md",
     "skills/README.md",
     "skills/_template/SKILL.md",
+    "skills/coalescing/SKILL.md",
 ]
 
 GENERATED_FILES = {
+    "docs/coalescing.md": "coalescing_state",
     "docs/implementation/00-implementation-index.md": "implementation_index",
     "docs/implementation/01-documentation-system.md": "documentation_system",
     "docs/implementation/02-repository-map.md": "repository_map",
@@ -184,6 +187,7 @@ These roles should stay distinct even as {repo_name} grows.
 | `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `skills/README.md` | Skill directory conventions and promotion criteria |
+| `docs/coalescing.md` | Coalescing state per [DOM-14]: thresholds, watermarks, deferrals, run log |
 
 ## Change Guidance
 
@@ -248,6 +252,7 @@ Quick pointers to the key guidance documents in this repository.
 | `docs/implementation/01-documentation-system.md` | Why the documentation system is shaped this way |
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `docs/lessons.md` | Canonical lessons ledger |
+| `docs/coalescing.md` | Coalescing state: thresholds, watermarks, deferrals, run log |
 
 ## Skills
 
@@ -255,6 +260,7 @@ Quick pointers to the key guidance documents in this repository.
 |------|---------|
 | `skills/README.md` | Skill directory purpose and conventions |
 | `skills/_template/SKILL.md` | Starter template for new reusable skills |
+| `skills/coalescing/SKILL.md` | Coalescing sweep: distill lessons, harvest and retire plans, promote skills |
 
 ## Update Guidance
 
@@ -327,11 +333,75 @@ Update this file when:
 """
 
 
+def render_coalescing_state() -> str:
+    return """# Coalescing State
+
+Status: Active — governed by [DOM-14] in
+`docs/specs/01-development-documentation-operating-model.md`.
+
+Owner: any agent that observes a tripped threshold at session start.
+Boundary: lessons, plans, and skill/runbook promotion in this repository.
+Specs and implementation docs are living documents and are never coalesced.
+Verification: the run log below plus the repository's traceability gate.
+Required action: the session-start check is **read-only** — derive the
+counts, compare against the deferral state below, and report a new trip to
+the user in one sentence. All writes to this file or to coalesced material
+happen only inside an authorized maintenance task
+(`skills/coalescing/SKILL.md`); destructive steps additionally require
+landing authorization.
+
+Counts are always derived from watermarks and the current tree — never
+stored, never trusted from memory. See the skill for the exact commands and
+adapt them to this repository's ledger format.
+
+## Thresholds
+
+Starter values from the agent-guidance scaffold. Calibrate to this
+repository's volume with a run-log note before relying on them.
+
+| Tier | Trigger (derived count) | Threshold | Age floor |
+|------|------------------------|-----------|-----------|
+| Lessons | dated ledger entries after the lessons watermark | 10 | 30 days, and never entries cited by an active plan or in a still-accumulating theme |
+| Plans | plans with status completed/superseded, not `exemplar`, and no retired-ledger line | 5 | none — the harvest gate and two-step retirement are the guards |
+| Promotion | distinct citations of the same workflow theme (judgment-clustered) since the promotion watermark | 3 | n/a |
+
+## Watermarks
+
+| Tier | Distilled through | Source SHA |
+|------|-------------------|------------|
+| Lessons | (none — first sweep pending) | — |
+| Plans | (none — first sweep pending) | — |
+| Promotion | (none — first sweep pending) | — |
+
+## Deferral State
+
+A trip is only news when it is new: unchanged counts against this table do
+not re-nag; a changed count or a fired reconsideration condition does.
+
+| Tier | Checked through (date, SHA) | Counts at check | Reason deferred | Reconsider when |
+|------|------------------------------|-----------------|-----------------|-----------------|
+
+## Run Log
+
+One line per run, newest first. Each line is a claim; it must survive a
+spot-check against the diff. `checked-deferred` lines are valid runs. Source
+SHA names a commit verifiably containing the raw material; the fold commit
+may be appended as metadata once it exists.
+
+| Date | Tier(s) | Source SHA | Claim |
+|------|---------|------------|-------|
+| (bootstrap) | — | — | Initialized by the agent-guidance scaffold. Derive counts and calibrate thresholds before first use. |
+"""
+
+
 def render_lessons() -> str:
     return """# Lessons Learned
 
 Use this file for durable, project-level lessons that should influence future
 sessions.
+
+Startup context is the Golden Rules plus entries after the watermark in
+`docs/coalescing.md`; the rest of this ledger is searchable history.
 
 ## When To Add A Lesson
 
@@ -365,6 +435,7 @@ sessions.
 
 
 GENERATORS = {
+    "coalescing_state": lambda _repo_name: render_coalescing_state(),
     "implementation_index": lambda _repo_name: render_implementation_index(),
     "documentation_system": render_documentation_system,
     "repository_map": lambda _repo_name: render_repository_map(),

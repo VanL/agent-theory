@@ -41,3 +41,21 @@ Risky plans are blocked if they do not make explicit:
 - enough current-structure context to find the right edit point
 - what must stay real in tests
 - rollback or rollout sequencing when compatibility depends on it
+
+## Status Index
+
+| Plan | Status |
+|------|--------|
+| 2026-04-07-bootstrap-scaffold-plan.md | completed — exemplar (bootstrap onboarding example) |
+| 2026-04-07-development-documentation-foundation-plan.md | completed — exemplar (operating-model foundation) |
+| 2026-04-07-plan-hardening-guidance-plan.md | completed — exemplar (hardening example) |
+| 2026-04-07-review-skills-bootstrap-plan.md | completed — exemplar (review-loop example) |
+| 2026-04-07-specs-index-renumbering-plan.md | completed |
+| 2026-07-14-coalescing-layer-plan.md | active |
+
+## Retired Plans
+
+One line per retired plan; the body lives in git at the source SHA.
+
+| Plan | Dates | Outcome | Absorbed into | Source SHA |
+|------|-------|---------|---------------|------------|

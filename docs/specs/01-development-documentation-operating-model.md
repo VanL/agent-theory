@@ -280,9 +280,67 @@ Requirements:
 - prefer a different agent, not just a same-family subagent, for plan review
   when one is available
 
+## 14. Coalescing and Memory Maintenance [DOM-14]
+
+The documentation surface is a tiered memory. Raw, dated records (lesson
+entries; completed plans) are the moment tier. Distilled rules (golden
+rules, runbook amendments), the plans ledger, and promoted skills are
+summary tiers. The working tree holds only the current, assembled state;
+git history is the archive. Docs change in place to match reality — going
+back in time is git's job, not the working tree's.
+
+Requirements:
+
+- each repository keeps coalescing state in `docs/coalescing.md`: declared
+  per-tier thresholds, per-tier watermarks, and a one-line-per-run log
+- coalescing triggers are event-derived, not calendar-based: counts are
+  computed from the watermark and the current tree, never stored
+- the session-start trigger check is read-only: a tripped threshold is
+  reported to the user, never acted on mid-task. All coalescing writes —
+  including checked-deferred records — happen only inside an authorized
+  maintenance task (user request, or agreed completion-boundary work).
+  Silently ignoring a trip is the only invalid response; reporting costs
+  one sentence
+- coalescing is additive-first across commit boundaries: distillation
+  drafts and retirement candidates may exist uncommitted; deleting raw
+  material, advancing watermarks, and retiring plans require a
+  landing-authorized phase with a durable checkpoint
+- deferrals have real state: a checked-deferred record carries
+  `checked_through` (date and SHA), the derived counts, the reason, and a
+  reconsideration condition — so an unchanged count does not re-nag every
+  session, and a changed count does
+- coalescing is two-phase and additive-first: distill, verify links and
+  cues, then retire; every fold leaves a retrieval cue — the date range
+  plus a `source_sha`, a pre-fold commit that verifiably contains the raw
+  material — in the surviving summary or ledger line. The fold commit may
+  be recorded in the run log after it exists, but it is never the cue
+- recent or still-cited raw material stays verbatim; golden rules and
+  safety invariants carry an importance floor — exempt from automated
+  decay, changed only by explicit revision, supersession, or deprecation
+  with a `(revised YYYY-MM-DD; was: <gist>)` marker
+- active plans keep instructions mutable and logs append-only, and become
+  immutable at closure; retirement is two-step — the sweep soft-retires
+  (status `retired-pending`, backlinks converted, ledger line written)
+  only after the harvest gate in `runbooks/writing-plans.md` passes, and
+  physical deletion happens in a dedicated follow-up change after the
+  gate is independently verified; plans marked `exemplar` in the status
+  index are exempt until their exemplar role is superseded
+- run-log entries are claims: each fold line must be spot-checkable
+  against the diff of the fold commit
+
+Owner: whoever the sweep check nags — any agent that observes a tripped
+threshold at session start. Boundary: applies to lessons, plans, runbook
+and skill promotion, and (for the guidance repo) cross-repo fold-up; specs
+and implementation docs are living documents maintained per [DOM-6] and
+[DOM-7], not coalesced. Verification: the run log plus the repository's
+traceability gate. Required action: when a threshold is tripped, report
+the trip state; respond with a sweep or a checked-deferred line per the
+trigger rules above.
+
 ## Related Plans
 
 - `docs/plans/2026-04-07-development-documentation-foundation-plan.md`
 - `docs/plans/2026-04-07-plan-hardening-guidance-plan.md`
 - `docs/plans/2026-04-07-review-skills-bootstrap-plan.md`
 - `docs/plans/2026-04-07-specs-index-renumbering-plan.md`
+- `docs/plans/2026-07-14-coalescing-layer-plan.md`
