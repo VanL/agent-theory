@@ -93,6 +93,9 @@ read-only review posture by default.
 - `4d98a63` — [DOM-11], [DOM-13], [DOM-15] at plan authoring time
   (clean tree).
 
+Promotion baseline identifier: `5a763e4` — skill Active, wiring and
+probe-based inventory landed, all §6 gates green at that commit.
+
 ## 4c. Proposed Spec Delta
 
 None. Rationale: [DOM-11] already defines independent review (inputs,
