@@ -27,6 +27,10 @@ DEFAULT_SPEC = "docs/specs/01-development-documentation-operating-model.md"
 CLASS_CELL_RE = re.compile(
     r"^(?:[0-5]\b|Class\s+[0-5]\+P\b|Escalate to [0-5]\b)"
 )
+# Adopters: this marker list is repo-adapted by design. When your
+# fixtures use local phrasing (name-based triggers, different negation
+# wording), EXTEND this tuple — do not reword your fixtures back to
+# canonical brackets. See skills/propagate-guidance/SKILL.md step 4.
 NEGATIVE_FACT_MARKERS = (
     "no [DOM-5]",
     "no behavior change",

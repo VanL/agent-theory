@@ -61,6 +61,7 @@ Quick pointers to the key documents in this repository.
 | `skills/debugging/SKILL.md` | Root-cause-first debugging |
 | `skills/brainstorming-to-plan/SKILL.md` | Bridge from exploration to plan or spec delta |
 | `skills/call-agent/SKILL.md` | Invoke an independent reviewer agent (read-only postures, probes) |
+| `skills/propagate-guidance/SKILL.md` | Hub-native: land a guidance wave in a sibling repo (not scaffolded) |
 
 ## Update Guidance
 
