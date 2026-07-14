@@ -66,6 +66,18 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
+- 2026-07-14: Two staging-safety rules from the weft landing. (1) A
+  blocking pre-commit check must actually halt the whole script — an
+  `if/else` that skips only the commit lets the script tail run
+  `git commit` again with the full index and sweep it into a mislabeled
+  commit (recovered via `git reset --soft`). (2) Content greps for
+  foreign WIP false-positive on the plan's own dirty-tree invariant,
+  which names those files; the reliable gate is **staged-file-list
+  equality** against an explicit expected list, plus synthetic HEAD+mine
+  blobs for shared-dirty files. Also: blanket token replacement in
+  transplanted prose needs a readability pass, not just a
+  zero-leftovers assertion — five garbled sentences shipped past the
+  assert and were caught only by independent review.
 - 2026-07-14: In multi-repo sessions, `cd` persists across `&&` within a
   shell call: a `git add -A && git commit` intended for one repo executed
   in another and swept 53 files of a sibling's uncommitted WIP into a
