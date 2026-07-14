@@ -93,6 +93,7 @@ These roles should stay distinct even as the repository grows.
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
 | `docs/agent-context/runbooks/hardening-plans.md` | Required companion for risky or boundary-crossing implementation plans |
+| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixture table |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan modeling the workflow |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan adding review, skills, and bootstrap guidance |
 | `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that hardened the repository's planning guidance |
@@ -105,8 +106,13 @@ These roles should stay distinct even as the repository grows.
 
 When future work adds product code:
 
-1. add or update the governing spec first
-2. create a dated plan for non-trivial work
+1. classify the task per [DOM-15] — planning artifacts and review scale
+   with the class; the verification floor never does. The rationale:
+   uniform heavyweight ceremony decays into performative compliance,
+   which is high-variance; a right-sized mandatory floor gets genuine
+   compliance. Classes 1–2 keep their record in the commit history
+2. add or update the governing spec first
+3. create a dated plan for classes 3 and above
 3. for risky work, harden the plan before implementation by making invariants,
    hidden couplings, anti-mocking guidance, rollback or rollout, and one-way
    doors explicit

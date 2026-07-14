@@ -80,6 +80,11 @@ Treat `hardening-plans.md` as required input when any of these are true:
 - Prefer descriptive filenames.
 - Use a date prefix for new plans when possible:
   `YYYY-MM-DD-short-name-plan.md`.
+- Classes 0–2 per [DOM-15] do not produce plan files — their record
+  lives in the commit history or handoff report. This runbook governs
+  classes 3 and above. Class-3+ plans carry a mandatory `Class:`
+  metadata line stating the class and trigger reasoning; a post-hoc
+  class claim with no mid-flight escalator history is a review smell.
 
 ## Required Plan Sections
 

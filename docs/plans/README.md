@@ -53,6 +53,7 @@ Risky plans are blocked if they do not make explicit:
 | 2026-04-07-specs-index-renumbering-plan.md | completed |
 | 2026-07-14-coalescing-layer-plan.md | active |
 | 2026-07-14-external-skill-suites-plan.md | active |
+| 2026-07-14-task-class-matrix-plan.md | active — task-class matrix promoted |
 
 ## Retired Plans
 

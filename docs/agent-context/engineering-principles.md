@@ -111,6 +111,18 @@ This complements principle 4: that principle is about *what* to test (prefer rea
 behavior over mocks); this one is about *when and why* — start from a failing
 proof. Generate fixtures through production code paths, not synthesis.
 
+The sanctioned exit is `runbooks/testing-patterns.md` Rule 5, and it
+is loud, concrete, and falsifiable — never silent. A valid substitute
+**always demonstrates the post-change correction**, and additionally
+either demonstrates the pre-change failure (or its root cause) or
+states why pre-change observation is impossible — never neither half.
+Category labels are not reasons: a docs-only change with a
+reproducible check available (a link check, a grep gate, a
+traceability run) has its failing test and must use it; a broken
+verification harness is a blocker to fix, not an exception to claim.
+Invoking Rule 5 without the demonstration is skipping the test, and
+skipping the test is not permitted at any task class.
+
 ## 11. Update All Consumers in the Same Change
 
 When you rename a key, tighten a schema, or change a contract, update every
