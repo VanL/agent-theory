@@ -60,7 +60,7 @@ a suite version changes the picture, update this section per Maintenance.
 | External skill | Governing repo doc | Note |
 |---|---|---|
 | superpowers:brainstorming | [DOM-5]; `writing-plans.md` | Exploration precedes planning; output feeds a dated plan in `docs/plans/`, never replaces one |
-| superpowers:writing-plans | `writing-plans.md` | Highly convergent. Repo governs plan shape and location (`docs/plans/YYYY-MM-DD-*.md`, not `docs/superpowers/plans/`) |
+| superpowers:writing-plans | `writing-plans.md` | Highly convergent. Repo governs plan shape and location (`docs/plans/YYYY-MM-DD-*.md`, not the suite's own default plans directory) |
 | superpowers:executing-plans, subagent-driven-development, dispatching-parallel-agents | `AGENTS.md` subagent contract | The delegation contract (verify and integrate before returning; no re-delegation) is not waivable |
 | superpowers:test-driven-development | `../engineering-principles.md` §10; `testing-patterns.md` Rule 5 | §10 is absolute about understanding (no failing test → you don't understand the problem yet). The named-substitute-proof allowance lives in testing-patterns Rule 5, not §10: when red-green is impractical, say what replaced it and why — never skip silently |
 | superpowers:verification-before-completion | [DOM-10]; `../decision-hierarchy.md` completion gate | Same iron law: a status document is a claim; evidence is a rerun |
@@ -97,7 +97,7 @@ Compound ≈ [DOM-9] lessons feeding the [DOM-14] layer. Two authority
 caveats keep the mapping honest: their `/workflows:compound` step
 *produces lesson candidates* — it does not authorize coalescing writes,
 whose session-start read-only rule and sweep authorization come from
-[DOM-14] unchanged; and their `docs/solutions/` maps into `docs/lessons.md`
+[DOM-14] unchanged; and their solutions directory maps into `docs/lessons.md`
 only through the [DOM-9] filter (durable, reusable corrections — not every
 solved problem). Its review agents follow the same separate-execution rule
 as the gstack personas above. Their plan documents feed `docs/plans/`; the

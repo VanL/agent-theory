@@ -30,7 +30,8 @@ stance, disposition loop) is owned by
 
 - `docs/implementation/03-agent-inventory.md` — who is available and
   verified; prefer a verified family different from the author
-- `review-loops-and-agent-bootstrap.md` §3–§5 — what the reviewer
+- `docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md`
+  §3–§5 — what the reviewer
   receives, the prompt stance, and the disposition loop
 
 ## Blast Radius

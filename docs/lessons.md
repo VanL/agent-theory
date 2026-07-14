@@ -66,6 +66,15 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
+- 2026-07-14: In multi-repo sessions, `cd` persists across `&&` within a
+  shell call: a `git add -A && git commit` intended for one repo executed
+  in another and swept 53 files of a sibling's uncommitted WIP into a
+  mislabeled commit (recovered via `git reset HEAD~1`, worktree
+  untouched). Rule: every repo-mutating git command in a cross-repo
+  session names its repo explicitly (`git -C <repo>` or a fresh `cd` in
+  the same command), and `git add -A` is banned in repos with foreign
+  WIP — stage by explicit path list, then grep the staged diff for
+  foreign markers before committing.
 - 2026-07-14: Guidance that changes process is never "low-risk additive" —
   it gets independent review before landing, like any behavior change.
   Same incident: cross-family review (Codex) caught citation-level defects

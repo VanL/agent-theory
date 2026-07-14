@@ -386,7 +386,7 @@ Rules:
   fresh-eyes substitutes for independent review only when no second
   agent is available, with the limitation disclosed — at every class
 - classification is a one-line declared claim citing its trigger
-  reasoning ("Class 2: restores [XYZ-3] intent, reversible, no DOM-5
+  reasoning ("Class 2: restores spec section XYZ-3 intent, reversible, no DOM-5
   trigger"); an undeclared class on non-read-only work fails the
   completion gate
 - escalators are one-way and declared mid-flight: when any [DOM-5]
@@ -426,7 +426,7 @@ checker enforces presence, review enforces meaning.
 | Fix a spelling error; repair a broken doc link — no behavior change, no normative force, no [DOM-5] trigger fires | 1 |
 | Behavior-preserving refactor, one module, following the established pattern — given: no [DOM-5] non-trivial or risky trigger fires (in particular, no zero-context ambiguity) | 1 |
 | Behavior-preserving refactor across two modules with unclear ownership — zero-context ambiguity, a [DOM-5] non-trivial trigger, fires | 3 |
-| Bug fix restoring validation that spec section `[XYZ-3]` requires — the cited section is the intent evidence; reversible; given: no [DOM-5] trigger fires | 2 |
+| Bug fix restoring validation that a cited spec section requires — the cited section is the intent evidence; reversible; given: no [DOM-5] trigger fires | 2 |
 | Same fix, but no spec, no stated user requirement, no contract test — intent evidence absent | 3 |
 | Fix spanning a producer and a consumer — given: the two sides are distinct major surfaces, so a [DOM-5] non-trivial trigger fires | 3 |
 | Same shape, but both sides live inside one module — reversible, spec-cited intent, and no other [DOM-5] trigger fires | 2 |
