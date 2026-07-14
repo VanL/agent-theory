@@ -97,6 +97,10 @@ decision-hierarchy's preflight; codex round-1 findings in §8a.
 - `01eb0b5` — docs/specs/01-development-documentation-operating-model.md
   and docs/agent-context/engineering-principles.md at plan authoring
   time (clean tree).
+- Promotion baseline identifier: `39cea02` — Deltas 1–8 applied to the
+  spec tree and all §6 gates rerun green at that commit (checker
+  self-test and live run, exact grep list, backstitch 15/0/0/0,
+  scaffold path assertions).
 
 ## 4c. Proposed Spec Delta
 
