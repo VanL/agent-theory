@@ -34,7 +34,7 @@ far higher triggers), and the derivation commands must be adapted to each
 repo's ledger format. Tuning is legitimate; tune in this file with a
 run-log note, not ad hoc.
 
-## First-Sweep Policy (this repo)
+## First-Sweep Policy (this repo — executed 2026-07-14, see run log)
 
 - Lessons tier only. The plans tier is **not derivable** until the status
   index from plan §5.5 lands, and stays untouched in the first sweep
@@ -52,9 +52,9 @@ run-log note, not ad hoc.
 
 | Tier | Distilled through | Source SHA |
 |------|-------------------|------------|
-| Lessons | (none — first sweep pending) | — |
-| Plans | (blocked — no status source until plan §5.5 lands) | — |
-| Promotion | (none — first sweep pending) | — |
+| Lessons | 2026-04-07 | `5927481` |
+| Plans | (none — no retirements yet; status index live) | — |
+| Promotion | (none — first derivation pending) | — |
 | Fold-up | 2026-07-02 verification-lessons fold | `5927481` (guidance wave landed 2026-07-14) |
 
 ## Deferral State
@@ -64,7 +64,7 @@ not re-nag; a changed count or a fired reconsideration condition does.
 
 | Tier | Checked through (date, SHA) | Counts at check | Reason deferred | Reconsider when |
 |------|------------------------------|-----------------|-----------------|-----------------|
-| Lessons | 2026-07-14, `5927481` | 14 past (no) watermark — tripped | Sweep is its own unit of work and awaits authorization; raw state now committed, so the destructive phase is unblocked once authorized | User authorizes the first sweep (lessons-only, dedup-first per First-Sweep Policy) |
+| Lessons | 2026-07-14, first sweep executed | 2 past watermark — under threshold 10 | Not tripped | Count changes |
 | Plans | 2026-07-14, `5927481` | 1 (specs-index-renumbering; four others are exemplar) — under threshold 5 | Not tripped | Count changes |
 | Promotion | 2026-07-14, `5927481` | not derived (judgment-clustered; done during a sweep) | Derive at first sweep | First sweep runs |
 | Fold-up | 2026-07-14, `5927481` | not derived | Provenance pinned; candidates derive at first sweep | First sweep runs |
@@ -78,6 +78,7 @@ may be appended as metadata once it exists.
 
 | Date | Tier(s) | Source SHA | Claim |
 |------|---------|------------|-------|
+| 2026-07-14 | Lessons | `5927481` | First sweep (authorized): folded 12 bootstrap-era entries (2026-04-07) into one pointer line — pure dedup, every entry verified already distilled into [DOM-*] sections, Golden Rules 7–8, or runbooks; no new rules, no Golden Rule changes. Kept 2026-07-02 and 2026-07-06 verbatim (age floor; cited by active plan). Watermark advanced to 2026-04-07. Plans/promotion/fold-up untouched per First-Sweep Policy. Backstitch: clean. |
 | 2026-07-14 | — (promotion, not a sweep) | `5927481` | [DOM-14] and deltas §5.1–§5.7 promoted per plan task 3: DOM spec gains §14; engineering-principles gains §15; writing-plans gains Plan Lifecycle and Retirement; maintaining-traceability gains the retired-citation form; plans README gains Status Index + Retired Plans; agent-context README and context.index.yaml gain the hot-lessons projection; lessons.md intro notes startup scope. Nothing folded; no watermark advanced. |
 | 2026-07-14 | all | — (additive-only; nothing folded) | Checked-deferred with blockers; see Deferral State. Review passes 1–2 dispositions applied: read-only trigger check, source_sha cue model, additive-only-when-uncommitted, plan mutability boundary, deferral state model, multi-signal decay, independent-lineage fold-up. No fold performed; no watermark advanced. |
 | 2026-07-14 | — | — | Layer initialized by docs/plans/2026-07-14-coalescing-layer-plan.md. Derived counts at initialization: lessons 14 entries past (no) watermark; plans 5 completed-unretired by file inspection. |

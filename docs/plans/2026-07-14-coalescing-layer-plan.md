@@ -2,7 +2,9 @@
 
 Status: Active — two independent review passes dispositioned (§8a);
 promotion slice (task 3) applied 2026-07-14; guidance wave committed as
-`5927481` (task 4). Remaining: first sweep (task 5), pilot gate (task 6).
+`5927481` (task 4); first sweep executed 2026-07-14 (task 5 — lessons-only
+pointer fold, see the docs/coalescing.md run log). Remaining: second sweep
+to satisfy the pilot gate (task 6), then propagation (task 7).
 Promotion baseline identifier: `5927481`.
 Plan type: spec-authoring / guidance revision (with two new additive files)
 Risk level: process-changing, boundary-crossing (alters plan lifecycle and
