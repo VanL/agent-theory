@@ -1,0 +1,82 @@
+# Brainstorming to Plan
+
+Status: Active. Bridges open-ended exploration (e.g.
+superpowers:brainstorming, a design conversation, a grilling session) to
+this repository's planning contract. Self-sufficient without any external
+suite.
+
+## Purpose
+
+Exploration produces decisions; this skill turns them into the artifacts
+the operating model can execute: a spec change when intended behavior
+moved, and a dated plan when work is non-trivial. Ideas that stay in
+conversation die in conversation.
+
+## When To Use
+
+- A brainstorm, design discussion, or requirements exploration has just
+  produced direction and the next step is building.
+- Do NOT use mid-exploration — premature planning narrows a brainstorm.
+  Use it at the moment "what to build" stops moving.
+
+## Governing Spec References
+
+- `docs/specs/01-development-documentation-operating-model.md`
+  [DOM-5] (planning standard), [DOM-6] (spec standard)
+- `docs/agent-context/runbooks/writing-plans.md` (plan shape; §4b–4d for
+  spec-changing work; exploration plan type)
+- `docs/agent-context/runbooks/writing-specs.md`
+
+## Read First
+
+- The governing spec for the affected area, if one exists
+- `docs/plans/README.md` status index (is there already an active plan
+  touching this area?)
+
+## Blast Radius
+
+- `docs/plans/` (new dated plan), possibly `docs/specs/` (spec delta),
+  and the plan status index
+
+## Workflow
+
+1. **Harvest the decisions.** From the exploration, write down: what was
+   decided, what was explicitly rejected (and why), and what remains
+   open. Rejected alternatives are load-bearing — they stop the next
+   session from relitigating.
+2. **Classify the outcome:**
+   - **Behavior decided, spec affected** → the plan is spec-changing:
+     it needs `## Spec Baseline` and `## Proposed Spec Delta` with a
+     promotion strategy (writing-plans §4b–4d). The spec tree, not the
+     brainstorm, becomes the source of truth.
+   - **Behavior decided, no spec impact** → ordinary [DOM-5] plan;
+     say `Source spec: None` plainly.
+   - **Behavior still undecided** → exploration plan type: spike only,
+     no implementation against a governing spec. When it firms up,
+     return here.
+   - **Trivial** → no plan; just do it with normal verification. Do not
+     manufacture ceremony for a one-file change.
+3. **Write the dated plan** per `writing-plans.md`: goal, sources,
+   invariants before tasks, open questions carried as explicit
+   assumptions or blockers — never silently dropped.
+4. **Route the leftovers.** Open questions that block: into the plan as
+   blockers. Open questions that don't: into the plan's out-of-scope or
+   a lessons entry if durable. Ideas rejected for reasons that will
+   recur: one line in `docs/lessons.md`.
+5. **Add the plan to the status index** in `docs/plans/README.md`.
+
+## Output Standard
+
+- A dated plan in `docs/plans/` (or an explicit "trivial, no plan"
+  decision), indexed
+- Decisions, rejections, and open questions all captured in a durable
+  surface — nothing load-bearing left only in conversation
+- Spec impact classified explicitly, with the §4b–4d machinery engaged
+  when behavior moved
+
+## Maintenance Notes
+
+- If plans repeatedly arrive missing the same exploration output (e.g.
+  rejected alternatives), strengthen step 1's harvest list.
+- If step 2's classification keeps getting argued, the boundary belongs
+  in `writing-plans.md`, not here.
