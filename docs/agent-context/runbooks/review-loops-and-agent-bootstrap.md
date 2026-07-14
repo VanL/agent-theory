@@ -38,6 +38,9 @@ The repository inventory lives in:
 
 - `docs/implementation/03-agent-inventory.md`
 
+Invocation mechanics (per-agent commands, read-only postures, probe
+procedure) are owned by `skills/call-agent/SKILL.md`.
+
 ## 2. Independent Review Requirement
 
 For non-trivial plans and completed work, run an independent review.

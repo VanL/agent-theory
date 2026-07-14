@@ -54,6 +54,7 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-14-coalescing-layer-plan.md | active |
 | 2026-07-14-external-skill-suites-plan.md | active |
 | 2026-07-14-task-class-matrix-plan.md | active — task-class matrix promoted |
+| 2026-07-14-call-agent-skill-plan.md | active — call-agent skill promoted after +P review |
 
 ## Retired Plans
 

@@ -70,6 +70,7 @@ a suite version changes the picture, update this section per Maintenance.
 | superpowers:finishing-a-development-branch | Definition of Done in `AGENTS.md` | Includes the no-AI-attribution rule for commits and PRs |
 | superpowers:writing-skills | `skills-lifecycle.md` | Repo skills follow `skills/_template/SKILL.md`, not the superpowers format |
 | gstack plan-eng-review, plan-ceo-review, grilling, review | `review-loops-and-agent-bootstrap.md` | Counts as independent review only when run as a **separate reviewer execution** (different agent family preferred, e.g. via /codex). The author adopting a review persona is a fresh-eyes self-review — allowed as the fallback, with the limitation disclosed. Dispositions still land in the plan |
+| gstack codex (invocation wrapper) | `skills/call-agent/SKILL.md` | Either works; the repo skill is the dependency-free path with read-only postures per agent, and it covers six families rather than one |
 | gstack spec | `writing-specs.md` | Repo governs spec shape: stable reference codes, `## Related Plans`, verification expectations |
 
 ## Known Conflicts (repo wins; know why)
