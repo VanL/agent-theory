@@ -1,10 +1,9 @@
 # Coalescing Layer Plan
 
 Status: Active — two independent review passes dispositioned (§8a);
-promotion slice (task 3) applied 2026-07-14. Remaining: commit/SHA pin
-(task 4), first sweep (task 5), pilot gate (task 6).
-Promotion baseline identifier: worktree at diff base `9beb807`,
-uncommitted — pin to the commit SHA when the guidance wave lands.
+promotion slice (task 3) applied 2026-07-14; guidance wave committed as
+`5927481` (task 4). Remaining: first sweep (task 5), pilot gate (task 6).
+Promotion baseline identifier: `5927481`.
 Plan type: spec-authoring / guidance revision (with two new additive files)
 Risk level: process-changing, boundary-crossing (alters plan lifecycle and
 lessons retention across every adopting repo)
