@@ -66,6 +66,13 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
+- 2026-07-14: Guidance that changes process is never "low-risk additive" —
+  it gets independent review before landing, like any behavior change.
+  Same incident: cross-family review (Codex) caught citation-level defects
+  (a misattributed escape hatch, a wrong section reference, a stale
+  repository map) that two same-day architecture-level reviews missed —
+  the different-family review rule earns its keep at the level of detail,
+  not just the level of design.
 - 2026-07-06: Large cohesive files are deliberate, not neglected debt — file
   size alone is never a split reason or a review finding. What binds instead
   are two floors: every implicit coupling gets an explicit marker or an

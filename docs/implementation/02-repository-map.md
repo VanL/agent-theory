@@ -33,6 +33,8 @@ Quick pointers to the key documents in this repository.
 | `docs/agent-context/runbooks/testing-patterns.md` | Testing and verification guidance |
 | `docs/agent-context/runbooks/maintaining-traceability.md` | Documentation-maintenance gate |
 | `docs/agent-context/runbooks/skills-lifecycle.md` | Skill promotion and maintenance guidance |
+| `docs/agent-context/runbooks/adversarial-acceptance-probes.md` | Black-box invariant floors for agent-built tools |
+| `docs/agent-context/runbooks/external-skill-suites.md` | Precedence and crosswalk for external skill suites |
 
 ## Core Documentation Corpus
 
@@ -47,6 +49,7 @@ Quick pointers to the key documents in this repository.
 | `docs/implementation/01-documentation-system.md` | Why the documentation system is shaped this way |
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `docs/lessons.md` | Canonical lessons ledger |
+| `docs/coalescing.md` | Coalescing state per [DOM-14]: thresholds, watermarks, deferrals, run log |
 
 ## Skills
 
@@ -54,6 +57,9 @@ Quick pointers to the key documents in this repository.
 |------|---------|
 | `skills/README.md` | Skill directory purpose and conventions |
 | `skills/_template/SKILL.md` | Starter template for new reusable skills |
+| `skills/coalescing/SKILL.md` | Coalescing sweep per [DOM-14] |
+| `skills/debugging/SKILL.md` | Root-cause-first debugging |
+| `skills/brainstorming-to-plan/SKILL.md` | Bridge from exploration to plan or spec delta |
 
 ## Update Guidance
 

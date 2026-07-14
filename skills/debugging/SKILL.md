@@ -13,15 +13,19 @@ lands with a proof that the failure cannot silently return.
 ## When To Use
 
 - Any bug report, test failure, or unexpected behavior — before proposing
-  a fix.
-- Do NOT use for behavior that is merely unspecified: that is a spec gap
-  ([DOM-6]), not a bug. Check the governing spec first.
+  a fix. Crashes, corruption, and regressions are bugs whether or not a
+  governing spec exists (`Source spec: None — bug fix` is a valid plan
+  line). Diagnose first; if the diagnosis reveals the *intended* behavior
+  was never decided, that is additionally a spec gap ([DOM-6]) — classify
+  it after root cause, not instead of diagnosis.
 
 ## Governing Spec References
 
 - `docs/specs/01-development-documentation-operating-model.md` [DOM-10]
 - `docs/agent-context/engineering-principles.md` §3 (read before
   inference), §10 (failing test first)
+- `docs/agent-context/runbooks/testing-patterns.md` Rule 5 (the only
+  sanctioned substitute-proof path) and Pattern 3 (name the regression)
 - `docs/lessons.md` Golden Rule 11 (handle the error path)
 
 ## Read First
@@ -51,8 +55,12 @@ lands with a proof that the failure cannot silently return.
    you have not read is a guess.
 3. **Isolate the root cause.** Narrow until you can state, in one
    sentence, the mechanism: "X happens because Y does Z under condition
-   W." If you cannot write that sentence, keep narrowing. A fix proposed
-   before that sentence exists is a symptom patch.
+   W." Narrow by method, not vibes: trace backward from the failure site
+   to the first bad value; diff a good case against the bad case (input,
+   environment, version); form a falsifiable hypothesis and change one
+   variable per experiment; collect evidence at component boundaries to
+   decide which side owns the defect. A fix proposed before the
+   one-sentence mechanism exists is a symptom patch.
 4. **Check the boundary, not just the site.** Ask whether the root cause
    is an instance of a class: a missing canonicalization (Golden Rule 1),
    a partial contract update (Rule 5), an unhandled error path (Rule 11).
@@ -60,6 +68,12 @@ lands with a proof that the failure cannot silently return.
 5. **Write the failing test, watch it fail** (§10), then fix, then watch
    it pass. Generate fixtures through production code paths. If the test
    is hard to write, that is design information — record it, don't skip.
+   The only sanctioned alternative is testing-patterns Rule 5: name what
+   replaced red-green and why. This is a separate decision from step 1's
+   reproduction exception — a failure you could not reproduce live may
+   still get a deterministic regression test (e.g. by forcing the race
+   condition in the harness); claim Rule 5 only when the *regression
+   proof* itself is impractical, and say so explicitly.
 6. **Stop-and-replan gates.** Stop and report instead of continuing when:
    the root cause implicates the spec (deviation path); the fix wants to
    add a second path instead of extending the canonical one (§1); or two
@@ -70,8 +84,9 @@ lands with a proof that the failure cannot silently return.
 
 - The one-sentence root-cause statement, in the fix's commit message or
   plan note
-- A regression test that failed before the fix and passes after (or the
-  named substitute proof and why)
+- A regression test that failed before the fix and passes after (or a
+  testing-patterns Rule 5 substitute: the named replacement proof and an
+  explicit statement of why a failing test was impractical)
 - Consumers updated in the same change when a contract moved
 - A lessons entry when the root cause exposed a reusable class of failure
 

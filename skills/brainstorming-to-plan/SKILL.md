@@ -45,24 +45,38 @@ conversation die in conversation.
    open. Rejected alternatives are load-bearing — they stop the next
    session from relitigating.
 2. **Classify the outcome:**
-   - **Behavior decided, spec affected** → the plan is spec-changing:
+   - **Behavior decided, spec must change** → the plan is spec-changing:
      it needs `## Spec Baseline` and `## Proposed Spec Delta` with a
-     promotion strategy (writing-plans §4b–4d). The spec tree, not the
-     brainstorm, becomes the source of truth.
-   - **Behavior decided, no spec impact** → ordinary [DOM-5] plan;
-     say `Source spec: None` plainly.
+     promotion strategy, and the sequence is fixed: independent review of
+     the exact delta → spec-promotion slice → record the promotion
+     baseline identifier → then code (writing-plans §4b–4d). The spec
+     tree, not the brainstorm, becomes the source of truth.
+   - **Behavior decided, governed by an existing spec that does not
+     change** → ordinary [DOM-5] plan that **cites the governing spec
+     sections and records the baseline** — an unchanged spec is still the
+     contract, not an absent one.
+   - **Behavior decided, no governing spec exists and none is warranted**
+     → ordinary [DOM-5] plan; say `Source spec: None — <reason>` plainly.
+     If the behavior is material ([DOM-6]), a spec is warranted — write
+     one first.
    - **Behavior still undecided** → exploration plan type: spike only,
      no implementation against a governing spec. When it firms up,
      return here.
-   - **Trivial** → no plan; just do it with normal verification. Do not
-     manufacture ceremony for a one-file change.
+   - **Trivial** → no plan; just do it with normal verification.
+     Triviality is judged by [DOM-5]'s criteria — no intended-behavior
+     change, no boundary crossed, no reusable workflow introduced, a
+     zero-context engineer would not guess wrong — never by file count. A
+     one-file spec or contract edit is not trivial.
 3. **Write the dated plan** per `writing-plans.md`: goal, sources,
    invariants before tasks, open questions carried as explicit
    assumptions or blockers — never silently dropped.
 4. **Route the leftovers.** Open questions that block: into the plan as
-   blockers. Open questions that don't: into the plan's out-of-scope or
-   a lessons entry if durable. Ideas rejected for reasons that will
-   recur: one line in `docs/lessons.md`.
+   blockers. Open questions that don't block: into a named
+   `## Assumptions and Open Questions` section in the plan, each with an
+   owner and the condition that resolves or reopens it — not into
+   out-of-scope (which offers no follow-up) and not into lessons (which
+   are for resolved, reusable rules). Ideas rejected for reasons that
+   will recur: one line in `docs/lessons.md`.
 5. **Add the plan to the status index** in `docs/plans/README.md`.
 
 ## Output Standard

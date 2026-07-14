@@ -24,6 +24,28 @@ bridge) as repo-owned skills rather than vendored copies.
   receiving-code-review), gstack skill set (plan-eng-review and peers),
   Every compound-engineering guide.
 
+## 2a. Context and Key Files
+
+- Files created: the three deliverables named in §5 tasks 1–3.
+- Files edited: `bin/bootstrap-agent-guidance` (COPIED_FILES + two
+  renderers), `docs/agent-context/README.md` (runbook list),
+  `docs/agent-context/context.index.yaml`, `docs/plans/README.md` (status
+  index), `docs/implementation/02-repository-map.md` (this repo's own
+  checked-in map — distinct from the scaffold renderer).
+- Read first: `decision-hierarchy.md` (precedence tiers),
+  `testing-patterns.md` Rule 5 (the substitute-proof owner),
+  `skills-lifecycle.md` (skills vs runbooks boundary).
+
+## 2b. Spec Classification
+
+No `## Proposed Spec Delta`: this plan adds operational runbook/skill
+guidance under existing [DOM-11]/[DOM-12] authority and operationalizes
+the existing decision-hierarchy tier ordering; it does not change intended
+behavior in the spec tree. Reviewer pushback on this classification
+(codex finding 8) is dispositioned in §7a; the residual disagreement —
+whether process-operationalizing runbooks are [DOM-6]-material — is
+escalated to the task-class-matrix follow-up rather than resolved here.
+
 ## 3. Invariants and Constraints
 
 - **No vendored copies.** External skills are pointed to, never forked
@@ -71,10 +93,39 @@ bridge) as repo-owned skills rather than vendored copies.
 
 ## 7. Independent Review Loop
 
-Additive guidance; review after landing is acceptable. Reviewer stance:
-does the crosswalk resolve precedence unambiguously for an agent that has
-both suites installed? Are the two harvested skills self-sufficient
-without the external suite present? Dispositions recorded here.
+Executed 2026-07-14: Codex (different agent family), consult mode,
+read-only against the landed files, with the three review questions from
+the original stance. Codex answered no to all three; findings and
+dispositions in §7a. Sequencing lesson accepted: this review should have
+preceded landing for process-changing guidance (finding 9) — recorded in
+`docs/lessons.md`; the mitigation is that review completed before any
+propagation.
+
+## 7a. Review Findings and Dispositions (Codex, 2026-07-14)
+
+| # | Finding (abbrev.) | Disposition |
+|---|---|---|
+| 1 | No external-to-external tie-break | **Accepted.** Three-case precedence with explicit tie-break added to the runbook |
+| 2 | User-invoked skill is tier-1, not inference | **Accepted.** Precedence rewritten to split user-invoked vs auto-fired |
+| 3 | §10 escape hatch misattributed | **Accepted — real defect.** Substitute proof correctly attributed to testing-patterns Rule 5 in the crosswalk, known-conflicts, and debugging skill |
+| 4 | Debugging skill inconsistent about proof | **Accepted.** Reproduction exception (step 1) and regression-proof substitution (Rule 5) now explicitly separate decisions |
+| 5 | "Unspecified = not a bug" false | **Accepted.** Reworded: diagnose first; spec-gap classification comes after root cause |
+| 6 | "No spec impact → Source spec: None" destroys traceability | **Accepted.** Classification split: unchanged-governing-spec (cite + baseline) vs no-spec-exists |
+| 7 | File count is not the triviality test | **Accepted.** Triviality judged by [DOM-5] criteria, stated in the skill |
+| 8 | "No spec delta" classification unsupported | **Rejected with reasoning** (§2b): operationalizes existing decision-hierarchy/[DOM-11]/[DOM-12] authority; residual disagreement escalated to task-class matrix |
+| 9 | Review-after-landing sequence backward | **Accepted as lesson.** Process-changing guidance gets pre-landing review; recorded in lessons; review completed pre-propagation |
+| 10 | Plan not DOM-5 compliant | **Partially accepted.** §2a/§2b added; testing plan is §6 (docs-only, inspection + named commands); the lean-vs-full tension escalated to task-class matrix — all three reviewers now demand it from opposite directions |
+| 11 | Persona ≠ independent review | **Accepted.** Separate-execution requirement added to gstack row |
+| 12 | Compound mapping overclaims authority | **Accepted.** Candidates-not-authorization caveats added |
+| 13 | Firings as promotion evidence contradicts §15 | **Accepted.** Firings are a hint to check; citations remain the evidence |
+| 14 | Harvested skills lack promotion evidence | **Rejected with reasoning.** Skill creation was an explicit tier-1 user instruction, which outranks the promotion heuristic; noted here as the authorization record |
+| 15 | Coverage claim unverifiable | **Accepted.** Superpowers 6.0.2 inventory enumerated in the runbook; gstack/Every rows declared representative |
+| 16 | Ambiguous refs; "§8" misattributed | **Accepted.** Path-semantics declaration added; §8 now cited as engineering-principles §8 |
+| P2-1 | Debugging lacks diagnosis method | **Accepted.** Backward trace, good-vs-bad diff, one-variable falsifiable hypotheses added to step 3 |
+| P2-2 | Brainstorm bridge omits spec-changing sequence | **Accepted.** Review → promote → baseline → implement spelled out |
+| P2-3 | Open questions routed incorrectly | **Accepted.** Named assumptions/open-questions section with owner + resolution trigger |
+| P2-4 | Crosswalk restates canonical rules | **Accepted.** "This runbook owns no rules" declaration added; notes are pointers |
+| P2-5 | Checked-in repository map stale | **Accepted — also predated this plan.** `docs/implementation/02-repository-map.md` updated with the probes runbook, crosswalk, coalescing state file, and all three skills |
 
 ## 8. Out of Scope
 
