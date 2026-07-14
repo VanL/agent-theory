@@ -454,8 +454,11 @@ Recommended prompt:
 
 > Read the plan at [path] and its `## Proposed Spec Delta` (if present),
 > including the named promotion strategy. Carefully examine the plan, the
-> proposed spec text, and the associated code. Look for errors, bad ideas, and
-> latent ambiguities. Don't do any implementation, but answer carefully: Could
+> proposed spec text, and the associated code. Look for errors, bad ideas,
+> latent ambiguities, and performative overengineering — process,
+> abstraction, or ceremony that does not address a real risk or improve
+> correctness; recommending removal is as valuable as recommending
+> additions. Don't do any implementation, but answer carefully: Could
 > you implement this confidently and correctly against the delta as promoted,
 > if asked?
 
@@ -486,6 +489,9 @@ Check for:
 - tasks that are too large to review safely
 - hidden assumptions about local style or tooling
 - accidental drift away from the requested direction
+- performative overengineering: sections, gates, or abstractions the plan
+  carries that do not address a real risk or improve correctness — cut
+  them; a fresh-eyes pass that only adds is a warning sign
 
 Fix those gaps and re-read the plan again.
 

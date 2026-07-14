@@ -235,8 +235,10 @@ Requirements:
 
 - the reviewer receives the governing spec, active plan, relevant
   implementation note, and touched files
-- the review focuses on errors, bad ideas, latent ambiguities, and whether a
-  different engineer could implement the plan confidently and correctly
+- the review focuses on errors, bad ideas, latent ambiguities, performative
+  overengineering — process, abstraction, or ceremony that does not address
+  a real risk or improve correctness — and whether a different engineer
+  could implement the plan confidently and correctly
 - the authoring agent considers each review point explicitly
 - the authoring agent either updates the work or records why the current path
   remains the best choice
