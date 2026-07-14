@@ -373,11 +373,18 @@ entries are ever physically folded.
      pointer ("distilled as Golden Rule N"), never a duplicate rule
    - Done signal: `docs/coalescing.md` run log has a fold or
      checked-deferred entry whose claims survive a diff spot-check.
-6. Pilot gate: run at least **two** real sweeps in this repo and evaluate
-   false positives, missed formats, retrieval friction, and measured
-   context savings before any propagation.
-7. Follow-up (separate work, out of this plan's scope, blocked on task 6):
-   propagate to mm, taut, weft, backstitch, engram with SHA-pinned
+6. Pilot gate: run at least **two** real sweeps and evaluate false
+   positives, missed formats, retrieval friction, and measured context
+   savings before further propagation. Amended 2026-07-14 by user
+   instruction: cross-repo sweeps count. **Satisfied** — sweep 1
+   (agent-guidance, pointer fold, `7ec670c`) and sweep 2 (taut, fold +
+   age-floor deferral + unverifiable-home split, `301f06f`); no false
+   positives, no format misses (the dated-bullet derivation transferred
+   unchanged), both run logs spot-checkable.
+7. Follow-up (separate work, out of this plan's scope; task-6 gate
+   satisfied; per user instruction 2026-07-14, **every propagation is
+   followed by that repo's first coalescing sweep in the same unit of
+   work**): propagate to mm, taut, weft, backstitch, engram with SHA-pinned
    provenance — including per-repo threshold calibration (mm's ledger and
    plan volume need much higher trigger values than this repo's defaults)
    and adaptation to each repo's ledger format (the dated-bullet grep is
