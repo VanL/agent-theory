@@ -87,6 +87,18 @@ incident log; these are the durable rules distilled from it.
   the same command), and `git add -A` is banned in repos with foreign
   WIP — stage by explicit path list, then grep the staged diff for
   foreign markers before committing.
+- 2026-07-15: A coalescing fold's verification has three tiers, and only
+  the first two are automatic: text fidelity (lesson → distillation,
+  grep both directions), symbol liveness (named functions/files/flags
+  still exist), and **behavioral parity** (the code still does what the
+  rule claims). The third is mandatory whenever a distillation is
+  phrased as a current-behavior claim — especially present-tense text
+  landing in implementation docs, which by the claims-vs-evidence rule
+  is a status claim requiring reproduction. The mm Containers/CI fold
+  shipped ten such claims verified only to tier two; an owner question
+  forced tier three (all ten reproduced, one apparent drift resolved as
+  the rule's own blessed fallback case). Candidate for the coalescing
+  skill after a second section confirms the pattern.
 - 2026-07-14: Capture an external reviewer's full transcript to a file
   before filtering or truncating stdout (`tee` first, filter after). The
   mm landing's review round piped grok's JSON through `tail -c` and lost
