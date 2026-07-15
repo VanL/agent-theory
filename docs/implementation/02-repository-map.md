@@ -63,6 +63,7 @@ Quick pointers to the key documents in this repository.
 | `skills/brainstorming-to-plan/SKILL.md` | Bridge from exploration to plan or spec delta |
 | `skills/call-agent/SKILL.md` | Invoke an independent reviewer agent (read-only postures, probes) |
 | `skills/propagate-guidance/SKILL.md` | Hub-native: land a guidance wave in a sibling repo (not scaffolded) |
+| `skills/interface-review/SKILL.md` | Review an agent-facing surface (REST/MCP/CLI/doc) against `designing-agent-facing-interfaces.md` |
 
 ## Update Guidance
 
