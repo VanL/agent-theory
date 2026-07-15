@@ -87,6 +87,18 @@ incident log; these are the durable rules distilled from it.
   the same command), and `git add -A` is banned in repos with foreign
   WIP — stage by explicit path list, then grep the staged diff for
   foreign markers before committing.
+- 2026-07-15: Lessons that encode upstream framework facts (not house
+  choices) carry a decay clock bound to the dependency version, not to
+  doc coverage. When the pinned version makes the violation impossible
+  or loudly self-failing (mm: `django.utils.timezone.utc` removed in
+  Django 5.0, pinned 6.0.7 — any use raises at import), the lesson has
+  **expired**: fold to git with the version fact as the cue, no
+  distillation target owed. Still-live framework facts are platform
+  documentation, not conventions — they scatter to the nearest topic
+  doc rather than justifying a "our conventions" home. Owner insight
+  ("it's not our conventions — Django changed") from the mm Django/DRF
+  fold; fold-up candidate for [DOM-14]'s decay guidance alongside the
+  citation-driven decay rule.
 - 2026-07-15: A coalescing fold's verification has three tiers, and only
   the first two are automatic: text fidelity (lesson → distillation,
   grep both directions), symbol liveness (named functions/files/flags
