@@ -87,6 +87,18 @@ incident log; these are the durable rules distilled from it.
   the same command), and `git add -A` is banned in repos with foreign
   WIP — stage by explicit path list, then grep the staged diff for
   foreign markers before committing.
+- 2026-07-14: Capture an external reviewer's full transcript to a file
+  before filtering or truncating stdout (`tee` first, filter after). The
+  mm landing's review round piped grok's JSON through `tail -c` and lost
+  findings 1–7; dispositions had to be reconstructed from the verdict
+  line's own enumeration plus the visible tail. Reviewer output is
+  evidence — evidence gets persisted before it gets summarized.
+- 2026-07-14: Numbered citations into a sibling repo's forked ledgers
+  (golden rules, testing patterns, runbook sections) must be re-derived
+  per repo, never carried over — cite by name, or by number only after
+  verifying it in that repo and marking it "this repo's numbering". The
+  mm adaptation review caught the hub's "Golden Rule 11 (handle the
+  error path)" pointing at mm's policy-cutover rule; theirs is 26.
 - 2026-07-14: Guidance that changes process is never "low-risk additive" —
   it gets independent review before landing, like any behavior change.
   Same incident: cross-family review (Codex) caught citation-level defects

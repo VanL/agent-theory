@@ -90,7 +90,16 @@ weft-idiomatic homes, not a new spec file); the repo's own gates
 self-corpus check; weft: `tests/specs/` including a plan-metadata
 contract that will fail your plan file if its header block is wrong);
 and the repo's **reference-code scheme** — canonical [DOM-N], a foreign
-family (mm: `D`-codes and `R-NNNN.NNN`), mixed, or none (weft).
+family, mixed, or none (weft, mm — beware lookalikes: mm's
+`R-NNNN.NNN` codes are product risk-registry IDs, not doc codes).
+Also survey: **where skills actually live** (a root `skills/` dir; or
+`.agents/skills/` real dirs behind a tracked `.claude/skills/` symlink
+layer — mm) and whether an external suite is **active** in the repo
+(mm runs gstack), which turns the external-skill-suites crosswalk into
+live routing that must match that repo's real skill inventory; whether
+**any plan index exists at all** (mm: none across 535 plans); and
+**locally numbered rule ledgers** (golden rules, testing patterns)
+whose numbering diverges from canonical citations.
 
 ### 2. Write the propagation plan in the receiving repo
 
@@ -150,6 +159,21 @@ receiving repo's plan-metadata contract exactly.
   fixtures back to canonical brackets.
 - Term collisions get explicit disambiguation where they live
   (engram: documentation-coalescing vs product memory coalescing).
+- **No plan index at all** (mm: 535 unindexed plans): create a
+  forward-only index with a declared boundary — "absence here is never
+  a status claim" — and record backfill as the plans tier's
+  reconsideration condition. Backfill is bulk-session work, never
+  propagation work.
+- **Numbered citations into forked ledgers must be re-derived per
+  repo.** Golden-rule and testing-pattern numbers are repo-local; cite
+  by name, or by number marked "this repo's numbering" after verifying
+  it (mm's review round caught the hub's "Golden Rule 11, error path"
+  pointing at their policy-cutover rule; theirs is 26).
+- **Active external suites**: when the receiving repo actually runs a
+  suite the crosswalk maps (mm: gstack), the crosswalk rows must match
+  that repo's real skill inventory — drop rows naming absent skills,
+  add present-but-unmapped ones, and say explicitly that the suite is
+  active so the rows read as live routing.
 - **Foreign code schemes get an explicit decision, recorded in the
   plan**: keep-foreign (cite their codes for their content), dual-cite
   ("[DOM-15]-equivalent, local code X"), name-map (name-based
@@ -169,7 +193,10 @@ theirs — note it, never "fix" it in a propagation.
 Different family, via `skills/call-agent/SKILL.md`, with the scope
 fence stated verbatim: source content is already reviewed — review
 ONLY the adaptation (placement, retargets, calibration, no-clobber,
-performative additions). Disposition per the review-loops handoff loop
+performative additions). Capture the reviewer's full output to a file
+before filtering or truncating it — the mm round lost findings 1–7 to
+a `tail -c` on stdout and dispositions had to be reconstructed from
+the verdict's own enumeration. Disposition per the review-loops handoff loop
 in the receiving repo's plan. Round-2 verification is scoped to the
 fixes; waiving a re-round for a verified one-line fix is legitimate
 and must be disclosed in the plan.
