@@ -67,7 +67,7 @@ not re-nag; a changed count or a fired reconsideration condition does.
 | Lessons | 2026-07-14, first sweep executed | 2 past watermark — under threshold 10 | Not tripped | Count changes |
 | Plans | 2026-07-14, `5927481` | 1 (specs-index-renumbering; four others are exemplar) — under threshold 5 | Not tripped | Count changes |
 | Promotion | 2026-07-14, `5927481` | not derived (judgment-clustered; done during a sweep) | Derive at first sweep | First sweep runs |
-| Fold-up | 2026-07-14, mm `9a8d17d55` | 1 candidate (mm agent-interface principles) — accepted same day | First real fold-up accepted with honest lineage accounting: the 2-independent threshold is met for two principles (required-action ↔ `action`; read order ↔ progressive disclosure); the rest are single-lineage generalizations accepted by explicit owner direction, disclosed in the runbook plan §2 | Next sibling-repo candidate arrives |
+| Fold-up | 2026-07-15, mm recalibration run-log | 1 accepted (agent-interface principles, 2026-07-14); 1 pending (per-fold-unit trigger denomination) | Accepted: see the 2026-07-14 run-log line. Pending candidate from mm (its 2026-07-15 recalibration): complex multi-section repos should denominate coalescing triggers in the fold unit (per-section) and count only fold-eligible (cold) material — a repo-wide hot-inclusive count nags without being actionable. One lineage so far (mm pilot); weft's 57-sections-at-once global trip is the likely independent second — check at weft's next sweep before accepting into [DOM-14]/the coalescing skill | Weft's next sweep confirms or refutes the second lineage |
 
 ## Run Log
 
