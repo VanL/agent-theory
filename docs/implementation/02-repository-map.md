@@ -35,6 +35,7 @@ Quick pointers to the key documents in this repository.
 | `docs/agent-context/runbooks/skills-lifecycle.md` | Skill promotion and maintenance guidance |
 | `docs/agent-context/runbooks/adversarial-acceptance-probes.md` | Black-box invariant floors for agent-built tools |
 | `docs/agent-context/runbooks/external-skill-suites.md` | Precedence and crosswalk for external skill suites |
+| `docs/agent-context/runbooks/designing-agent-facing-interfaces.md` | Principles for designing APIs, CLIs, and docs that agents consume (first [DOM-14] fold-up, from mm) |
 
 ## Core Documentation Corpus
 

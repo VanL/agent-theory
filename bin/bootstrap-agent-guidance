@@ -23,6 +23,7 @@ COPIED_FILES = [
     "docs/agent-context/lessons.md",
     "docs/agent-context/principles.md",
     "docs/agent-context/runbooks/adversarial-acceptance-probes.md",
+    "docs/agent-context/runbooks/designing-agent-facing-interfaces.md",
     "docs/agent-context/runbooks/external-skill-suites.md",
     "docs/agent-context/runbooks/hardening-plans.md",
     "docs/agent-context/runbooks/maintaining-traceability.md",
@@ -249,6 +250,7 @@ Quick pointers to the key guidance documents in this repository.
 | `docs/agent-context/runbooks/maintaining-traceability.md` | Documentation-maintenance gate |
 | `docs/agent-context/runbooks/skills-lifecycle.md` | Skill promotion and maintenance guidance |
 | `docs/agent-context/runbooks/external-skill-suites.md` | Precedence and crosswalk for external skill suites (superpowers, gstack, compound engineering) |
+| `docs/agent-context/runbooks/designing-agent-facing-interfaces.md` | Principles for designing APIs, CLIs, and docs that agents consume |
 
 ## Core Documentation Corpus
 

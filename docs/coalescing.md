@@ -67,7 +67,7 @@ not re-nag; a changed count or a fired reconsideration condition does.
 | Lessons | 2026-07-14, first sweep executed | 2 past watermark — under threshold 10 | Not tripped | Count changes |
 | Plans | 2026-07-14, `5927481` | 1 (specs-index-renumbering; four others are exemplar) — under threshold 5 | Not tripped | Count changes |
 | Promotion | 2026-07-14, `5927481` | not derived (judgment-clustered; done during a sweep) | Derive at first sweep | First sweep runs |
-| Fold-up | 2026-07-14, `5927481` | not derived | Provenance pinned; candidates derive at first sweep | First sweep runs |
+| Fold-up | 2026-07-14, mm `9a8d17d55` | 1 candidate (mm agent-interface principles) — accepted same day | First real fold-up accepted with honest lineage accounting: the 2-independent threshold is met for two principles (required-action ↔ `action`; read order ↔ progressive disclosure); the rest are single-lineage generalizations accepted by explicit owner direction, disclosed in the runbook plan §2 | Next sibling-repo candidate arrives |
 
 ## Run Log
 
@@ -78,6 +78,7 @@ may be appended as metadata once it exists.
 
 | Date | Tier(s) | Source SHA | Claim |
 |------|---------|------------|-------|
+| 2026-07-14 | Fold-up | mm `9a8d17d55` (contains mm's proposal record and the harvested source) | First role-symmetric fold-up accepted: mm's agent-API design principles (proposed by mm's root-docs retirement sweep) distilled into `runbooks/designing-agent-facing-interfaces.md`, scaffolded via COPIED_FILES. Lineage accounting per `docs/plans/2026-07-14-agent-facing-interfaces-runbook-plan.md` §2: dual-lineage convergence for two principles (meets the 2-independent threshold), single-lineage generalization by explicit owner direction for the rest, one convergence claim withdrawn as shared-ancestry. Raw material: mm's retired `system_api_design.md` (full text at mm `2b0182200`) and its `implementation/53`. |
 | 2026-07-14 | Lessons | `5927481` | First sweep (authorized): folded 12 bootstrap-era entries (2026-04-07) into one pointer line — pure dedup, every entry verified already distilled into [DOM-*] sections, Golden Rules 7–8, or runbooks; no new rules, no Golden Rule changes. Kept 2026-07-02 and 2026-07-06 verbatim (age floor; cited by active plan). Watermark advanced to 2026-04-07. Plans/promotion/fold-up untouched per First-Sweep Policy. Backstitch: clean. |
 | 2026-07-14 | — (promotion, not a sweep) | `5927481` | [DOM-14] and deltas §5.1–§5.7 promoted per plan task 3: DOM spec gains §14; engineering-principles gains §15; writing-plans gains Plan Lifecycle and Retirement; maintaining-traceability gains the retired-citation form; plans README gains Status Index + Retired Plans; agent-context README and context.index.yaml gain the hot-lessons projection; lessons.md intro notes startup scope. Nothing folded; no watermark advanced. |
 | 2026-07-14 | all | — (additive-only; nothing folded) | Checked-deferred with blockers; see Deferral State. Review passes 1–2 dispositions applied: read-only trigger check, source_sha cue model, additive-only-when-uncommitted, plan mutability boundary, deferral state model, multi-signal decay, independent-lineage fold-up. No fold performed; no watermark advanced. |
