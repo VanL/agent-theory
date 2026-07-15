@@ -122,6 +122,19 @@ incident log; these are the durable rules distilled from it.
   forced tier three (all ten reproduced, one apparent drift resolved as
   the rule's own blessed fallback case). Candidate for the coalescing
   skill after a second section confirms the pattern.
+- 2026-07-15: A true-negative validates the check, not the phenomenon —
+  it does not mint fold-up lineage. Weft ran the framework-fact expiry
+  check at a real pin bump, zero expiries fired; the drafting agent (who
+  saw only the doc surfaces) recorded "no check ran," and the reviewer
+  correctly held the [DOM-14] decay-bullet graduation either way: a spec
+  should not impose duties on branches of a conditional that only one
+  repo has ever exercised. Two rules. (1) Lineage requires the *required
+  action* to have fired — an incident, or a durably installed local
+  method — not a one-shot hypothesis probe that returned clean. (2)
+  Cross-repo evidence must live in the durable run log, not only a
+  commit message: the weft evidence was commit-message-only, which is
+  exactly why the drafting pass mis-recorded it (both errors were real —
+  weft under-recorded, the drafter over-concluded).
 - 2026-07-14: Capture an external reviewer's full transcript to a file
   before filtering or truncating stdout (`tee` first, filter after). The
   mm landing's review round piped grok's JSON through `tail -c` and lost

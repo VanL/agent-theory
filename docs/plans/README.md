@@ -57,6 +57,7 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-14-call-agent-skill-plan.md | active — call-agent skill promoted after +P review |
 | 2026-07-14-propagate-guidance-skill-plan.md | active — skill promoted after +P review |
 | 2026-07-14-agent-facing-interfaces-runbook-plan.md | active — first [DOM-14] fold-up (from mm) |
+| 2026-07-15-coalescing-method-refinements-plan.md | completed — Class 5+P; six skill refinements landed; [DOM-14] trigger bullet promoted, verification/decay bullets held skill-only per grok review |
 
 ## Retired Plans
 
