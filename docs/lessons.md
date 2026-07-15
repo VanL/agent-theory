@@ -87,6 +87,17 @@ incident log; these are the durable rules distilled from it.
   the same command), and `git add -A` is banned in repos with foreign
   WIP — stage by explicit path list, then grep the staged diff for
   foreign markers before committing.
+- 2026-07-15: Runbook code examples are claims too. A fold that
+  distills lessons into a runbook should also verify the runbook's
+  *pre-existing* examples adjacent to its edits — an mm fold found a
+  patch-target example that would `AttributeError` on contact (the
+  named modules import the symbol function-locally; the canonical
+  owner lives elsewhere), sitting in the exact pattern the incoming
+  lesson warned about. Discovered by a delegated Opus fold that tested
+  the runbook against the lesson it was placing; my five prior folds
+  verified lessons against code but never audited existing examples.
+  Third tier-3 companion rule; promote into the coalescing skill with
+  the other two at the next guidance touch.
 - 2026-07-15: Lessons that encode upstream framework facts (not house
   choices) carry a decay clock bound to the dependency version, not to
   doc coverage. When the pinned version makes the violation impossible
