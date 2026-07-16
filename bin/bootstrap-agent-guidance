@@ -34,7 +34,6 @@ COPIED_FILES = [
     "docs/agent-context/runbooks/writing-plans.md",
     "docs/agent-context/runbooks/writing-specs.md",
     "docs/implementation/README.md",
-    "docs/plans/README.md",
     "docs/specs/00-specs-index.md",
     "docs/specs/01-development-documentation-operating-model.md",
     "docs/specs/README.md",
@@ -49,6 +48,7 @@ COPIED_FILES = [
 
 GENERATED_FILES = {
     "docs/coalescing.md": "coalescing_state",
+    "docs/plans/README.md": "plans_readme",
     "docs/implementation/00-implementation-index.md": "implementation_index",
     "docs/implementation/01-documentation-system.md": "documentation_system",
     "docs/implementation/02-repository-map.md": "repository_map",
@@ -276,6 +276,7 @@ Quick pointers to the key guidance documents in this repository.
 | `skills/debugging/SKILL.md` | Root-cause-first debugging with proof and replan gates |
 | `skills/brainstorming-to-plan/SKILL.md` | Bridge from exploration to a dated plan or spec delta |
 | `skills/call-agent/SKILL.md` | Invoke an independent reviewer agent (read-only postures, probes) |
+| `skills/interface-review/SKILL.md` | Review an agent-facing surface against `designing-agent-facing-interfaces.md` |
 
 ## Update Guidance
 
@@ -449,8 +450,33 @@ Startup context is the Golden Rules plus entries after the watermark in
 """
 
 
+def render_plans_readme() -> str:
+    hub_text = (REPO_ROOT / "docs" / "plans" / "README.md").read_text()
+    # Carry only the neutral guidance (everything before the hub's own
+    # Status Index); the hub's plan rows are hub state, not starter
+    # content — copying them plants a phantom index in the consumer
+    # (defect found by the simplebroker bootstrap review, 2026-07-16).
+    marker = "## Status Index"
+    neutral = hub_text.split(marker)[0].rstrip()
+    return neutral + """
+
+## Status Index
+
+Status vocabulary: `draft`, `active`, `completed`, `superseded`,
+`retired-pending`, `retired`, plus an optional `exemplar` marker. New
+plans MUST add a row here at creation. If this repository had plans
+before the scaffold arrived, declare a forward-only index boundary
+("absence here is never a status claim") and record backfill as
+coalescing-tier debt instead of guessing statuses.
+
+| Plan | Status |
+|------|--------|
+"""
+
+
 GENERATORS = {
     "coalescing_state": lambda _repo_name: render_coalescing_state(),
+    "plans_readme": lambda _repo_name: render_plans_readme(),
     "implementation_index": lambda _repo_name: render_implementation_index(),
     "documentation_system": render_documentation_system,
     "repository_map": lambda _repo_name: render_repository_map(),
