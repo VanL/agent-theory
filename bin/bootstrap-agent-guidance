@@ -44,6 +44,7 @@ COPIED_FILES = [
     "skills/call-agent/SKILL.md",
     "skills/coalescing/SKILL.md",
     "skills/debugging/SKILL.md",
+    "skills/interface-review/SKILL.md",
 ]
 
 GENERATED_FILES = {
