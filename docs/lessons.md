@@ -135,6 +135,17 @@ incident log; these are the durable rules distilled from it.
   commit message: the weft evidence was commit-message-only, which is
   exactly why the drafting pass mis-recorded it (both errors were real —
   weft under-recorded, the drafter over-concluded).
+- 2026-07-17: **Propagation transplants come from the pinned end-state,
+  never an intermediate commit's diff.** A wave range can contain a
+  change and its own later amendment; extracting from the authoring
+  commit lands text the hub already walked back (the taut wave worker
+  transplanted a reverted verdict-vocabulary change from `cd74fcd`,
+  missing `6052289`; caught by orchestrator pre-review and the repo's
+  scoped review). `git show <pin>:<path>` is the only extraction form.
+  Companion observation from the same wave: the
+  plans-record-evidence rule caught transient-state prose in three
+  different repos' wave plans on its first day — a form-level rule that
+  fires that reliably is doing spec-grade work.
 - 2026-07-17: **Commit subjects must name the largest-impact change in
   the diff.** Contract, authority, or architecture changes never ride in
   a commit named for something else — the log is a human review surface,

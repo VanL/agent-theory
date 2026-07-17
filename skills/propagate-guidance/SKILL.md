@@ -117,6 +117,14 @@ receiving repo's plan-metadata contract exactly.
   assertion** (`len(matches) == 1`). Never bare `str.index` — taut's
   scanner caught [DOM-14/15] spliced into the middle of a DOM-6 bullet
   because the anchor string appeared inline.
+- **Transplant the pinned END-STATE, never an intermediate commit's
+  diff.** When the wave range contains a change and its later
+  amendment, an individual commit's diff is a trap: the 2026-07-17
+  wave's taut worker transplanted a verdict-vocabulary change from the
+  commit that introduced it and missed the follow-up that reverted it —
+  landing text the hub had already walked back. Extract every payload
+  with `git show <pin>:<path>` (the end-state), and treat "the diff of
+  the commit that authored this feature" as provenance only.
 - **If the script dies mid-way, regenerate the remaining work from the
   payload list, never from memory** — the backstitch resume silently
   omitted six transplants and only the reviewer caught it. After any
