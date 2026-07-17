@@ -92,7 +92,7 @@ Use this or a close variant:
 > meaningful risk that would be raised by implementing this plan,
 > describe that risk with a directive to raise it for human review.
 >
-> You must answer BLOCKED or CLEAR, followed by your analysis of any
+> You must answer PASS or BLOCKED, followed by your analysis of any
 > blocking issues, based upon your answers to these two questions:
 > 1. If asked, could you implement this plan as written confidently and
 >    correctly?
@@ -180,14 +180,11 @@ Recommended structure:
 Avoid bland approval language. If there are no findings, say so explicitly and
 name any residual risk.
 
-**Verdict vocabulary — two forms, by review type, no others:**
+**Verdict vocabulary, by review type:**
 
-- **Plan reviews (§4):** `BLOCKED` / `CLEAR`, derived from the two
+- **Plan reviews (§4):** `PASS` / `BLOCKED`, derived from the two
   questions (implementable-confidently; would-not-degrade). A block
   traces to one of the two questions or it is not a block.
 - **Scoped-change reviews (§4a):** `no blocker` / `blocker: F<ids>`,
   naming only findings within the unit under review; round-2 variants
   answer `PASS` / `FAIL` over accepted finding IDs only.
-
-The legacy `PASS`/`BLOCKED` form is retired; encountering it in older
-plans is history, not precedent.

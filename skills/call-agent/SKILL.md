@@ -57,10 +57,9 @@ Per review-loops §3–§4: embed the plan/delta content verbatim in the
 prompt (do not assume the reviewer can find files), list the files it
 should read, include the review stance (errors, bad ideas, latent
 ambiguities, performative overengineering), and demand explicit
-[P1]/[P2] markers plus the verdict form for the review type
-(review-loops §6: `BLOCKED`/`CLEAR` for plan reviews, derived from the
-two gate questions; `no blocker`/`blocker: F<ids>` for scoped-change
-reviews). Prepend a
+[P1]/[P2] markers plus a PASS/BLOCKED verdict when gating (for plan
+reviews, derived from the two gate questions in review-loops §4;
+scoped-change reviews use `no blocker`/`blocker: F<ids>`). Prepend a
 boundary line: "You are reviewing; do not implement or modify
 anything. Stay within this repository's files."
 
