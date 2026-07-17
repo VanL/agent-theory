@@ -74,7 +74,11 @@ claim; blocking is a disposition-time decision); (5) **prefer removing
 unnecessary work**; (6) an **observations outlet** — a separate,
 non-actionable section for out-of-scope concerns, so broad looking is
 encouraged while narrow acting is enforced. A brief missing an element
-is malformed: fix the brief, not the reviewer's output. Two named
+is malformed: fix the brief, not the reviewer's output. The
+fill-every-bracket template (and its round-2 variant) is
+`review-loops-and-agent-bootstrap.md` §4a — filling the brackets IS the
+scope decision; if a bracket resists filling, the scope is undecided
+and the dispatch is premature. Two named
 anti-patterns: **severity-as-mandate** (requesting "blocking findings"
 pre-decides disposition) and **resolution-polling** (asking whether an
 undispositioned or declined finding is "resolved" re-opens it — round-2

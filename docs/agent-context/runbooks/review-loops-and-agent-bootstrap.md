@@ -93,6 +93,45 @@ If the review is for completed work rather than a plan draft, swap in the
 changed files and current verification evidence while keeping the same review
 stance.
 
+## 4a. Scoped Change Review Prompt (template — fill every bracket)
+
+For reviewing a bounded change (a fix, a revert, a revision to an
+approved plan) rather than a whole plan. The brackets are the brief's
+required-shape elements (see `skills/call-agent/SKILL.md` step 2): if
+you cannot fill one, you have not decided the review's scope yet — decide
+it before dispatching, not in follow-ups. Filling the brackets IS the
+scope decision.
+
+> You are reviewing a single change, not the subsystem it touches.
+> Do not implement or modify anything.
+>
+> **Unit under review:** [the delta — files, diff, or plan section] at
+> baseline [SHA]. For a plan revision: the delta from the reviewed
+> baseline [SHA] plus its Revision Log rationale.
+> **Goal of the change:** [one sentence].
+> **Explicitly accepted risks — do not re-litigate:** [list, or "none
+> declared"].
+> **Standing constraints this change must not cross:** [key invariants,
+> or the repo's invariants registry path, or "none registered"].
+> **Pre-existing concerns** (concurrency, error shapes, validation,
+> policy, lifecycle, style) are out-of-scope observations unless THIS
+> change makes them worse.
+>
+> Output: a findings table — ID | severity (P1–P3/nit) | location |
+> finding | **suggested** disposition. Severity is your claim about
+> impact; whether anything blocks is decided at disposition, not by you.
+> Scope expansions go in a separate "Observations (not actionable this
+> pass)" section for the owner — never as blockers. Prefer removing
+> unnecessary work over adding it. Verdict line: `no blocker` or
+> `blocker: F<ids>`, naming only findings within the unit under review.
+
+Round-2 variant (after dispositions — never before):
+
+> Round-2 verification, scoped ONLY to these accepted findings and their
+> fixes: [IDs, one line each]. Verify each fix; report any NEW defect the
+> fixes introduced. Do not revisit declined or out-of-scope findings —
+> they are closed by their disposition rows. Verdict: PASS / FAIL.
+
 ## 5. Review Handoff Loop
 
 After the review returns:
