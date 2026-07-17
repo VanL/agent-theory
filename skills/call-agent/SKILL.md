@@ -61,6 +61,27 @@ ambiguities, performative overengineering), and demand explicit
 boundary line: "You are reviewing; do not implement or modify
 anything. Stay within this repository's files."
 
+**The brief is a required-shape artifact — a reviewer is only as good
+as the frame it receives.** Every review brief states, explicitly:
+(1) the **unit under review** — this delta at this baseline, never
+"review this subsystem"; (2) **explicitly accepted risks**, named so
+the reviewer cannot re-litigate them; (3) the **pre-existing rule** —
+concerns predating the change are out-of-scope observations *unless
+this change worsens them*; (4) the **disposition contract** — findings
+carry *suggested* dispositions, expansions are labeled for owner
+decision and never arrive as blockers (severity is the reviewer's
+claim; blocking is a disposition-time decision); (5) **prefer removing
+unnecessary work**; (6) an **observations outlet** — a separate,
+non-actionable section for out-of-scope concerns, so broad looking is
+encouraged while narrow acting is enforced. A brief missing an element
+is malformed: fix the brief, not the reviewer's output. Two named
+anti-patterns: **severity-as-mandate** (requesting "blocking findings"
+pre-decides disposition) and **resolution-polling** (asking whether an
+undispositioned or declined finding is "resolved" re-opens it — round-2
+briefs enumerate accepted finding IDs only). Lineage: the propagation
+scope fence (four 2026-07-14 landings) and mm's 2026-07-17
+review-broadening incident, independently.
+
 Write long prompts to a temp file and pass `"$(cat "$F")"` — never
 fight shell quoting inline.
 
