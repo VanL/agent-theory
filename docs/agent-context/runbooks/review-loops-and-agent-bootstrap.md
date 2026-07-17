@@ -79,15 +79,29 @@ unnecessary machinery count fully.
 
 Use this or a close variant:
 
-> Read the plan at [path] and its `## Proposed Spec Delta` (if present),
-> including the named promotion strategy. Carefully examine the plan, the
-> proposed spec text, and the associated code. Look for errors, bad ideas,
-> latent ambiguities, and performative overengineering — process,
-> abstraction, or ceremony that does not address a real risk or improve
-> correctness; recommending removal is as valuable as recommending
-> additions. Don't do any implementation, but answer carefully: Could
-> you implement this confidently and correctly against the delta as promoted,
-> if asked?
+> Read the plan at [path] — including its `## Proposed Spec Delta` and
+> promotion strategy, if present — and review the associated code and
+> documentation. Look for errors, bad ideas, and latent ambiguities.
+> Watch out for performative overengineering — tests or processes that
+> add ceremony without meaningfully addressing a real-world risk
+> identified in the code.
+>
+> Check specifically for invariants: what must not be changed (where
+> this repository keeps a standing-invariants registry, check the plan
+> against it). If you need to propose a new invariant, or there is a
+> meaningful risk that would be raised by implementing this plan,
+> describe that risk with a directive to raise it for human review.
+>
+> You must answer BLOCKED or CLEAR, followed by your analysis of any
+> blocking issues, based upon your answers to these two questions:
+> 1. If asked, could you implement this plan as written confidently and
+>    correctly?
+> 2. Would implementing this plan meaningfully impair or degrade the
+>    system, its security, or its robustness?
+
+A BLOCKED verdict must trace to question 1 or question 2; anything else
+the reviewer wants to say is a finding or a raise-for-human-review
+directive, never a block.
 
 If the review is for completed work rather than a plan draft, swap in the
 changed files and current verification evidence while keeping the same review
@@ -165,3 +179,15 @@ Recommended structure:
 
 Avoid bland approval language. If there are no findings, say so explicitly and
 name any residual risk.
+
+**Verdict vocabulary — two forms, by review type, no others:**
+
+- **Plan reviews (§4):** `BLOCKED` / `CLEAR`, derived from the two
+  questions (implementable-confidently; would-not-degrade). A block
+  traces to one of the two questions or it is not a block.
+- **Scoped-change reviews (§4a):** `no blocker` / `blocker: F<ids>`,
+  naming only findings within the unit under review; round-2 variants
+  answer `PASS` / `FAIL` over accepted finding IDs only.
+
+The legacy `PASS`/`BLOCKED` form is retired; encountering it in older
+plans is history, not precedent.
