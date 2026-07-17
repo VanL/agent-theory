@@ -135,6 +135,15 @@ incident log; these are the durable rules distilled from it.
   commit message: the weft evidence was commit-message-only, which is
   exactly why the drafting pass mis-recorded it (both errors were real —
   weft under-recorded, the drafter over-concluded).
+- 2026-07-17: **Commit subjects must name the largest-impact change in
+  the diff.** Contract, authority, or architecture changes never ride in
+  a commit named for something else — the log is a human review surface,
+  and a mislabeled commit hides its diff from the reviewer who trusts
+  subjects. Observed benignly at weft ("Update deps" carrying the
+  simplebroker pin bump that later mattered for lineage evidence) and
+  harmfully at mm (the July 2026 lifecycle inversions traveled inside
+  omnibus subjects). Two independent lineages; candidate for
+  engineering-principles once cited from a third context.
 - 2026-07-14: Capture an external reviewer's full transcript to a file
   before filtering or truncating stdout (`tee` first, filter after). The
   mm landing's review round piped grok's JSON through `tail -c` and lost

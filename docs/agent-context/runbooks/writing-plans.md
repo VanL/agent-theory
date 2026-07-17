@@ -571,6 +571,15 @@ ceremony inside the plan file.
   edited ones, and git preserves prior versions; decision, deviation, and
   review logs are append-only. At closure the whole plan becomes
   immutable.
+- **Approval attaches to the text that was reviewed, not to the file
+  name.** Mutability within approved scope is free, but a revision that
+  changes invariants, ownership, authority, or blast radius re-enters
+  classification and review — the reviewer's unit is the delta from the
+  reviewed text plus the stated reason for it, never the revised text
+  standalone. (Evidence: mm's July 2026 lifecycle incident propagated
+  entirely through in-place revisions of an approved plan; mm's revision
+  re-gate, reviewed-baseline pin, and Revision Log are the fold-up
+  candidates — see `docs/coalescing.md`.)
 - **Completed and superseded plans are harvest candidates.** They stay in
   the tree until the coalescing sweep retires them.
 - **The harvest gate — all four before deletion, no exceptions:**
