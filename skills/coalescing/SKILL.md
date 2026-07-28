@@ -114,6 +114,13 @@ contains the raw material about to be folded — check with
 `git show <source_sha>:docs/lessons.md`. If the entries exist only in the
 worktree, there is no valid source yet: the destructive phase is blocked
 until the raw state is committed (or the sweep stays additive-only).
+**Cue portability:** where the repository has a published mirror, a cue
+must resolve in the published history too — a SHA that survives only on
+one machine is a claim the world cannot verify (the 2026-07-28 field
+audit found exactly this: cues true locally, unverifiable from the
+mirrors). If the pin is not yet published, the run-log line says
+`local-only pin`; where a coalesce-check tool is installed, it reports
+both conditions mechanically.
 
 For each tripped or requested fold:
 

@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""Gate: every backticked repo-relative path claim in the guidance
+surfaces must resolve. Prose binds only what gets checked
+(engineering-principles §12); path claims are the corpus's most common
+rot class — three reviews caught instances by hand before this gate.
+
+Modes:
+  check-doc-paths [--root DIR]   scan a tree (default: this repo)
+  check-doc-paths --scaffold     bootstrap into a temp dir and scan that
+
+Exit 0 when every claim resolves; exit 1 listing the danglers.
+"""
+from __future__ import annotations
+
+import argparse
+import re
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# Surfaces whose path claims are normative. docs/lessons.md and plans are
+# excluded: lessons legitimately cite foreign/sibling paths as history,
+# and plans cite paths that may retire after closure.
+SCAN_DIRS = ["docs/agent-context", "docs/specs", "skills"]
+SCAN_FILES = ["AGENTS.md", "docs/README.md", "docs/coalescing.md"]
+
+# A claim is a single-line backticked token that looks like a repo path.
+CLAIM_RE = re.compile(r"`((?:docs|skills|bin)/[A-Za-z0-9_./-]+)`")
+
+# Suffixes/patterns that are templates or globs, not claims.
+NON_CLAIM = re.compile(r"[*{}<>]|YYYY|<[a-z]|\.\.\.")
+
+
+def iter_files(root: Path):
+    for d in SCAN_DIRS:
+        p = root / d
+        if p.is_dir():
+            yield from sorted(p.rglob("*.md"))
+            yield from sorted(p.rglob("*.yaml"))
+    for f in SCAN_FILES:
+        p = root / f
+        if p.is_file():
+            yield p
+
+
+def check_tree(root: Path) -> int:
+    failures = []
+    for f in iter_files(root):
+        text = f.read_text(errors="replace")
+        for m in CLAIM_RE.finditer(text):
+            claim = m.group(1)
+            if NON_CLAIM.search(claim):
+                continue
+            target = root / claim
+            if not (target.exists() or target.is_symlink()):
+                line = text.count("\n", 0, m.start()) + 1
+                failures.append(f"{f.relative_to(root)}:{line}: `{claim}` does not resolve")
+    if failures:
+        print(f"check-doc-paths: {len(failures)} dangling path claim(s):")
+        for fail in failures:
+            print(f"  {fail}")
+        return 1
+    print(f"check-doc-paths: OK ({root})")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--root", default=str(REPO_ROOT))
+    ap.add_argument("--scaffold", action="store_true",
+                    help="bootstrap into a temp dir and scan the result")
+    args = ap.parse_args()
+
+    if args.scaffold:
+        with tempfile.TemporaryDirectory(prefix="agscaffold-") as td:
+            r = subprocess.run(
+                [sys.executable, str(REPO_ROOT / "bin" / "bootstrap-agent-guidance"), td],
+                capture_output=True, text=True,
+            )
+            if r.returncode != 0:
+                print("check-doc-paths: bootstrap failed:\n" + r.stdout + r.stderr)
+                return 2
+            return check_tree(Path(td))
+    return check_tree(Path(args.root))
+
+
+if __name__ == "__main__":
+    sys.exit(main())

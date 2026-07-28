@@ -427,6 +427,13 @@ Startup context is the Golden Rules plus entries after the watermark in
 - A completed change revealed a stronger general rule than the repo previously
   encoded.
 
+## Golden Rules
+
+(None yet. Golden rules are importance-floored lessons — promoted here by
+the coalescing skill when a correction proves durable and load-bearing;
+exempt from automated decay, changed only by explicit revision. Startup
+reading is this section plus entries after the watermark.)
+
 ## Starter Lessons
 
 - Keep canonical agent guidance in shared repo-owned docs and make root agent
@@ -530,6 +537,50 @@ def remove_existing(path: Path, dry_run: bool) -> None:
         )
 
 
+import re
+import subprocess
+
+
+def _hub_head_sha() -> str:
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True, check=True,
+        ).stdout.strip()
+        return out or "unknown"
+    except Exception:
+        return "unknown"
+
+
+_HUB_PLAN_PATH_RE = re.compile(r"`docs/plans/([0-9]{4}-[0-9]{2}-[0-9]{2}-[A-Za-z0-9-]+)\.md`")
+
+
+def adapt_copied_guidance(text: str, source_sha: str) -> tuple[str, int]:
+    """Rewrite hub-plan path citations to quoted foreign names and add a
+    provenance line. Hub plan paths only exist in the hub; a scaffolded
+    repo citing them ships phantom path claims (the class the
+    propagate-guidance skill's step 4 fixes by rule on the delta path).
+    Returns (new_text, replacement_count)."""
+    new_text, count = _HUB_PLAN_PATH_RE.subn(
+        "the agent-guidance repository's plan \"\\1\" (its repository, not this one)",
+        text,
+    )
+    if count:
+        lines = new_text.split("\n")
+        # Insert the provenance note after the title line.
+        for i, line in enumerate(lines):
+            if line.startswith("# "):
+                lines.insert(
+                    i + 1,
+                    "\n> Installed by bootstrap-agent-guidance from agent-guidance @ "
+                    f"`{source_sha}`; hub plan citations above/below are quoted as "
+                    "foreign names — they are not paths in this repository.",
+                )
+                break
+        new_text = "\n".join(lines)
+    return new_text, count
+
+
 def copy_file(rel_path: str, target_root: Path, force: bool, dry_run: bool) -> Action:
     src = REPO_ROOT / rel_path
     dest = target_root / rel_path
@@ -544,7 +595,14 @@ def copy_file(rel_path: str, target_root: Path, force: bool, dry_run: bool) -> A
 
     ensure_parent(dest, dry_run)
     if not dry_run:
-        shutil.copy2(src, dest)
+        if rel_path.endswith(".md"):
+            content = src.read_text()
+            adapted, n = adapt_copied_guidance(content, _hub_head_sha())
+            dest.write_text(adapted)
+            if n:
+                return Action(kind, rel_path, f"adapted {n} hub plan citation(s)")
+        else:
+            shutil.copy2(src, dest)
     return Action(kind, rel_path)
 
 
