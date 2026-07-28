@@ -151,6 +151,12 @@ receiving repo's plan-metadata contract exactly.
   propagation plan and the source SHA**, never this repo's plan paths
   (path-claim scanners fail on foreign paths; engram/weft reviews both
   caught phantom cites).
+- **Foreign plans are quoted names, never backticked paths — anywhere,
+  not just Status lines.** A backticked `docs/plans/...` token reads as
+  a local path claim to check-doc-paths regardless of surrounding prose
+  disclosing it as foreign (the 2026-07-28 engram landing found two
+  adopted surfaces correct in prose but failing the gate on form).
+  Quoted name + repo attribution is the gate-distinguishable form.
 - **Cite sections by name, not bare number, in portable text** —
   "engineering principle §12 (Enumerable Contracts Get Executable
   Gates)" — numbers are repo-local; two of four repos broke every bare
