@@ -135,6 +135,22 @@ incident log; these are the durable rules distilled from it.
   commit message: the weft evidence was commit-message-only, which is
   exactly why the drafting pass mis-recorded it (both errors were real —
   weft under-recorded, the drafter over-concluded).
+- 2026-07-28: **Two fold-ups from taut's local method evolution** (its
+  commit `3706d73`, accepted by owner direction). (1) *Repair-in-sweep*:
+  an authorized sweep is maintenance as well as compaction — inspect the
+  memory surfaces before trusting a count; repair in-wave when the
+  defect is in-boundary, reversible, and evidence-determined; merely
+  logging a repairable defect is not a completed sweep (1 durable
+  lineage — this week's hub/weft ad-hoc repairs share ancestry with the
+  triggering review and were not counted). (2) *Structured status-index
+  contract*: closed vocabulary with a `status-review` quarantine that
+  never counts as completed, an executable index gate whose failure
+  blocks derivation, and never-fall-back-to-free-form-headers (2
+  lineages: taut built the mechanism; mm's backfill independently
+  invented the quarantine as free text — "unknown, needs owner triage").
+  Convergence note: taut built its §12-style executable gate the same
+  day the hub built check-doc-paths/coalesce-check, uncoordinated — two
+  repos independently concluding the corpus must check its own claims.
 - 2026-07-17: **Propagation transplants come from the pinned end-state,
   never an intermediate commit's diff.** A wave range can contain a
   change and its own later amendment; extracting from the authoring
