@@ -7,7 +7,7 @@ It also includes a scaffold command for installing the neutral starter set into
 another repository without trying to merge or infer repo-specific guidance:
 
 ```bash
-./bin/bootstrap-agent-guidance /path/to/target-repo
+./bin/bootstrap-agent-theory /path/to/target-repo
 ```
 
 The bootstrap is create-only by default. Use `--dry-run` to inspect actions and

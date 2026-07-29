@@ -39,7 +39,7 @@ Files to modify:
 - `docs/plans/2026-04-07-review-skills-bootstrap-plan.md`
 - `docs/plans/2026-04-07-plan-hardening-guidance-plan.md`
 - `docs/plans/2026-04-07-bootstrap-scaffold-plan.md`
-- `bin/bootstrap-agent-guidance`
+- `bin/bootstrap-agent-theory`
 
 Files to add:
 
@@ -92,7 +92,7 @@ Shared boundaries:
 
 3. Update the bootstrap scaffold to install the new specs layout.
    - Files to touch:
-     - `bin/bootstrap-agent-guidance`
+     - `bin/bootstrap-agent-theory`
      - `docs/plans/2026-04-07-bootstrap-scaffold-plan.md`
    - Outcome:
      - fresh installs get `docs/specs/00-specs-index.md` and
@@ -128,9 +128,9 @@ Run:
 ```bash
 rg -n "00-development-documentation-operating-model" AGENTS.md README.md docs/specs docs/implementation bin
 rg -n "00-specs-index|01-development-documentation-operating-model" AGENTS.md README.md docs/specs docs/implementation bin
-rm -rf /tmp/agent-guidance-specs-smoke
-./bin/bootstrap-agent-guidance /tmp/agent-guidance-specs-smoke
-find /tmp/agent-guidance-specs-smoke/docs/specs -maxdepth 1 -type f | sort
+rm -rf /tmp/agent-theory-specs-smoke
+./bin/bootstrap-agent-theory /tmp/agent-theory-specs-smoke
+find /tmp/agent-theory-specs-smoke/docs/specs -maxdepth 1 -type f | sort
 ```
 
 Success looks like:

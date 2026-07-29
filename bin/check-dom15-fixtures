@@ -30,7 +30,7 @@ CLASS_CELL_RE = re.compile(
 # Adopters: this marker list is repo-adapted by design. When your
 # fixtures use local phrasing (name-based triggers, different negation
 # wording), EXTEND this tuple — do not reword your fixtures back to
-# canonical brackets. (Adaptation guidance lives in the agent-guidance
+# canonical brackets. (Adaptation guidance lives in the agent-theory
 # repository's propagate-guidance skill, which is hub-only by design.)
 NEGATIVE_FACT_MARKERS = (
     "no [DOM-5]",

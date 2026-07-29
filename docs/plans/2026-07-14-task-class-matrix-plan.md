@@ -283,7 +283,7 @@ design-rationale paragraph (artifacts scale with class, verification does
 not, and why — performative-compliance variance), a key-files row for
 [DOM-15], and the change-guidance list's step 2 becomes "classify per
 [DOM-15]; create a dated plan for classes 3+". The scaffold's
-`render_documentation_system()` in `bin/bootstrap-agent-guidance` gets
+`render_documentation_system()` in `bin/bootstrap-agent-theory` gets
 the same edits so generated copies match. Rationale text, not normative
 contract — exact wording lands at promotion, inspection-gated.
 
@@ -326,7 +326,7 @@ are performative routing. See §8d.)
 ## 6. Testing Plan — exact commands
 
 - `grep -rln "DOM-15" AGENTS.md bin/ docs/ | sort` → exactly:
-  `AGENTS.md`, `bin/bootstrap-agent-guidance`,
+  `AGENTS.md`, `bin/bootstrap-agent-theory`,
   `bin/check-dom15-fixtures`, the DOM spec, `decision-hierarchy.md`,
   `writing-plans.md`, `docs/implementation/01-documentation-system.md`,
   and this plan (a historical record; the restatement ban applies to
@@ -338,8 +338,8 @@ are performative routing. See §8d.)
   → `15 spec sections`, `0 errors, 0 warnings, 0 infos`
 - `python3 bin/check-dom15-fixtures --self-test` → exit 0, after
   promotion (all four mutation cases caught; probe basics pass)
-- `python3 bin/bootstrap-agent-guidance
-  /private/tmp/claude-501/-Users-van-Developer-agent-guidance/036ce94f-f9ca-4bae-a29a-0ac11e969821/scratchpad/bootstrap-test-dom15
+- `python3 bin/bootstrap-agent-theory
+  /private/tmp/claude-501/-Users-van-Developer-agent-theory/036ce94f-f9ca-4bae-a29a-0ac11e969821/scratchpad/bootstrap-test-dom15
   --dry-run` → completes with no missing-source abort, and its output
   contains each of these exact paths (explicit presence assertions, not
   a count): `AGENTS.md`,

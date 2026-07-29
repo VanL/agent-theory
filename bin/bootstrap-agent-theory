@@ -69,7 +69,7 @@ class Action:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Scaffold the project-neutral agent-guidance starter set into a "
+            "Scaffold the project-neutral agent-theory starter set into a "
             "target repository. Create-only by default; existing files are "
             "left alone unless --force is given."
         )
@@ -126,7 +126,7 @@ This document explains why the repository is organized around shared agent
 context, specs, dated plans, implementation docs, reusable skills,
 independent reviews, and a lessons ledger.
 
-This file is part of the starter scaffold installed from the agent-guidance
+This file is part of the starter scaffold installed from the agent-theory
 repository. Keep it project-owned and adapt it as real product code and
 repo-specific boundaries appear.
 
@@ -372,7 +372,7 @@ adapt them to this repository's ledger format.
 
 ## Thresholds
 
-Starter values from the agent-guidance scaffold. Calibrate to this
+Starter values from the agent-theory scaffold. Calibrate to this
 repository's volume with a run-log note before relying on them.
 
 | Tier | Trigger (derived count) | Threshold | Age floor |
@@ -406,7 +406,7 @@ may be appended as metadata once it exists.
 
 | Date | Tier(s) | Source SHA | Claim |
 |------|---------|------------|-------|
-| (bootstrap) | — | — | Initialized by the agent-guidance scaffold. Derive counts and calibrate thresholds before first use. |
+| (bootstrap) | — | — | Initialized by the agent-theory scaffold. Derive counts and calibrate thresholds before first use. |
 """
 
 
@@ -562,7 +562,7 @@ def adapt_copied_guidance(text: str, source_sha: str) -> tuple[str, int]:
     propagate-guidance skill's step 4 fixes by rule on the delta path).
     Returns (new_text, replacement_count)."""
     new_text, count = _HUB_PLAN_PATH_RE.subn(
-        "the agent-guidance repository's plan \"\\1\" (its repository, not this one)",
+        "the agent-theory repository's plan \"\\1\" (its repository, not this one)",
         text,
     )
     if count:
@@ -572,7 +572,7 @@ def adapt_copied_guidance(text: str, source_sha: str) -> tuple[str, int]:
             if line.startswith("# "):
                 lines.insert(
                     i + 1,
-                    "\n> Installed by bootstrap-agent-guidance from agent-guidance @ "
+                    "\n> Installed by bootstrap-agent-theory from agent-theory @ "
                     f"`{source_sha}`; hub plan citations above/below are quoted as "
                     "foreign names — they are not paths in this repository.",
                 )
@@ -694,7 +694,7 @@ def main() -> int:
     actions.append(ensure_alias(target_root, args.force, args.dry_run))
 
     print(
-        f"Scaffolding agent-guidance into {target_root}"
+        f"Scaffolding agent-theory into {target_root}"
         + (" [dry-run]" if args.dry_run else "")
     )
     for action in actions:

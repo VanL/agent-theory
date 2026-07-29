@@ -3,7 +3,7 @@
 ## Goal
 
 Add a small, explicit bootstrap command that can scaffold this repository's
-project-neutral agent-guidance starter set into another repository without
+project-neutral agent-theory starter set into another repository without
 trying to infer repo-specific engineering rules or merge with existing custom
 docs.
 
@@ -35,7 +35,7 @@ Files to modify:
 
 Files to add:
 
-- `bin/bootstrap-agent-guidance`
+- `bin/bootstrap-agent-theory`
 - `docs/implementation/00-implementation-index.md`
 - `docs/plans/2026-04-07-bootstrap-scaffold-plan.md`
 
@@ -63,7 +63,7 @@ Shared paths and boundaries:
 
 1. Add the bootstrap command.
    - Files to touch:
-     - `bin/bootstrap-agent-guidance`
+     - `bin/bootstrap-agent-theory`
    - Outcome:
      - a target repo can receive the reusable scaffold with one command
    - Required behavior:
@@ -116,8 +116,8 @@ Use a real temporary target directory rather than mocks.
 
 Checks:
 
-- `bin/bootstrap-agent-guidance --dry-run <tmpdir>` shows the planned actions
-- `bin/bootstrap-agent-guidance <tmpdir>` creates the expected scaffold
+- `bin/bootstrap-agent-theory --dry-run <tmpdir>` shows the planned actions
+- `bin/bootstrap-agent-theory <tmpdir>` creates the expected scaffold
 - a second run without overwrite skips existing files cleanly
 - `CLAUDE.md` is a symlink to `AGENTS.md` or a clear pointer fallback if
   symlinks fail
@@ -129,14 +129,14 @@ Checks:
 Run:
 
 ```bash
-./bin/bootstrap-agent-guidance --dry-run /tmp/agent-guidance-smoke
-rm -rf /tmp/agent-guidance-smoke
-./bin/bootstrap-agent-guidance /tmp/agent-guidance-smoke
-./bin/bootstrap-agent-guidance /tmp/agent-guidance-smoke
-find /tmp/agent-guidance-smoke -maxdepth 3 -type f -o -type l | sort
-ls -l /tmp/agent-guidance-smoke/CLAUDE.md
-! ./bin/bootstrap-agent-guidance .
-python3 -m py_compile bin/bootstrap-agent-guidance
+./bin/bootstrap-agent-theory --dry-run /tmp/agent-theory-smoke
+rm -rf /tmp/agent-theory-smoke
+./bin/bootstrap-agent-theory /tmp/agent-theory-smoke
+./bin/bootstrap-agent-theory /tmp/agent-theory-smoke
+find /tmp/agent-theory-smoke -maxdepth 3 -type f -o -type l | sort
+ls -l /tmp/agent-theory-smoke/CLAUDE.md
+! ./bin/bootstrap-agent-theory .
+python3 -m py_compile bin/bootstrap-agent-theory
 ```
 
 Success looks like:

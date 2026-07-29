@@ -23,7 +23,7 @@ unevaluated.
 
 ## 1. Deliverables
 
-1. **Bootstrap adaptation layer** (`bin/bootstrap-agent-guidance`): a
+1. **Bootstrap adaptation layer** (`bin/bootstrap-agent-theory`): a
    provenance-rewrite pass applied to copied guidance files at scaffold
    time — hub plan paths become quoted foreign names, and each rewritten
    file gains an installed-from provenance line pinning the hub HEAD at

@@ -23,7 +23,7 @@ review rounds citing its process defects.
 **Hub-native; NOT in COPIED_FILES.** Rationale: propagation flows
 guidance-repo → consumers; consumers have no outbound role (fold-up is
 the coalescing skill's guidance-repo-only tier, a different motion).
-Precedent: `bin/bootstrap-agent-guidance` — the fresh-install
+Precedent: `bin/bootstrap-agent-theory` — the fresh-install
 counterpart — is likewise not copied. Keeping hub-only surfaces out of
 COPIED_FILES also eliminates the "residual guidance-repo wording"
 review-noise class that the backstitch and engram adaptation reviews

@@ -27,7 +27,7 @@ bridge) as repo-owned skills rather than vendored copies.
 ## 2a. Context and Key Files
 
 - Files created: the three deliverables named in §5 tasks 1–3.
-- Files edited: `bin/bootstrap-agent-guidance` (COPIED_FILES + two
+- Files edited: `bin/bootstrap-agent-theory` (COPIED_FILES + two
   renderers), `docs/agent-context/README.md` (runbook list),
   `docs/agent-context/context.index.yaml`, `docs/plans/README.md` (status
   index), `docs/implementation/02-repository-map.md` (this repo's own

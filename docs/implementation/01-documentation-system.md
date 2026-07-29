@@ -48,7 +48,7 @@ reusable instruction surface instead of remaining buried in lessons or plans.
 ### Bootstrap Scaffold
 
 The repository also includes a small scaffold command in
-`bin/bootstrap-agent-guidance` so the neutral starter set can be installed into
+`bin/bootstrap-agent-theory` so the neutral starter set can be installed into
 another repository. The command is intentionally simple: it copies the reusable
 starter corpus, generates a few repo-owned placeholder docs, and stops. It does
 not attempt to merge with existing `AGENTS.md` files or infer repo-specific
@@ -88,7 +88,7 @@ These roles should stay distinct even as the repository grows.
 |------|---------|
 | `AGENTS.md` | Primary agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
-| `bin/bootstrap-agent-guidance` | Scaffold command for installing the neutral starter set into another repository |
+| `bin/bootstrap-agent-theory` | Scaffold command for installing the neutral starter set into another repository |
 | `docs/agent-context/README.md` | Shared context hub |
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |

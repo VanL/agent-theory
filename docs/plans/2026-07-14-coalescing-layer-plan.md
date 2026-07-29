@@ -61,7 +61,7 @@ Current structure the implementer must know:
   section order is the required skill shape.
 - The worktree currently carries a large uncommitted guidance wave (the
   2026-07-02 verification-lessons fold and 2026-07-06 cohesion principle).
-  Downstream repos recorded "record the commit SHA when agent-guidance
+  Downstream repos recorded "record the commit SHA when agent-theory
   commits" provenance debt against it.
 
 Files created by this plan (additive, land with the plan):
@@ -377,7 +377,7 @@ entries are ever physically folded.
    positives, missed formats, retrieval friction, and measured context
    savings before further propagation. Amended 2026-07-14 by user
    instruction: cross-repo sweeps count. **Satisfied** — sweep 1
-   (agent-guidance, pointer fold, `7ec670c`) and sweep 2 (taut, fold +
+   (agent-theory, pointer fold, `7ec670c`) and sweep 2 (taut, fold +
    age-floor deferral + unverifiable-home split, `301f06f`); no false
    positives, no format misses (the dated-bullet derivation transferred
    unchanged), both run logs spot-checkable.

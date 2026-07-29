@@ -9,7 +9,7 @@ Quick pointers to the key documents in this repository.
 | `README.md` | Top-level overview |
 | `AGENTS.md` | Canonical agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
-| `bin/bootstrap-agent-guidance` | Scaffold command for installing the neutral starter set into another repository (adapts hub plan citations to foreign-name form at copy time) |
+| `bin/bootstrap-agent-theory` | Scaffold command for installing the neutral starter set into another repository (adapts hub plan citations to foreign-name form at copy time) |
 | `bin/check-doc-paths` | Gate: every backticked repo-relative path claim in the guidance surfaces resolves — tree and `--scaffold` modes |
 | `bin/coalesce-check` | Evidence trail for the coalescing layer: derives counts, verifies every run-log SHA/cue (local, sibling, and published-remote), reports local-only pins |
 

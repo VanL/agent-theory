@@ -77,7 +77,7 @@ def main() -> int:
     if args.scaffold:
         with tempfile.TemporaryDirectory(prefix="agscaffold-") as td:
             r = subprocess.run(
-                [sys.executable, str(REPO_ROOT / "bin" / "bootstrap-agent-guidance"), td],
+                [sys.executable, str(REPO_ROOT / "bin" / "bootstrap-agent-theory"), td],
                 capture_output=True, text=True,
             )
             if r.returncode != 0:

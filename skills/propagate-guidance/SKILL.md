@@ -4,9 +4,9 @@ Status: Active — pre-landing review passed 2026-07-14 (grok, two
 rounds; see `docs/plans/2026-07-14-propagate-guidance-skill-plan.md`
 §7).
 
-**Hub-native: this skill lives only in agent-guidance and is not
+**Hub-native: this skill lives only in agent-theory and is not
 scaffolded or copied.** Consumers receive waves; they do not push them.
-The fresh-install counterpart is `bin/bootstrap-agent-guidance`; this
+The fresh-install counterpart is `bin/bootstrap-agent-theory`; this
 skill is the delta path for repos that already adopted the model.
 
 ## Purpose
@@ -27,7 +27,7 @@ content greps + script-tail commit (weft landing, self-caught).
 
 ## When To Use
 
-- Any propagation of committed agent-guidance content into a sibling
+- Any propagation of committed agent-theory content into a sibling
   repo. Never propagate from an uncommitted working tree — pin the
   source SHA first (the 2026-07-02 fold's un-pinnable provenance was
   the original debt this rule exists to prevent).
@@ -63,7 +63,7 @@ content greps + script-tail commit (weft landing, self-caught).
 
 ### 0. Pin the wave and enumerate the payload
 
-- Pin the **source SHA** (a committed agent-guidance state — never a
+- Pin the **source SHA** (a committed agent-theory state — never a
   working tree) and read the **consumer's last pin** (its lessons
   provenance note and/or state-file watermarks) — the wave is the delta
   between the two, not "everything I remember changing".
