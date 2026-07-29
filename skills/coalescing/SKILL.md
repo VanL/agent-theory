@@ -146,8 +146,8 @@ must resolve in the published history too — a SHA that survives only on
 one machine is a claim the world cannot verify (the 2026-07-28 field
 audit found exactly this: cues true locally, unverifiable from the
 mirrors). If the pin is not yet published, the run-log line says
-`local-only pin`; where a coalesce-check tool is installed, it reports
-both conditions mechanically.
+`local-only pin`; bootstrap installs `bin/coalesce-check`, which reports
+both conditions mechanically when present.
 
 For each tripped or requested fold:
 
@@ -315,5 +315,5 @@ When the sweep is done, these exist and are verifiable:
 - If the harvest gate keeps blocking on the same item class, the gap is
   upstream (plans closing with open deviation logs) — fix the completion
   gate usage, not the sweep.
-- When an executable `coalesce-check` script exists, replace step 1's
-  manual derivation with it and keep the commands here as the fallback.
+- Prefer `bin/coalesce-check` (scaffolded by default) for step 1's
+  derivation; keep the manual commands here as the fallback.

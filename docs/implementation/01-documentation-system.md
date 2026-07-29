@@ -93,7 +93,9 @@ These roles should stay distinct even as the repository grows.
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
 | `docs/agent-context/runbooks/hardening-plans.md` | Required companion for risky or boundary-crossing implementation plans |
-| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixture table |
+| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixture table (scaffolded) |
+| `bin/check-doc-paths` | Path-claim integrity gate for guidance surfaces (scaffolded) |
+| `bin/coalesce-check` | Coalescing state SHA/cue evidence trail (scaffolded) |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan modeling the workflow |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan adding review, skills, and bootstrap guidance |
 | `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that hardened the repository's planning guidance |

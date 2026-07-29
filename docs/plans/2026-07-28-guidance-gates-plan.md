@@ -96,8 +96,12 @@ scaffolding worktree content — accurate once landed as one commit.
 
 ## 4. Out of Scope
 
-- Propagating the tools to consumers (next wave; coalesce-check needs
-  per-repo derivation adaptation there).
+- ~~Propagating the tools to consumers (next wave; coalesce-check needs
+  per-repo derivation adaptation there).~~ **Closed:**
+  `bin/check-doc-paths` and `bin/coalesce-check` joined
+  `bin/bootstrap-agent-theory` `COPIED_FILES` alongside
+  `bin/check-dom15-fixtures` (consumer lessons-tier derivation remains
+  the dated-bullet default; repos with other ledger formats still adapt).
 - The per-task instrumentation log (owner call, open).
 - Pushing any remote (owner's publication discipline decision).
 - [DOM-14] spec text changes (the cue-portability rule lands

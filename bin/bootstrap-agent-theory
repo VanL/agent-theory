@@ -15,6 +15,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 COPIED_FILES = [
     "AGENTS.md",
     "bin/check-dom15-fixtures",
+    "bin/check-doc-paths",
+    "bin/coalesce-check",
     "docs/README.md",
     "docs/agent-context/README.md",
     "docs/agent-context/context.index.yaml",
@@ -195,6 +197,9 @@ These roles should stay distinct even as {repo_name} grows.
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `skills/README.md` | Skill directory conventions and promotion criteria |
 | `docs/coalescing.md` | Coalescing state per [DOM-14]: thresholds, watermarks, deferrals, run log |
+| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixtures |
+| `bin/check-doc-paths` | Path-claim integrity gate for guidance surfaces |
+| `bin/coalesce-check` | Coalescing state SHA/cue evidence trail |
 
 ## Change Guidance
 
@@ -265,6 +270,9 @@ Quick pointers to the key guidance documents in this repository.
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `docs/lessons.md` | Canonical lessons ledger |
 | `docs/coalescing.md` | Coalescing state: thresholds, watermarks, deferrals, run log |
+| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixtures |
+| `bin/check-doc-paths` | Every backticked docs/skills/bin path claim in guidance surfaces must resolve |
+| `bin/coalesce-check` | Coalescing evidence trail: SHA/cue verification and lessons-tier count |
 
 ## Skills
 

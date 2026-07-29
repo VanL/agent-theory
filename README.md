@@ -19,6 +19,12 @@ especially in `AGENTS.md`, `docs/README.md`,
 `docs/agent-context/engineering-principles.md`, and the implementation-doc
 placeholders.
 
+Scaffolded guidance gates (also installed into consumers by default):
+
+- `bin/check-dom15-fixtures` — structural gate for the [DOM-15] fixture table
+- `bin/check-doc-paths` — every backticked docs/skills/bin path claim must resolve
+- `bin/coalesce-check` — coalescing state SHA/cue evidence trail
+
 The operating model is:
 
 - shared agent context is loaded at session start
