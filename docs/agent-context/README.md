@@ -13,14 +13,24 @@ agents, and human contributors working in this repository.
 
 ## Read Order
 
-1. `decision-hierarchy.md`
-2. `principles.md`
-3. `engineering-principles.md`
-4. Relevant runbook(s) in `runbooks/`
-5. `lessons.md`
-6. `../lessons.md` — required startup reading is the **Golden Rules section
+For **this hub repository**, start with the conceptual account, then process.
+This list omits this file (you are reading it); root `AGENTS.md` names the
+same sequence with this file as its own step, so its numbering runs one
+ahead from step 2 onward. The two lists are the same order, not two orders.
+
+1. `../program-theory.md` — what agent-theory is (Naur / Knuth / Ronacher
+   lineage; **module theory as the concrete extension of product theory**;
+   consumer replacement rule)
+2. `decision-hierarchy.md`
+3. `principles.md`
+4. `engineering-principles.md`
+5. Relevant runbook(s) in `runbooks/`
+6. `lessons.md`
+7. `../lessons.md` — required startup reading is the **Golden Rules section
    plus dated entries after the lessons watermark** (see `../coalescing.md`).
    Older entries are searchable reference material, not startup context.
+
+Machine-readable order: `context.index.yaml` `read_order`.
 
 ## Runbooks
 

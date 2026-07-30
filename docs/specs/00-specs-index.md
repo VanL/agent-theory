@@ -17,7 +17,9 @@ stay aligned instead of competing.
 
 ## Recommended Starting Points
 
-1. `01-development-documentation-operating-model.md`
+1. `../program-theory.md` — conceptual identity of this guidance system
+   (not a product contract; not a substitute for the DOM)
+2. `01-development-documentation-operating-model.md`
 
 ## Naming
 

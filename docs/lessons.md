@@ -151,6 +151,19 @@ incident log; these are the durable rules distilled from it.
   Convergence note: taut built its §12-style executable gate the same
   day the hub built check-doc-paths/coalesce-check, uncoordinated — two
   repos independently concluding the corpus must check its own claims.
+- 2026-07-30: **A doc edit reclassifies upward the moment it changes read
+  order, changes a renderer, or names a concept other repositories will
+  copy.** The program-theory work was scoped and executed as documentation
+  and acquired all three properties without anyone re-running [DOM-15];
+  the governing plan was written retrospectively
+  (`docs/plans/2026-07-30-program-theory-and-module-theory.md`). The
+  trigger is stated as three checkable properties rather than "feels
+  bigger now" precisely because the misjudgment happens at the start,
+  when the work genuinely is a doc edit. Corollary for the retrospective
+  plan itself: write it in its true tense — its rejected-alternatives
+  section is the only part that carries information the artifact cannot,
+  and a retrospective plan dressed as a prospective one is the ceremony
+  the admission test rejects.
 - 2026-07-17: **Propagation transplants come from the pinned end-state,
   never an intermediate commit's diff.** A wave range can contain a
   change and its own later amendment; extracting from the authoring

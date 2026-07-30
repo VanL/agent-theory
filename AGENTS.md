@@ -37,13 +37,29 @@ Canonical shared context lives in `docs/agent-context/`.
 
 Required read order for any agent operating in this repository:
 
-1. `docs/agent-context/README.md`
-2. `docs/agent-context/decision-hierarchy.md`
-3. `docs/agent-context/principles.md`
-4. `docs/agent-context/engineering-principles.md`
-5. Relevant runbook(s) in `docs/agent-context/runbooks/`
-6. `docs/agent-context/lessons.md`
-7. `docs/lessons.md`
+1. `docs/program-theory.md` — conceptual identity of **this repository**
+   (what kind of system this is; product theory in application/library repos).
+   If that file's Status is `Stub`, replace it before product-scope design work
+   (`skills/crystallize-program-theory/SKILL.md`).
+2. `docs/agent-context/README.md`
+3. `docs/agent-context/decision-hierarchy.md`
+4. `docs/agent-context/principles.md`
+5. `docs/agent-context/engineering-principles.md`
+6. Relevant runbook(s) in `docs/agent-context/runbooks/`
+7. `docs/agent-context/lessons.md`
+8. `docs/lessons.md`
+
+**Module theory** is how this repository's conceptual model is **extended**
+when depth is local (not a second global constitution):
+
+- On **entry** to a module that has theory (conventional name
+  `MODULE-THEORY.md` next to that code, or a path named from product theory),
+  read it before changing that module's public shape, rules, or ownership.
+- Do **not** load every module theory at session start.
+- Do **not** bulk local depth into `docs/program-theory.md`; extend with
+  module theory instead. Rules and checklist: the "module theory" /
+  progressive-disclosure section of `docs/program-theory.md` (and
+  `skills/crystallize-program-theory/SKILL.md` to write one).
 
 If local defaults conflict with repository guidance, follow the decision policy
 in `docs/agent-context/decision-hierarchy.md`.

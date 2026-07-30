@@ -60,6 +60,7 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-15-coalescing-method-refinements-plan.md | completed — Class 5+P; six skill refinements landed; [DOM-14] trigger bullet promoted, verification/decay bullets held skill-only per grok review |
 | 2026-07-28-guidance-gates-plan.md | completed — Class 3+P; bootstrap adaptation layer + check-doc-paths + coalesce-check landed, grok round-1 blockers fixed |
 | 2026-07-15-interface-review-skill-promotion-plan.md | completed — Class 3+P; skill promoted at 3 citations per the [DOM-14] promotion tier, grok-reviewed |
+| 2026-07-30-program-theory-and-module-theory.md | active — retrospective; Class 3+P; theory + crystallize skill + read order built, uncommitted; review, propagation, and the [DOM-16] spec call remain |
 
 ## Retired Plans
 

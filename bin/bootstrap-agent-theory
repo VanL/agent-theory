@@ -46,9 +46,11 @@ COPIED_FILES = [
     "skills/coalescing/SKILL.md",
     "skills/debugging/SKILL.md",
     "skills/interface-review/SKILL.md",
+    "skills/crystallize-program-theory/SKILL.md",
 ]
 
 GENERATED_FILES = {
+    "docs/program-theory.md": "program_theory_stub",
     "docs/coalescing.md": "coalescing_state",
     "docs/plans/README.md": "plans_readme",
     "docs/implementation/00-implementation-index.md": "implementation_index",
@@ -116,6 +118,109 @@ read order stay aligned instead of competing.
 1. `01-documentation-system.md`
 2. `02-repository-map.md`
 3. `03-agent-inventory.md`
+"""
+
+
+def render_program_theory_stub(repo_name: str) -> str:
+    return f"""# {repo_name} Program Theory
+
+Status: Stub — replace before product-scope design work
+Owner: product owner
+Boundary: Conceptual identity for **this product**, not agent-theory hub process.
+Verification: Owner review; optional independent semantic review.
+Required action: Replace this stub with a product-specific theory. Use
+`skills/crystallize-program-theory/SKILL.md` (interview one decision at a time)
+or the spine in the agent-theory hub `docs/program-theory.md` [AT-THEORY-8].
+
+## Do not keep the hub's theory here
+
+If this file still describes the *guidance system* (shared language kit,
+bootstrap, DOM, Naur/Ronacher framing of the hub), it was not replaced.
+**Product repositories must describe this product's problem, concepts,
+ownership, non-goals, and falsifiers.**
+
+## Temporary orientation (delete when rewriting)
+
+Until replaced, agents may use:
+
+1. Root README and any product overview docs
+2. `docs/agent-context/` process read order
+3. Winning product specs or contracts
+
+They must **not** treat agent-theory meta-principles as this product's
+behavioral requirements.
+
+## Minimum sections for the replacement
+
+- What program theory means (short)
+- Purpose and desired feel
+- Whole-program mental model
+- Core concepts and ownership
+- Design principles / consequences
+- What this product is not (non-goals)
+- Tensions and falsifiers
+- How the model is extended (module theory pointer)
+- Related winning contracts and entry points
+- Decision cases only when you have real refusals or revisions (see below)
+
+Do **not** pre-create empty `[ALT-001]` / `[REV-001]` slots. Absence means
+none yet.
+
+## Extending the model (module theory)
+
+When a subsystem needs its own generative rule, ownership table, or non-goals,
+**do not bulk this product file.** Extend with **module theory** next to the
+owning code (typical name `MODULE-THEORY.md`). That is the normal way to deepen
+theory under agentic work. Load module theory **on entry** to that code, not
+on every session start. See agent-theory hub `docs/program-theory.md`
+[AT-THEORY-2.1] and `skills/crystallize-program-theory/SKILL.md`.
+
+Do not scaffold empty module-theory files or directories in advance.
+
+## Decision records (when you refuse or revise — not before)
+
+Write an ALT or REV **when a real rejection or theory change happens** (agent
+or human proposes something that must not become the product; or the generative
+model changes). Do not invent records to fill a template.
+
+Paste and fill:
+
+### Rejected or deferred alternative
+
+```markdown
+### [ALT-<SCOPE>-<NNN>] Short title
+
+Disposition: rejected | deferred | adopted | superseded | invalidated
+Owner: <decision owner>
+Governs: <theory section, module theory, or contract reference>
+Source record: none | <plan path> | <commit or issue>
+Candidate: <what was proposed>
+Why plausible: <steelman>
+Evidence:
+- contemporaneous | owner-recalled | inferred | unknown: <source>
+Reason: <why this disposition>
+Current consequence: <what work must do now>
+Reconsider when: <observable condition — not vibes>
+Promoted to: none | <id if moved to product theory or a contract>
+```
+
+### Theory revision
+
+```markdown
+### [REV-<SCOPE>-<NNN>] Short title
+
+Current account: <revised theory — put current first>
+Supersedes: <short prior account; do not let it compete with current>
+Pressure: <what made the prior account inadequate>
+Evidence:
+- contemporaneous | owner-recalled | inferred | unknown: <source>
+```
+
+`<SCOPE>` is a short uppercase tag for the defining artifact (e.g. `THEORY`,
+`MODULE`, or a product code). Allocate `NNN` by scanning existing definitions
+in this repo. Prefer product theory for product-wide non-goals; park
+product-scope ALTs found during module work for promotion rather than
+stranding them forever in a module file.
 """
 
 
@@ -196,6 +301,7 @@ These roles should stay distinct even as {repo_name} grows.
 | `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `skills/README.md` | Skill directory conventions and promotion criteria |
+| `docs/program-theory.md` | Product program theory (replace bootstrap stub) |
 | `docs/coalescing.md` | Coalescing state per [DOM-14]: thresholds, watermarks, deferrals, run log |
 | `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixtures |
 | `bin/check-doc-paths` | Path-claim integrity gate for guidance surfaces |
@@ -237,6 +343,7 @@ Quick pointers to the key guidance documents in this repository.
 
 | Path | Purpose |
 |------|---------|
+| `docs/program-theory.md` | Product conceptual identity (replace stub; never leave hub theory here) |
 | `docs/agent-context/README.md` | Context hub and read order |
 | `docs/agent-context/context.index.yaml` | Machine-readable context index |
 | `docs/agent-context/decision-hierarchy.md` | Conflict-resolution order |
@@ -285,6 +392,7 @@ Quick pointers to the key guidance documents in this repository.
 | `skills/brainstorming-to-plan/SKILL.md` | Bridge from exploration to a dated plan or spec delta |
 | `skills/call-agent/SKILL.md` | Invoke an independent reviewer agent (read-only postures, probes) |
 | `skills/interface-review/SKILL.md` | Review an agent-facing surface against `designing-agent-facing-interfaces.md` |
+| `skills/crystallize-program-theory/SKILL.md` | Interview owner; write product (or module) program theory |
 
 ## Update Guidance
 
@@ -490,6 +598,7 @@ coalescing-tier debt instead of guessing statuses.
 
 
 GENERATORS = {
+    "program_theory_stub": render_program_theory_stub,
     "coalescing_state": lambda _repo_name: render_coalescing_state(),
     "plans_readme": lambda _repo_name: render_plans_readme(),
     "implementation_index": lambda _repo_name: render_implementation_index(),
@@ -666,6 +775,10 @@ def print_action(action: Action) -> None:
 def print_follow_up(target_root: Path) -> None:
     print("\nManual follow-up:")
     print(f"- Adapt {target_root / 'AGENTS.md'} to your real repo conventions, completion gates, and doc layout.")
+    print(
+        f"- Replace {target_root / 'docs/program-theory.md'} stub with product theory "
+        f"(skills/crystallize-program-theory); do not leave the hub account as product identity."
+    )
     print(f"- Review {target_root / 'docs/README.md'} so the session and planning flow matches the target repo.")
     print(f"- Adapt {target_root / 'docs/agent-context/engineering-principles.md'} to real code paths and invariants.")
     print(f"- Refresh {target_root / 'docs/implementation/02-repository-map.md'} with actual product entry points.")

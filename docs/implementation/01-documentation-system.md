@@ -10,6 +10,11 @@ The current implementation surface is the documentation system itself. Product
 code has not been added yet, so the repository's main architecture is the
 documentation operating model.
 
+Conceptual identity of that system (what agent-theory is for, progressive
+theory disclosure, consumer replacement of program theory) lives in
+`docs/program-theory.md`. This file remains realization rationale for the
+doc layout, not a second program theory.
+
 ## Governing Spec References
 
 - `docs/specs/01-development-documentation-operating-model.md` [DOM-2]
