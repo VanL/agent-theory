@@ -1,5 +1,16 @@
 # Corpus Changelog
 
+## 2026-08-07 (retirement verification relaxed)
+
+- [DOM-14], `writing-plans.md` Plan Lifecycle, `skills/coalescing/SKILL.md`
+  step 3.4: second-agent verification before physical plan deletion is
+  now optional, not required — deletion of source-pinned plans
+  reachable from a retained ref is reversible archive maintenance
+  (owner decision 2026-08-07). Still required: re-checking the
+  recorded harvest gate from the current tree, verified retrieval from
+  the source SHA, ref reachability, and two-step sequencing
+  (soft-retire in one change, delete in a dedicated follow-up).
+
 Dated, human- and agent-comparable record of normative changes to the
 agent-theory corpus. Consumers compare their adoption/propagation pin date
 against this file to detect staleness cheaply before deciding whether a

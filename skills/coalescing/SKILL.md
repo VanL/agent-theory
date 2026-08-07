@@ -246,10 +246,13 @@ For each completed or superseded plan:
    ledger line to `docs/plans/README.md` Retired Plans: plan, dates,
    one-sentence outcome, what absorbed it, source SHA (a commit verifiably
    containing the plan file).
-4. Physical deletion is a dedicated follow-up change, made only after a
-   second agent or the user re-verifies the harvest gate for each
-   `retired-pending` plan. Never soft-retire and delete in the same
-   change.
+4. Physical deletion is a dedicated follow-up change, made after
+   re-checking each `retired-pending` plan's harvest gate from the
+   current tree — retrieval from the source SHA verified, the SHA
+   reachable from a retained ref. Second-agent verification is
+   optional, not required: deletion of source-pinned plans is
+   reversible archive maintenance (owner decision 2026-08-07). Never
+   soft-retire and delete in the same change.
 5. A plan that fails the gate stays in the tree at its current status;
    note the blocking item in the run log if the threshold keeps nagging.
 

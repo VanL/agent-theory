@@ -400,7 +400,11 @@ Requirements:
   (status `retired-pending`, backlinks converted, ledger line written)
   only after the harvest gate in `runbooks/writing-plans.md` passes, and
   physical deletion happens in a dedicated follow-up change after the
-  gate is independently verified; plans marked `exemplar` in the status
+  recorded gate results are re-checked from the current tree with
+  retrieval from the source SHA verified. Deletion of source-pinned
+  plans reachable from a retained ref is reversible archive
+  maintenance, so second-agent verification is optional, not required
+  (owner decision 2026-08-07); plans marked `exemplar` in the status
   index are exempt until their exemplar role is superseded
 - run-log entries are claims: each fold line must be spot-checkable
   against the diff of the fold commit

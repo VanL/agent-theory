@@ -650,8 +650,13 @@ ceremony inside the plan file.
   the soft retirement — status flips to `retired-pending` in the index,
   backlinks convert to the retired citation form, and the ledger line is
   written (name, date range, one-sentence outcome, what absorbed it,
-  source SHA). Physical deletion happens in a dedicated follow-up change only
-  after a second agent or the user verifies the harvest gate. Git-backed
+  source SHA). Physical deletion happens in a dedicated follow-up
+  change after the harvest-gate results recorded at soft-retirement
+  are re-checked from the current tree, with retrieval from the source
+  SHA verified. A second-agent verification is optional, not required:
+  deletion of a source-pinned plan reachable from a retained ref is
+  reversible archive maintenance (owner decision 2026-08-07 — git is
+  the archive). Git-backed
   retirement is routine [DOM-14] maintenance: it needs neither a
   separate task plan nor separate commit authorization when every source
   SHA resolves and no durable guidance is promoted or materially
