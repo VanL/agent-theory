@@ -1,6 +1,6 @@
 # Program Theory and Module Theory in the Hub
 
-Status: active — retrospective
+Status: active — repair pass after independent review
 Class: 3+P — changes the required read order, the scaffold renderer, and
 introduces a concept six consumers will copy; process-material, hence +P:
 independent review before completion. Hardening: N/A by trigger (docs,
@@ -22,15 +22,33 @@ Two consequences, stated plainly rather than papered over:
   written as though it were prospective is the ceremony
   `[AT-THEORY-7]`'s admission test rejects. It is not offered as a
   governance record for the slices already landed.
-- It is still **active**, not completed, and therefore does have forward
-  force. Nothing here is committed, no consumer has received any of it,
-  no independent review has run, and the spec question in §5 is open.
-  The remaining slices are genuinely ahead.
+- It remains **active** for remaining work (propagation, residual hygiene).
+  Forward force applies to slices not yet done.
 
-The reclassification trigger is recorded as a lesson, because it is
-checkable rather than a matter of judgment: *a task that starts as a doc
-edit reclassifies upward the moment it changes read order, changes a
-renderer, or names a concept other repositories will copy.*
+The reclassification trigger is recorded as a lesson: *a task that starts
+as a doc edit reclassifies upward the moment it changes read order, changes
+a renderer, or names a concept other repositories will copy.*
+
+## 0.1 Process deviation: pre-review landing (honest record)
+
+**Deviation:** Class `3+P` requires independent review before completion /
+landing. The theory wave landed on `main` as commit **`4acbad1`**
+(*Add program-theory docs*) **before** independent review ran.
+
+**What must not be claimed:** that review occurred before `4acbad1`, or that
+the plan constrained that commit.
+
+**What this plan records:**
+
+| Fact | Value |
+|------|--------|
+| Landed baseline | `4acbad1` on `main` |
+| Plan text at land | Still said "uncommitted" / "review pending" (stale transient state frozen as if durable — same class of error the contemporaneous lesson warned against) |
+| Independent review | 2026-07-30 external review of the agent-theory tree (findings below) — **after** `4acbad1` |
+| Disposition of review | Repair pass in this plan §10; does not rewrite history to imply pre-landing review |
+
+This review can serve as the missing independent review for the wave; the
+repository records it honestly rather than backfilling order.
 
 ## 1. Origin
 
@@ -50,134 +68,139 @@ The second source is the reason the first generalized. Per `[AT-THEORY-7]`
 practice it names?* — and here the practice predates the name by months.
 `mm/cms/ARCHITECTURE.md` (2025) predates it by over a year.
 
-## 2. What landed (uncommitted at time of writing)
+## 2. What landed in `4acbad1`
 
-- `docs/program-theory.md` (new, untracked) — the hub's own account,
-  `[AT-THEORY-0]`–`[AT-THEORY-9]`, including `[AT-THEORY-2.1]` module
-  theory and the consumer-replacement preamble.
-- `skills/crystallize-program-theory/SKILL.md` (new, untracked) — the
-  interview that produces one.
-- `AGENTS.md` — program theory becomes step 1 of the required read
-  order; module theory gets an entry/no-bulk/no-preload rule.
-- `docs/agent-context/README.md`, `context.index.yaml` — read order and
-  document roles updated to match.
-- `bin/bootstrap-agent-theory` — renders a `Status: Stub` program-theory
-  file into new consumers, pointing at the crystallize skill and the
-  `[AT-THEORY-8]` question set.
-- `README.md`, `docs/README.md`, `docs/specs/00-specs-index.md`,
-  `docs/implementation/01`, `02`, `skills/README.md` — orientation and
-  map updates.
+- `docs/program-theory.md` — hub account `[AT-THEORY-0]`–`[AT-THEORY-9]`,
+  including `[AT-THEORY-2.1]` module theory and consumer-replacement preamble.
+- `skills/crystallize-program-theory/SKILL.md` — interview that produces one.
+- `AGENTS.md` — program theory step 1 of required read order; module theory
+  entry/no-bulk/no-preload rule.
+- `docs/agent-context/README.md`, `context.index.yaml` — read order and roles.
+- `bin/bootstrap-agent-theory` — `Status: Stub` program-theory for new consumers.
+- `README.md`, maps, specs index orientation.
 
 ## 3. Rejected alternatives
 
-This section is the reason the plan is worth writing. The
-`[AT-THEORY-*]` text records what was concluded; nothing in the
-repository records what was turned down, and those decisions were made
-in conversation.
-
 - `[ALT-1]` **Program theory as a new tier in the decision hierarchy.**
-  Rejected: it is the frame within which the tiers are read, not an
-  authority competing with them. A tier would make it a second
-  constitution and invite agents to cite theory against a spec.
-  *Reconsider when* two module theories contradict each other and no
-  existing tier resolves the conflict.
-- `[ALT-2]` **A `theory-check` executable gate** scanning the ecosystem
-  and reporting which falsifiers are firing. Rejected on two counts:
-  category error — `[DOM-12]` governs *obligations*, while falsifiers
-  are epistemic commitments with no obligation to fire; and shape — it
-  would be a dashboard, and this corpus consistently chooses tripwires
-  over dashboards. It also failed its own admission test: invented from
-  analogy, with no practice behind it. *Reconsider when* someone can
-  name what they would do differently on a red result.
+  Rejected: frame, not competing authority. *Reconsider when* two module
+  theories contradict and no existing tier resolves the conflict.
+- `[ALT-2]` **A `theory-check` executable gate** for falsifiers. Rejected:
+  category error and no practice behind it.
 - `[ALT-3]` **Bulking local depth into `docs/program-theory.md`.**
-  Rejected for `MODULE-THEORY.md` next to the code
-  (`[AT-THEORY-2.1]`). Progressive disclosure is the whole point:
-  apex theory stays short and universally loaded, depth stays local and
-  loaded on entry.
+  Rejected for `MODULE-THEORY.md` next to code (`[AT-THEORY-2.1]`).
 - `[ALT-4]` **An "absent state" falsifier** for repos with no theory.
-  Retracted: absence is only addressable by agent- or human-mediated
-  propagation, so a falsifier watching for it has no action attached.
-  The falsifiers were already correctly scoped to *misuse*.
-- `[ALT-5]` **An "evidence that this works" section in `README.md`.**
-  Rejected: comparative efficacy is not agent-theory. Now a coded
-  non-goal in `[AT-THEORY-5]` — the discipline lives in the repository,
-  arguments for it live in external writing that cites it. The two age
-  on different clocks, and a repository that argues for itself invites
-  evaluation of the argument instead of use of the method.
+  Retracted: no action attached.
+- `[ALT-5]` **Comparative efficacy section in README.** Rejected as advocacy.
+  **Amended by review finding 7:** factual provenance and adoption links
+  *are* allowed in the hub README; comparative claims remain external.
 - `[ALT-6]` **Restating surprise-as-collapse-signal in `[AT-THEORY-6]`.**
-  Dropped as duplication: `[AT-THEORY-4]` principle 2 already carries
-  it, including the non-obvious half (process failures count as theory
-  or transfer failures, not only as agent sloppiness).
+  Dropped as duplication of `[AT-THEORY-4]` principle 2.
+- `[ALT-7]` **Binary choice: new `[DOM-16]` vs leave theory as hub prose only.**
+  Rejected as false binary (independent review finding 2). Narrower path:
+  name program theory in `[DOM-2]`/`[DOM-3]` as frame, not as a hierarchy tier
+  and not as a full simplebroker-style `[DOM-16]` obligation until fold-up.
 
-## 4. Falsifier observables added
+## 4. Falsifier observables (from first wave)
 
-`[AT-THEORY-6]` had named falsifiers with no way to tell whether they
-were firing. Two now have observables, chosen because both are readable
-from material that already exists:
+- **Process tower** → promotion lag.
+- **False possession** → four probes (betrayal vs surprise).
+- **Module sprawl** → divergence, not precedence.
 
-- **Process tower** → *promotion lag*: elapsed time from a behavior
-  shipping to a coded clause with a firing gate that owns it. Growing
-  lag while the process surface advances is the falsifier firing;
-  measurable from git dates without new tooling.
-- **False possession** → four probes, weakest to strongest deniability:
-  predict the bug class before the agent reports it; design a boundary
-  without reopening the transcript; a week away leaves the model intact;
-  and *betrayed by an invariant I know* vs *surprised by a system I
-  don't own*.
+## 5. Spec status (resolved narrow; full DOM-16 deferred)
 
-**Module sprawl** was retriggered on divergence rather than precedence:
-local theory before apex theory is the healthy order, so the falsifier
-now watches for module theories answering the same question differently
-or carrying unreconciled product-scope claims.
+**Resolved (repair pass):** amend hub `[DOM-2]` and `[DOM-3]` so the operating
+model describes program theory as a distinct artifact role and matches the
+required startup order in `AGENTS.md`. State explicitly that theory frames
+interpretation and placement but does not override winning contracts; define
+`Stub` / `Draft` / `Active` behavior; optional theory alignment on
+identity-changing work in `[DOM-4]` only.
 
-## 5. Open decision: spec status in the hub
-
-The hub currently carries program theory with **no `[DOM-*]` clause** —
-it lives in `docs/program-theory.md` and the `AGENTS.md` read order,
-while simplebroker has promoted it to `[DOM-16]` with an extended
-`[DOM-4]` chain. That asymmetry is a decision, not an oversight, and it
-is the owner's:
-
-- **Promote `[DOM-16]` into the hub spec** — makes program theory an
-  obligation with a traceability chain, and gives propagation something
-  to cite. Costs: the hub takes on a clause it must then hold every
-  consumer to, including repos where a stub is the honest state.
-- **Leave it hub-prose** — theory stays a frame rather than an
-  obligation, consistent with `[ALT-1]`. Costs: `[DOM-4]`'s chain keeps
-  the hole this plan half-closes, and consumers copy a concept with no
-  spec anchor.
-
-Recommendation: leave it hub-prose until a second consumer independently
-promotes it (the `[DOM-14]` fold-up threshold — two independent
-lineages). simplebroker is currently lineage one.
+**Still deferred:** promoting a full consumer-facing `[DOM-16]` obligation
+with an extended mandatory traceability chain for every product repo (the
+simplebroker lineage). Reconsider when a second consumer independently
+promotes the same obligation (fold-up threshold).
 
 ## 6. Remaining slices
 
-1. Commit the current tree as one landing (theory + skill + read order +
-   scaffold + maps), so there is a single retrieval cue.
-2. Independent review per +P: scoped, different family, §4a-form brief.
-3. Propagation wave to the six consumers per `propagate-guidance` §4,
-   with the stub-rendering path exercised on a scratch scaffold first.
-4. Owner call on §5.
+1. ~~Commit first wave~~ — done: `4acbad1`.
+2. ~~Independent review~~ — done after land (this review); deviation recorded.
+3. **Repair pass** (this work) — findings §9 / dispositions §10.
+4. Propagation wave to consumers — **blocked until repair pass lands and
+   gates are green**; then `propagate-guidance` §4.
+5. Owner call on full `[DOM-16]` — still optional/deferred per §5.
 
 ## 7. Verification
 
-- `bin/check-doc-paths` exits 0 on the tree and with `--scaffold`
-  (the stub renderer's citations must resolve in a fresh consumer).
+- `bin/check-doc-paths` exits 0 on the tree and with `--scaffold`.
 - `bin/check-dom15-fixtures` and `bin/coalesce-check` stay green.
-- Cross-reference check: `[AT-THEORY-*]` citations resolve to existing
-  sections (one defect of this class was found and fixed — line 28 cited
-  `[AT-THEORY-9]` for the question set, which lives at `[AT-THEORY-8]`).
+- Scaffold identity assertion: consumer copies free of forbidden hub-identity
+  phrases (`this hub repository`, `what agent-theory is`,
+  `conceptual identity of this guidance system`, `hub conceptual identity`).
 - Read-order consistency: `AGENTS.md`, `docs/agent-context/README.md`,
-  and `context.index.yaml` `read_order` name the same sequence.
+  `context.index.yaml`, and `[DOM-3]` name the same sequence.
+- CI workflow runs the gates on push/PR.
 
 ## 8. Out of scope
 
-- Any change to `mm`'s `MODULE-THEORY.md` discoverability (its
-  `AGENTS.md` has no route to it) — that is mm's own class-2 fix.
-- Retro-editing the closed plans that predate program theory.
-- External essay material arguing for the method (`[ALT-5]`).
+- Any change to `mm`'s `MODULE-THEORY.md` discoverability.
+- Retro-editing closed plans that predate program theory.
+- External essay material arguing for the method (`[ALT-5]` advocacy half).
+- Propagation into consumer repositories (after repair lands).
 
-## 9. Review
+## 9. Independent review (2026-07-30, post-`4acbad1`)
 
-Pending. No independent review has run on this change.
+**Verdict (reviewer):** Intellectual direction strong enough to support the
+Agent Theory brand. Tree **blocked for propagation and public promotion**
+until three internal contradictions fixed. Blockers repairable.
+
+### Blocking findings
+
+| ID | Finding | Disposition |
+|----|---------|-------------|
+| B1 | Bootstrap copies hub-identity language in entry docs; product `program-theory` says product while surrounding docs say hub | **Fixed:** scope-neutral entry docs; scaffold identity assertion in bootstrap |
+| B2 | Mandatory read order contradicts governing DOM (no program theory in taxonomy/startup) | **Fixed:** `[DOM-2]`/`[DOM-3]`/`[DOM-4]` amended as frame, not hierarchy tier (`[ALT-7]`) |
+| B3 | Plan asserted uncommitted/review-pending after `4acbad1` landed pre-review | **Fixed:** §0.1 deviation; this section; plan index updated; no backfill of pre-land review |
+
+### Important findings
+
+| ID | Finding | Disposition |
+|----|---------|-------------|
+| I4 | Theory file becoming second operating manual; templates triplicated | **Fixed:** trim theory to conceptual account; skill owns spine/templates/checklist; short stub |
+| I5 | "Before design work" gate implies big design up front | **Fixed:** begin crystallization before *committing* product-scope behavior; Class 5 needs Draft; exploration allowed |
+| I6 | README not a public Agent Theory landing page | **Fixed:** discipline vs repository vs slug; failure mode first |
+| I7 | No factual provenance/adoption links | **Fixed:** provenance section; Taut/Backstitch/SimpleBroker/Weft; not efficacy claims |
+| I8 | Trusted instruction provenance (which revision of guidance is trusted) | **Fixed:** trusted-base rule in decision hierarchy |
+| I9 | No CI for executable gates | **Fixed:** `.github/workflows/gates.yml` |
+
+### Priority order executed
+
+1. Scaffold identity contradiction  
+2. DOM-2/3 reconcile  
+3. Plan/review/deviation record  
+4. Stub gate wording  
+5. Trim theory / skill ownership / short stub  
+6. README rewrite  
+7. Provenance  
+8. Trusted base + CI  
+
+Propagation remains **after** this repair lands.
+
+## 10. Repair pass file list (this change)
+
+- Scope-neutral: `docs/README.md`, `docs/agent-context/README.md`,
+  `docs/specs/00-specs-index.md`
+- Spec: `docs/specs/01-development-documentation-operating-model.md` [DOM-2/3/4]
+- Trust: `docs/agent-context/decision-hierarchy.md`
+- Gate/stub: `AGENTS.md`, bootstrap stub renderer, identity assertion
+- Theory trim: `docs/program-theory.md` [REV-AT-002]
+- Skill owns ops: `skills/crystallize-program-theory/SKILL.md`
+- Public entry: `README.md`
+- Maps: `docs/implementation/02-repository-map.md`
+- CI: `.github/workflows/gates.yml`
+- This plan + `docs/plans/README.md` index row
+
+## 11. Review status
+
+Independent review **received** 2026-07-30 (post-land). Findings §9
+incorporated or answered in the repair pass. Pre-landing +P process was
+**not** followed for `4acbad1`; deviation is explicit in §0.1.

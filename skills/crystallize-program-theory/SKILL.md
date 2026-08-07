@@ -37,6 +37,7 @@ owns the answers, environment facts are looked up rather than asked.
 
 ## Governing References
 
+- Definitional primer: `docs/specs/02-agent-theory-and-program-theory.md`
 - Hub meta-theory: `docs/program-theory.md` [AT-THEORY-0]–[AT-THEORY-8]
 - Operating model: `docs/specs/01-development-documentation-operating-model.md`
 - Spec writing: `docs/agent-context/runbooks/writing-specs.md`
@@ -78,7 +79,8 @@ understanding on the spine—or they explicitly ask for a draft from answers so 
 
 ### 2. Interview (one question at a time)
 
-Use the spine in hub `docs/program-theory.md` [AT-THEORY-8]. For each item:
+This skill owns the interview spine ([AT-THEORY-8] by reference from hub
+program theory). For each item:
 
 1. Ask the question.
 2. Offer a short recommended direction grounded in repo evidence when possible.
@@ -90,6 +92,36 @@ If a **fact** is in the repo, look it up. **Decisions** stay with the owner.
 
 Walk branches: if non-goals depend on topology ownership, resolve topology
 before finalizing non-goals.
+
+#### Spine questions
+
+1. **Problem world** — What affairs of the world does this program handle?
+   For whom? What fails if it does not exist?
+2. **Desired feel** — What should using it feel like in one paragraph?
+3. **Whole-program metaphor** — In three to seven bullets, what is the
+   mental model (not the file tree)?
+4. **Core concepts** — Name each concept, its meaning, and its **owner**
+   (this product / a module / the user / another system).
+5. **Matching surface** — How do CLI, API, UI, or docs express the same
+   model without inventing a second product?
+6. **Non-goals** — What will competent people propose that you will refuse?
+   Why? When would you reconsider?
+7. **Generative rule** — Is there one question that organizes a large part
+   of the design (as control locality might organize a taxonomy)?
+8. **Delivery / safety honesty** — Where can work be lost, duplicated, or
+   weakly authenticated? Name the guarantee narrowly.
+9. **Tensions** — What live tensions would falsify the account if they
+   worsened?
+10. **Extension by module theory** — What depth should become module theory
+    (ownership table, local generative rule, local non-goals) so product theory
+    stays short? Which path owns that file?
+11. **Possession test** — What surprises (bugs or bad agent paths) would
+    force a theory revision rather than a local patch?
+12. **Replacement check** — If this were only a README restatement, what
+    judgment would still be missing?
+
+Stop when the owner can **place a feature**, **refuse a category error**,
+and **predict a failure mode** without re-deriving the product from scratch.
 
 ### 3. Choose extension shape
 
@@ -143,9 +175,8 @@ Do not force full process read order onto product-use-only paths.
 ### 6. On refuse or revise — write a decision record
 
 If the interview **refuses or defers** a competent proposal, or **changes** the
-working model, append a filled ALT or REV using the field shape in hub
-`docs/program-theory.md` [AT-THEORY-7.1] (same text as the product theory stub
-appendix). Do this **when it happens**, not as a quota of empty records.
+working model, append a filled ALT or REV using the field templates in this
+skill. Do this **when it happens**, not as a quota of empty records.
 
 Do not create empty `[ALT-001]` placeholders or decision-case directories.
 
@@ -215,11 +246,29 @@ Evidence:
   test.
 - Pre-creating empty ALT/REV records or decision directories “for later.”
 
+## Module-theory drafting checklist
+
+When extending via module theory, require:
+
+1. File next to owning code (conventional `MODULE-THEORY.md`) or an agreed path
+   documented from product theory / AGENTS.
+2. Metadata: Status, Owner, Boundary, Verification, Required action
+   (“read on entry to … before changing …”).
+3. Ownership table (owner / consumer / propagator). Two modules claiming
+   owner of the same concept is a gate failure.
+4. Generative model or design consequences; local non-goals.
+5. Point exact rules at contracts/fixtures; do not duplicate them as theory.
+6. Local ALT/REV when real; park product-scope ALTs for promotion.
+7. Wire entry: agents working in that tree read module theory **after** product
+   theory (or overview) and **before** changing the module — not on every
+   global session start.
+8. Actionable without reading sibling modules.
+
 ## Maintenance Notes
 
-- Keep ALT/REV field lists in sync with hub [AT-THEORY-7.1] and the bootstrap
-  stub appendix.
-- Update the spine when hub [AT-THEORY-8] changes.
+- This skill is the sole home for the interview spine, ALT/REV field templates,
+  module drafting checklist, and entry-wiring procedure ([AT-THEORY-8] by
+  reference). Do not re-expand those into hub `docs/program-theory.md`.
 - If interviews always need the same extra domain questions, promote them into
   this skill.
 - If consumers keep shipping without replacing the stub, strengthen bootstrap

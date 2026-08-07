@@ -18,6 +18,11 @@ found cues that resolve locally but not in published history. This tool:
 Read-only by construction. Exit 1 only on an unresolvable local cue
 (a broken retrieval contract); local-only pins and count reports are
 informational — publication discipline is the owner's call.
+
+On a shallow clone the SHA-resolution and retrieval-cue legs cannot be
+truthful (history is absent), so they are SKIPPED loudly with exit 0 —
+a false BROKEN is as invalid as a silent pass. Enforcement CI must run
+this gate on full history (checkout with fetch-depth: 0).
 """
 from __future__ import annotations
 
@@ -81,6 +86,22 @@ def main() -> int:
         print("coalesce-check: no docs/coalescing.md — nothing to check")
         return 0
     text = STATE.read_text()
+
+    if git("rev-parse", "--is-shallow-repository").stdout.strip() == "true":
+        # History-dependent legs cannot be truthful here; skip loudly.
+        lessons = REPO_ROOT / "docs" / "lessons.md"
+        count = 0
+        if lessons.is_file():
+            count = len(re.findall(r"^- 20[0-9]{2}-[0-9]{2}-[0-9]{2}",
+                                   lessons.read_text(), re.M))
+        cues = sorted(set(CUE_RE.findall(text)))
+        print("coalesce-check: shallow clone detected — SHA-resolution and "
+              "retrieval-cue checks SKIPPED (history absent; cues cannot be "
+              "verified here). Enforcement requires full history "
+              "(fetch-depth: 0).")
+        print(f"  retrieval cues found (syntax only, unverified here): {len(cues)}")
+        print(f"  lessons dated entries: {count}")
+        return 0
 
     sha_hits = [(m.group(1), m.start()) for m in SHA_RE.finditer(text)]
     # A SHA may appear many times; verify each occurrence in its own context.

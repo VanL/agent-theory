@@ -80,12 +80,19 @@ not generic cleanup: product behavior, unrelated documentation, and
 speculative redesign stay out of scope. Defer instead when the repair
 is ambiguous, destructive, or needs new authority — record the evidence
 gap, owner, and reconsideration condition; deletion, watermark
-advancement, plan soft-retirement, and archival transitions retain
-their landing-authorization requirements. Record every maintenance
+advancement, plan soft-retirement, and archival transitions still
+require verified pre-fold source cues reachable from a retained ref
+([DOM-14]'s archive rule) and remain part of the authorized sweep, not
+of ad-hoc repair. Record every maintenance
 repair in the run log; a deferred defect is recorded as a blocker, not
 presented as maintenance accomplished. (Folded up from taut's
 repair-in-sweep doctrine, its commit `3706d73`, by owner direction
 2026-07-28.)
+
+If an in-boundary repair would promote or materially revise a golden
+rule, principle, runbook, skill, gate, or cross-repository rule, stop
+and classify it before editing. Routine-sweep authority does not waive
+the durable-guidance planning boundary.
 
 Read the watermarks in `docs/coalescing.md`, then compute. The state
 file owns the repo-local ledger format: when it declares a derivation
@@ -118,12 +125,19 @@ a date cursor falsely claims older unfolded material behind it was folded.
      **structured and gated** (a closed status vocabulary with an
      executable checker), the gate runs first: a checker failure blocks
      the count until repaired or explicitly deferred — never fall back
-     past a structured index to free-form headers. `status-review` rows
+     past a structured index to free-form headers, and never rewrite
+     status data to make a checker pass. `status-review` rows
      are a conservative quarantine and never count as completed;
   2. if no status index exists, `Status:` headers inside the plan files;
   3. if neither exists, the tier is **not derivable** — record
      "plans tier blocked: no status source" in the run log and move on.
      Never guess plan status from file age or filename.
+
+- Unindexed plans — plan files under `docs/plans/*.md` (except README)
+  missing from the Status Index. **Any positive count is reportable**
+  even when harvest candidates are below threshold; where an index
+  exists, report *unindexed* rather than falling through to in-file
+  headers.
 
 - Skill candidates — recurring workflow themes across lesson entries and
   review dispositions. This count is an **attention signal, not a
@@ -131,16 +145,19 @@ a date cursor falsely claims older unfolded material behind it was folded.
   what counts as one theme). Use grep to gather candidates, judgment to
   cluster them.
 
-Compare each count to the declared threshold. If none is tripped and you
-were not explicitly asked to sweep, stop — record nothing.
+Compare each count to the declared threshold and deferral table. Report
+one sentence when harvest ≥ threshold, unindexed > 0, or a
+reconsideration condition fires. If none is tripped and you were not
+explicitly asked to sweep, stop — record nothing.
 
 ### 2. Lessons tier: distill, then retire
 
 At sweep start, pin the source: `source_sha` is a commit that verifiably
 contains the raw material about to be folded — check with
 `git show <source_sha>:docs/lessons.md`. If the entries exist only in the
-worktree, there is no valid source yet: the destructive phase is blocked
-until the raw state is committed (or the sweep stays additive-only).
+worktree, there is no valid source yet: the archive phase is blocked
+until the raw state is committed (or the sweep stays additive-only) —
+an item that exists only in the worktree has no archive cue.
 **Cue portability:** where the repository has a published mirror, a cue
 must resolve in the published history too — a SHA that survives only on
 one machine is a claim the world cannot verify (the 2026-07-28 field
@@ -182,11 +199,16 @@ For each tripped or requested fold:
    the fold commit, which cannot contain its own hash and does not contain
    the deleted entries. The fold commit may be added to the run log after
    it exists, as metadata.
-5. **Destructive phase — only with landing authorization.** Only after the
-   distillation is written, its links resolve, and `source_sha` is
-   verified, delete the folded raw entries and advance the lessons
-   watermark. In an uncommitted-review session, stop after step 4:
-   present the drafts and candidates, delete nothing, advance nothing.
+5. **Archive phase.** Only after the distillation is written, its links
+   resolve, and `source_sha` is verified **reachable from a retained
+   ref**, delete the folded raw entries and advance the lessons
+   watermark — Git-backed removals with verified cues are archive
+   maintenance, not a destructive edge, and need no separate landing
+   authorization ([DOM-14]). An uncommitted session may still perform
+   these removals when every removed item's source cue is verified and
+   reachable from a retained ref; only material whose raw state exists
+   solely in the worktree forces stopping after step 4 (present drafts,
+   delete nothing, advance nothing), because no archive cue exists yet.
 6. Decay evidence is multi-signal: absence of citation alone never
    justifies a fold — agents follow rules without citing them. Weigh
    recent incidents, test coverage, review recurrence, last validation,
@@ -276,13 +298,18 @@ repo's committed SHA — never from a working tree.
    entries within age floor"), and a reconsideration condition ("recount
    when 5 more entries land" / "when plan X closes"). This is what stops
    an unchanged count from re-nagging every session.
-3. Advance watermarks only in the destructive phase (landing-authorized).
-   An additive-only session leaves watermarks untouched and says so in
+3. Advance watermarks only in the archive phase, and only after every
+   removed item has a verified pre-fold source cue reachable from a
+   retained ref; otherwise leave the watermark and say so. An
+   additive-only session leaves watermarks untouched and says so in
    its run-log line.
 4. Rerun the repo's traceability gate and record the result in the run-log
    line.
-5. Commit per the session's authorization; if the sweep stays uncommitted,
-   it must have been additive-only (see step 2 of the lessons tier).
+5. Commit per the session's authorization. An uncommitted sweep may
+   include removals of retained-ref source-pinned material ([DOM-14]
+   archive rule); additive-only is forced only for material that exists
+   solely in the worktree — it has no archive cue (see step 2 of the
+   lessons tier).
 6. **When the sweep runs beside live concurrent sessions**, coalesce
    defensively: defer any rule whose domain is under active rework — fold
    it at a later sweep, not now — keep edits to contested files as
@@ -315,5 +342,8 @@ When the sweep is done, these exist and are verifiable:
 - If the harvest gate keeps blocking on the same item class, the gap is
   upstream (plans closing with open deviation logs) — fix the completion
   gate usage, not the sweep.
-- Prefer `bin/coalesce-check` (scaffolded by default) for step 1's
-  derivation; keep the manual commands here as the fallback.
+- `bin/coalesce-check` is an evidence trail, not a second recipe: the
+  state file's declared recipe (mirrored in step 1) is authoritative
+  for counts; the tool verifies SHA claims and retrieval cues. When the
+  tool and the state file disagree, the file wins and the script is the
+  defect.

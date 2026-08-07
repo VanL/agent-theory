@@ -73,6 +73,14 @@ content greps + script-tail commit (weft landing, self-caught).
   checklist is the recovery source when a transplant script dies
   mid-way (backstitch lost six transplants to memory-based resume) and
   the completeness gate afterward: grep-verify every line landed.
+- Run the **dogfood sweep** while the wave is still hub-side: for each
+  new or amended rule in the payload, grep the hub's own specs,
+  runbooks, and skills for surfaces the rule binds and apply it there
+  in the same session. A doctrine that lands in consumers before it
+  binds the hub ships with its own first violation already scheduled —
+  §12's enumeration rule, the review-fallback bound, and the read-order
+  floor all existed as doctrine before anyone checked whether the
+  corpus's own surfaces obeyed them.
 
 ### 1. Survey — never transplant blind
 

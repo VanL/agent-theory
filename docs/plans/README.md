@@ -60,7 +60,9 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-15-coalescing-method-refinements-plan.md | completed — Class 5+P; six skill refinements landed; [DOM-14] trigger bullet promoted, verification/decay bullets held skill-only per grok review |
 | 2026-07-28-guidance-gates-plan.md | completed — Class 3+P; bootstrap adaptation layer + check-doc-paths + coalesce-check landed, grok round-1 blockers fixed |
 | 2026-07-15-interface-review-skill-promotion-plan.md | completed — Class 3+P; skill promoted at 3 citations per the [DOM-14] promotion tier, grok-reviewed |
-| 2026-07-30-program-theory-and-module-theory.md | active — retrospective; Class 3+P; theory + crystallize skill + read order built, uncommitted; review, propagation, and the [DOM-16] spec call remain |
+| 2026-07-30-program-theory-and-module-theory.md | active — Class 3+P; landed `4acbad1` pre-review (deviation recorded); independent review 2026-07-30 + repair pass; propagation blocked until repair lands; full [DOM-16] still deferred |
+| 2026-08-06-register-conditioning-theory-revision-plan.md | draft — Class 5; round-1 ADOPT-WITH-EDITS applied; OD-3 amendment applied and independently reviewed 2026-08-07 (ADOPT-WITH-EDITS, edits applied); awaiting owner adoption of the full delta |
+| 2026-08-07-simplebroker-backport-wave-plan.md | completed — Class 5+P; backport wave from SimpleBroker pin `a38e6a9`; three plan-review rounds + three pre-landing rounds (codex); OD-1/2/3/4 executed; landed 2026-08-07 |
 
 ## Retired Plans
 

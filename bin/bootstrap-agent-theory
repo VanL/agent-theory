@@ -38,6 +38,7 @@ COPIED_FILES = [
     "docs/implementation/README.md",
     "docs/specs/00-specs-index.md",
     "docs/specs/01-development-documentation-operating-model.md",
+    "docs/specs/02-agent-theory-and-program-theory.md",
     "docs/specs/README.md",
     "skills/README.md",
     "skills/_template/SKILL.md",
@@ -124,103 +125,45 @@ read order stay aligned instead of competing.
 def render_program_theory_stub(repo_name: str) -> str:
     return f"""# {repo_name} Program Theory
 
-Status: Stub — replace before product-scope design work
+Status: Stub — begin crystallization before committing product-scope behavior
 Owner: product owner
-Boundary: Conceptual identity for **this product**, not agent-theory hub process.
+Boundary: Conceptual identity for **this product**, not Agent Theory hub process.
 Verification: Owner review; optional independent semantic review.
-Required action: Replace this stub with a product-specific theory. Use
-`skills/crystallize-program-theory/SKILL.md` (interview one decision at a time)
-or the spine in the agent-theory hub `docs/program-theory.md` [AT-THEORY-8].
+Required action: Replace this stub with a product-specific theory using
+`skills/crystallize-program-theory/SKILL.md` (one decision at a time).
+Exploration may proceed; do not treat this stub as product authority.
+Product-scope Class 5 work needs at least a current Draft account.
 
-## Do not keep the hub's theory here
+## Do not keep hub meta-theory here
 
 If this file still describes the *guidance system* (shared language kit,
 bootstrap, DOM, Naur/Ronacher framing of the hub), it was not replaced.
-**Product repositories must describe this product's problem, concepts,
-ownership, non-goals, and falsifiers.**
+**Describe this product's problem, concepts, ownership, non-goals, and
+falsifiers.**
 
 ## Temporary orientation (delete when rewriting)
 
-Until replaced, agents may use:
-
-1. Root README and any product overview docs
-2. `docs/agent-context/` process read order
-3. Winning product specs or contracts
-
-They must **not** treat agent-theory meta-principles as this product's
+Until replaced, agents may use root README / product overview,
+`docs/agent-context/` process read order, and winning product contracts.
+They must **not** treat Agent Theory meta-principles as this product's
 behavioral requirements.
 
-## Minimum sections for the replacement
+## Replacement outline
 
-- What program theory means (short)
-- Purpose and desired feel
-- Whole-program mental model
-- Core concepts and ownership
-- Design principles / consequences
-- What this product is not (non-goals)
-- Tensions and falsifiers
-- How the model is extended (module theory pointer)
-- Related winning contracts and entry points
-- Decision cases only when you have real refusals or revisions (see below)
+Write sections for: meaning of theory (short); purpose and feel; whole-program
+model; core concepts and ownership; principles; non-goals; falsifiers; module
+theory pointer; related contracts. Decision records (ALT/REV) only when a real
+refusal or revision happens — never empty placeholders.
 
-Do **not** pre-create empty `[ALT-001]` / `[REV-001]` slots. Absence means
-none yet.
+When a subsystem needs its own generative rule or non-goals, **extend with
+module theory** next to that code (`MODULE-THEORY.md`); do not bulk this file.
+Load module theory on entry, not every session start.
 
-## Extending the model (module theory)
+Interview spine, field templates, and module drafting checklist:
+`skills/crystallize-program-theory/SKILL.md`.
 
-When a subsystem needs its own generative rule, ownership table, or non-goals,
-**do not bulk this product file.** Extend with **module theory** next to the
-owning code (typical name `MODULE-THEORY.md`). That is the normal way to deepen
-theory under agentic work. Load module theory **on entry** to that code, not
-on every session start. See agent-theory hub `docs/program-theory.md`
-[AT-THEORY-2.1] and `skills/crystallize-program-theory/SKILL.md`.
-
-Do not scaffold empty module-theory files or directories in advance.
-
-## Decision records (when you refuse or revise — not before)
-
-Write an ALT or REV **when a real rejection or theory change happens** (agent
-or human proposes something that must not become the product; or the generative
-model changes). Do not invent records to fill a template.
-
-Paste and fill:
-
-### Rejected or deferred alternative
-
-```markdown
-### [ALT-<SCOPE>-<NNN>] Short title
-
-Disposition: rejected | deferred | adopted | superseded | invalidated
-Owner: <decision owner>
-Governs: <theory section, module theory, or contract reference>
-Source record: none | <plan path> | <commit or issue>
-Candidate: <what was proposed>
-Why plausible: <steelman>
-Evidence:
-- contemporaneous | owner-recalled | inferred | unknown: <source>
-Reason: <why this disposition>
-Current consequence: <what work must do now>
-Reconsider when: <observable condition — not vibes>
-Promoted to: none | <id if moved to product theory or a contract>
-```
-
-### Theory revision
-
-```markdown
-### [REV-<SCOPE>-<NNN>] Short title
-
-Current account: <revised theory — put current first>
-Supersedes: <short prior account; do not let it compete with current>
-Pressure: <what made the prior account inadequate>
-Evidence:
-- contemporaneous | owner-recalled | inferred | unknown: <source>
-```
-
-`<SCOPE>` is a short uppercase tag for the defining artifact (e.g. `THEORY`,
-`MODULE`, or a product code). Allocate `NNN` by scanning existing definitions
-in this repo. Prefer product theory for product-wide non-goals; park
-product-scope ALTs found during module work for promotion rather than
-stranding them forever in a module file.
+What “program theory” means (definitional primer, not this product’s account):
+`docs/specs/02-agent-theory-and-program-theory.md`.
 """
 
 
@@ -297,6 +240,7 @@ These roles should stay distinct even as {repo_name} grows.
 | `docs/agent-context/README.md` | Shared context hub |
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
+| `docs/specs/02-agent-theory-and-program-theory.md` | Definitional primer: Agent Theory and program theory |
 | `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
 | `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
@@ -371,6 +315,7 @@ Quick pointers to the key guidance documents in this repository.
 |------|---------|
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing spec for the documentation workflow |
+| `docs/specs/02-agent-theory-and-program-theory.md` | Definitional primer: Agent Theory and program theory |
 | `docs/plans/README.md` | Plan directory rules |
 | `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
 | `docs/implementation/01-documentation-system.md` | Why the documentation system is shaped this way |
@@ -636,6 +581,95 @@ def validate_source_files() -> None:
         )
 
 
+# Hub/product identity phrases that must not appear in consumer scaffold
+# entry docs (except inside an explicitly marked provenance block). Scope-
+# neutral wording is required so product theory and hub theory are not
+# conflated after bootstrap.
+FORBIDDEN_SCAFFOLD_IDENTITY = (
+    "this hub repository",
+    "what agent-theory is",
+    "conceptual identity of this guidance system",
+    "hub conceptual identity",
+)
+
+# Files generated or adapted for the consumer that must stay free of the
+# forbidden phrases (path relative to target root).
+SCAFFOLD_IDENTITY_SCAN = (
+    "AGENTS.md",
+    "docs/README.md",
+    "docs/agent-context/README.md",
+    "docs/specs/00-specs-index.md",
+    "docs/program-theory.md",
+    "docs/implementation/01-documentation-system.md",
+    "docs/implementation/02-repository-map.md",
+)
+
+_PROVENANCE_MARKERS = (
+    "Installed by bootstrap-agent-theory",
+    "foreign names — they are not paths in this repository",
+)
+
+
+def _strip_provenance_blocks(text: str) -> str:
+    """Drop blockquotes that are bootstrap provenance so adaptations may
+    mention agent-theory as a foreign source without failing the gate."""
+    lines = text.splitlines()
+    kept: list[str] = []
+    for line in lines:
+        if line.lstrip().startswith(">") and any(m in line for m in _PROVENANCE_MARKERS):
+            continue
+        if line.lstrip().startswith(">") and "agent-theory @" in line:
+            continue
+        kept.append(line)
+    return "\n".join(kept)
+
+
+def assert_scaffold_identity(root: Path, *, label: str = "scaffold") -> list[str]:
+    """Return human-readable failures if forbidden hub-identity phrases
+    appear in consumer-facing scaffold paths. Empty list means OK."""
+    failures: list[str] = []
+    for rel in SCAFFOLD_IDENTITY_SCAN:
+        path = root / rel
+        if not path.is_file():
+            continue
+        text = _strip_provenance_blocks(path.read_text(encoding="utf-8", errors="replace"))
+        lower = text.lower()
+        for phrase in FORBIDDEN_SCAFFOLD_IDENTITY:
+            if phrase.lower() in lower:
+                failures.append(f"{label}: {rel}: forbidden phrase {phrase!r}")
+    return failures
+
+
+def validate_copied_sources_identity() -> None:
+    """Fail if hub COPIED entry docs still use hub-only identity language.
+
+    The hub's own `docs/program-theory.md` may describe the guidance system;
+    only entry docs that are copied verbatim into consumers must stay
+    scope-neutral.
+    """
+    failures: list[str] = []
+    for rel in (
+        "AGENTS.md",
+        "docs/README.md",
+        "docs/agent-context/README.md",
+        "docs/specs/00-specs-index.md",
+    ):
+        path = REPO_ROOT / rel
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        lower = text.lower()
+        for phrase in FORBIDDEN_SCAFFOLD_IDENTITY:
+            if phrase.lower() in lower:
+                failures.append(f"source: {rel}: forbidden phrase {phrase!r}")
+    if failures:
+        raise SystemExit(
+            "Scaffold source entry docs use hub-only identity language "
+            "(consumers would inherit a category error):\n"
+            + "\n".join(f"- {f}" for f in failures)
+        )
+
+
 def ensure_parent(path: Path, dry_run: bool) -> None:
     if dry_run:
         return
@@ -777,7 +811,8 @@ def print_follow_up(target_root: Path) -> None:
     print(f"- Adapt {target_root / 'AGENTS.md'} to your real repo conventions, completion gates, and doc layout.")
     print(
         f"- Replace {target_root / 'docs/program-theory.md'} stub with product theory "
-        f"(skills/crystallize-program-theory); do not leave the hub account as product identity."
+        f"(skills/crystallize-program-theory) before committing product-scope behavior; "
+        f"exploration may proceed; do not treat the stub as product authority."
     )
     print(f"- Review {target_root / 'docs/README.md'} so the session and planning flow matches the target repo.")
     print(f"- Adapt {target_root / 'docs/agent-context/engineering-principles.md'} to real code paths and invariants.")
@@ -799,6 +834,7 @@ def main() -> int:
 
     validate_target(target_root)
     validate_source_files()
+    validate_copied_sources_identity()
 
     actions: List[Action] = []
 
@@ -827,6 +863,21 @@ def main() -> int:
     print(
         f"\nSummary: created={created} overwritten={overwritten} skipped={skipped}"
     )
+
+    if not args.dry_run:
+        identity_failures = assert_scaffold_identity(target_root, label="consumer")
+        if identity_failures:
+            print("\nScaffold identity assertion FAILED:", file=sys.stderr)
+            for fail in identity_failures:
+                print(f"  {fail}", file=sys.stderr)
+            print(
+                "Consumer scaffold must not claim hub identity. "
+                "Fix scope-neutral entry docs and re-run.",
+                file=sys.stderr,
+            )
+            return 1
+        print("Scaffold identity assertion: OK")
+
     print_follow_up(target_root)
     return 0
 

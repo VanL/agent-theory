@@ -63,6 +63,12 @@ incident log; these are the durable rules distilled from it.
     prevention test per key). Prose binds only what gets checked; agents
     comply uniformly with gates and unevenly with everything else. (See
     engineering-principles §12 and testing-patterns Pattern 6.)
+14. **The lessons ledger is itself a reviewable surface**, not a place
+    confident text lands unreviewed — an entry can teach a disproved
+    protocol as durable guidance hours after drafting. An uncommitted
+    entry corrected in place owes no supersession ceremony; the ceremony
+    is owed after landing. (From SimpleBroker's pre-release cycle, its
+    `docs/lessons.md` at pin `a38e6a9`.)
 
 ## Lessons
 
@@ -164,6 +170,18 @@ incident log; these are the durable rules distilled from it.
   section is the only part that carries information the artifact cannot,
   and a retrospective plan dressed as a prospective one is the ceremony
   the admission test rejects.
+- 2026-07-30: **Do not freeze plan index or review sections as durable
+  evidence of transient state.** The program-theory plan still said
+  "uncommitted" and "review pending" after `4acbad1` landed on `main` without
+  pre-landing +P review. Independent review after the fact is valid only if
+  the repository records the order honestly (baseline SHA, deviation, no
+  backfill that review preceded the commit). Same family as
+  plans-record-evidence: status prose is a claim; `git log` is evidence.
+- 2026-07-30: **Scaffold identity is a semantic contract, not only path
+  claims.** Copying hub entry docs that say "this hub repository" / "what
+  agent-theory is" into a product repo creates a category error the
+  program-theory stub cannot fix. Prefer scope-neutral entry language plus an
+  assertion over ever-more substitutions in the bootstrap adapter.
 - 2026-07-17: **Propagation transplants come from the pinned end-state,
   never an intermediate commit's diff.** A wave range can contain a
   change and its own later amendment; extracting from the authoring
@@ -175,6 +193,82 @@ incident log; these are the durable rules distilled from it.
   plans-record-evidence rule caught transient-state prose in three
   different repos' wave plans on its first day — a form-level rule that
   fires that reliably is doing spec-grade work.
+- 2026-08-06: **A doctrine that has not been self-applied drifts first on
+  the corpus's own surfaces.** The simplebroker audit/remediation cycle
+  showed §12's enumeration rule, the review-fallback order, and the
+  read-order requirement all existed as written doctrine while the hub's
+  own spec-writing, review, and session-start surfaces went unchecked
+  against them — a remediation that ran fourteen review rounds still
+  shipped a fresh ungated enumeration, because nothing applies gates to
+  the spec-*writing* act. Fix pattern: when a rule is added, sweep the
+  hub's own specs, runbooks, and skills for surfaces it binds in the same
+  change (now the dogfood step in `skills/propagate-guidance`), and write
+  each new doctrine with its floor named (gate, or declared claim plus
+  review — never neither).
+- 2026-08-06: **A well-formed plan is not a verified plan; form fluency
+  carries no information.** Agent-authored plans reproduce every
+  hardening artifact — invariants, stop gates, anti-mocking clauses,
+  deviation logs — while naming nonexistent surfaces and proposing
+  deadlocks with identical confidence. In one simplebroker pre-release
+  cycle, a plan carrying full hardening form cited a CLI flag that does
+  not exist (`--since`), a test seam that does not exist (`evalsha`),
+  a wrong race-gate test file, and a release order that contradicted the
+  executable driver — across two review rounds. Review rule: before
+  grading anything else, existence-check every named flag, test path,
+  seam, and driver order against executable code; the round-1 reviewer's
+  formulation ("when a plan names an existing release or CI driver,
+  compare its proposed order and collection roots to executable code
+  before accepting prose claims") generalizes to all named surfaces.
+  Candidate for a normative line in the writing-plans/review runbooks
+  once cited from a second repository. (From simplebroker's
+  "2026-08-06-pre-release-review-remediation-plan", rounds 1–2.)
+- 2026-08-06: **Fixes touching a lock order, object lifecycle, or
+  registered concurrency state machine are architectural regardless of
+  diff size — classify by surface, not lines.** Three of five "small
+  code debts" in the same simplebroker plan, each an apparent
+  one-liner, were: a PostgreSQL lock-order cycle (advisory→meta vs
+  meta→advisory across alias operations), a reentrant self-deadlock
+  (a broadcast path delegating into an insert path under the
+  newly-shared non-reentrant lock), and a structural impossibility (a
+  GC finalizer for an object its own thread target strongly retains).
+  Diff-size intuition classified all three as hygiene; the [DOM-5]
+  trigger lists classified them correctly once the surface was named.
+  Candidate for an explicit note beside the [DOM-15] fixtures once
+  cited from a second repository. (Same plan, findings F6–F8.)
+- 2026-08-06: **A refusal recorded in a closed plan does not transfer,
+  even when the next proposer reads and cites it.** simplebroker's
+  2026-07-13 investigation recorded precisely why cross-thread
+  generator cleanup could not be repaired (foreign threads cannot own
+  the rollback, the lock release, or waiter wakeup); the next design
+  cycle cited that record and still re-proposed repair as "healing,"
+  costing four adversarial review rounds before the refusal was
+  promoted to a theory-tier revision record — after which the category
+  error became unwritable. Failure mode: incident-tier storage reads
+  as "that specific fix was rejected," not "this category is a
+  category error." Rule: record a refusal, with its why, at the tier
+  the next proposer loads before judgment (theory revision, golden
+  rule, or session ledger) — not only where the rejection happened.
+  (From simplebroker's generator-poisoning arc, plans of 2026-07-13
+  and 2026-07-27.)
+- 2026-08-06: **Register symmetry: how a context is written raises output
+  quality and error camouflage together.** Prompt and corpus register
+  condition which region of an agent's capability is evoked — engaging at
+  the top of one's ability, and loading corpus prose written at that
+  level, evokes matching-level output. But register conditions *form*
+  directly and correctness only indirectly, so high-register engagement
+  also produces high-register wrongness that matches the very fluency
+  heuristic the reader uses for quality. This is the mechanism under "a
+  well-formed plan is not a verified plan": the simplebroker pre-release
+  cycle produced deadlock proposals and nonexistent surfaces in prose
+  indistinguishable from its correct output. Operational consequences,
+  already doctrine, now with their why: register is never evidence
+  (mechanical existence-checks and gates grade correctness);
+  cross-family review works partly because fluency biases differ across
+  model families; and the always-loaded corpus is a register instrument,
+  not only an information store — it institutionalizes the owner's best
+  engagement as ambient conditioning. (From the simplebroker
+  "2026-08-06-pre-release-review-remediation-plan" review cycle and the
+  owner dialogue distilling it.)
 - 2026-07-17: **Commit subjects must name the largest-impact change in
   the diff.** Contract, authority, or architecture changes never ride in
   a commit named for something else — the log is a human review surface,

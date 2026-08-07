@@ -6,10 +6,10 @@ Quick pointers to the key documents in this repository.
 
 | Path | Purpose |
 |------|---------|
-| `README.md` | Human entry for this hub |
+| `README.md` | Human entry: Agent Theory discipline + this reference repository |
 | `AGENTS.md` | Canonical agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
-| `docs/program-theory.md` | Conceptual identity of the guidance system (agents load first; **replace** in product repos) |
+| `docs/program-theory.md` | Conceptual identity of **this repository** (hub theory here; **replace** in product repos) |
 | `bin/bootstrap-agent-theory` | Scaffold command for installing the neutral starter set into another repository (adapts hub plan citations to foreign-name form at copy time; copies the three guidance gates below; generates product program-theory **stub**) |
 | `bin/check-doc-paths` | Gate: every backticked repo-relative path claim in the guidance surfaces resolves — tree and `--scaffold` modes (scaffolded to consumers) |
 | `bin/coalesce-check` | Evidence trail for the coalescing layer: derives counts, verifies every run-log SHA/cue (local, sibling, and published-remote), reports local-only pins (scaffolded to consumers) |
@@ -45,9 +45,11 @@ Quick pointers to the key documents in this repository.
 
 | Path | Purpose |
 |------|---------|
-| `docs/program-theory.md` | Hub program theory (Naur / Knuth / Ronacher; progressive disclosure) |
+| `docs/program-theory.md` | This repository's program theory (Naur / Knuth / Ronacher; progressive disclosure) |
+| `.github/workflows/gates.yml` | CI: fixtures, path claims, scaffold identity via bootstrap, coalesce-check |
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
 | `docs/specs/01-development-documentation-operating-model.md` | Governing spec for this repository's doc workflow |
+| `docs/specs/02-agent-theory-and-program-theory.md` | Definitional primer: what Agent Theory and program theory are (Status: Reference) |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan that created the scaffold |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan that added review loops, skills, and bootstrap guidance |
 | `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that strengthened the planning quality bar |

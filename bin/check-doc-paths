@@ -24,6 +24,19 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # Surfaces whose path claims are normative. docs/lessons.md and plans are
 # excluded: lessons legitimately cite foreign/sibling paths as history,
 # and plans cite paths that may retire after closure.
+#
+# Guidance roots only — recorded negative knowledge (from simplebroker's
+# adoption, its check-doc-paths at pin a38e6a9): product roots were tried
+# and reverted there. Runbooks cite product paths in explicitly
+# hypothetical form ("e.g. `tests/acceptance/`", a probe home some other
+# repository might have), which CLAIM_RE cannot distinguish from a claim.
+# A gate that flags a hypothetical is a false positive, and a gate that
+# cries wolf gets ignored. Widen the roots only with a mechanism that
+# distinguishes hypothetical citations from claims.
+#
+# Adopters: extend SCAN_FILES with your repository's own agent surfaces
+# (additional entry points, machine doc indexes) — the scaffold default
+# covers only the hub's.
 SCAN_DIRS = ["docs/agent-context", "docs/specs", "skills"]
 SCAN_FILES = ["AGENTS.md", "docs/README.md", "docs/coalescing.md"]
 
@@ -83,6 +96,12 @@ def main() -> int:
             if r.returncode != 0:
                 print("check-doc-paths: bootstrap failed:\n" + r.stdout + r.stderr)
                 return 2
+            # bootstrap already asserts scaffold identity; surface its note.
+            if "Scaffold identity assertion: OK" not in r.stdout:
+                print(
+                    "check-doc-paths: warning: bootstrap did not report "
+                    "scaffold identity assertion OK"
+                )
             return check_tree(Path(td))
     return check_tree(Path(args.root))
 

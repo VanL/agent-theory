@@ -1,0 +1,133 @@
+name: guidance-gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # coalesce-check resolves cited SHAs and `git show <sha>:<path>`
+          # retrieval cues against history; on a shallow clone it now
+          # skips those legs loudly instead of enforcing them. Full
+          # history is required for this job to actually enforce the
+          # retrieval contract (the gates-shallow job below proves the
+          # skip path).
+          fetch-depth: 0
+
+      - name: check-dom15-fixtures
+        run: python3 bin/check-dom15-fixtures
+
+      # Separate step, never a replacement: --self-test switches the
+      # script to self-test-only mode, so the live-spec validation above
+      # must keep its own invocation.
+      - name: check-dom15-fixtures --self-test
+        run: python3 bin/check-dom15-fixtures --self-test
+
+      - name: check-doc-paths
+        run: python3 bin/check-doc-paths
+
+      - name: check-doc-paths --scaffold
+        run: python3 bin/check-doc-paths --scaffold
+
+      - name: coalesce-check
+        run: python3 bin/coalesce-check
+
+      # AGENTS.md contracts: (1) the full judgment paragraph is present
+      # (whitespace-normalized full-text compare — a fragment grep would
+      # pass with contradicting trailing text); (2) the numbered
+      # read-order block's backticked paths equal context.index.yaml's
+      # read_order exactly — list equality fails on omission, reorder,
+      # corruption, or duplication, which a basename search cannot
+      # detect.
+      - name: AGENTS.md contracts (judgment paragraph + read order)
+        run: |
+          python3 - <<'EOF'
+          import re, sys
+          agents = open('AGENTS.md').read()
+          para = ('`docs/program-theory.md` is load-bearing for '
+                  'product-scope *judgment* — audits, reviews, '
+                  'feature-fit and design opinions — not only for '
+                  'implementation. Skipping it because a task looks '
+                  'like verification is the observed failure mode.')
+          ok = True
+          # Whole-block equality, not substring membership: extract the
+          # paragraph from its anchor line to the next blank line and
+          # compare the normalized block exactly, so appended or
+          # contradicting text inside the block fails.
+          m = re.search(r'^`docs/program-theory\.md` is load-bearing'
+                        r'.*?(?=\n\s*\n)', agents, re.S | re.M)
+          block = re.sub(r'\s+', ' ', m.group(0)).strip() if m else ''
+          if block != para:
+              print('judgment paragraph missing or altered in AGENTS.md')
+              ok = False
+          yaml_text = open('docs/agent-context/context.index.yaml').read()
+          ro_keys = [l for l in yaml_text.splitlines()
+                     if l.startswith('read_order:')]
+          if len(ro_keys) != 1:
+              print('context.index.yaml must contain exactly one '
+                    'top-level read_order key')
+              ok = False
+          entries = []
+          in_ro = False
+          for line in yaml_text.splitlines():
+              if line.startswith('read_order:'):
+                  in_ro = True
+                  continue
+              if in_ro:
+                  m2 = re.match(r'  - (\S+)', line)
+                  if not m2:
+                      break
+                  entries.append(m2.group(1).split('#')[0].strip())
+          # Parse only the numbered block that follows the required
+          # read-order anchor; wrapped item lines are continuations.
+          anchor = agents.find('Required read order')
+          items = []
+          if anchor == -1:
+              print('read-order anchor missing in AGENTS.md')
+              ok = False
+          else:
+              for line in agents[anchor:].splitlines():
+                  m = re.match(r'(\d+)\.\s', line)
+                  if m:
+                      items.append(line)
+                  elif items and (line.startswith('   ') or not line.strip()):
+                      if line.strip():
+                          items[-1] += ' ' + line.strip()
+                  elif items:
+                      break
+          paths = []
+          for it in items:
+              t = re.search(r'`([^`]+)`', it)
+              if t:
+                  paths.append(t.group(1))
+          if paths != entries:
+              print('read-order mismatch:')
+              print('  AGENTS.md :', paths)
+              print('  index.yaml:', entries)
+              ok = False
+          if not entries:
+              print('no read_order entries parsed')
+              ok = False
+          sys.exit(0 if ok else 1)
+          EOF
+
+  # Proves the scaffolded coalesce-check stays truthful for consumers on
+  # shallow CI: loud skip, counts still printed, exit 0.
+  gates-shallow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: coalesce-check on shallow clone (loud skip, exit 0)
+        run: |
+          out=$(python3 bin/coalesce-check)
+          echo "$out"
+          echo "$out" | grep -q "shallow clone detected"
+          echo "$out" | grep -q "retrieval cues found (syntax only"
+          echo "$out" | grep -q "lessons dated entries:"

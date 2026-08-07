@@ -24,9 +24,8 @@ When a product or library repository adopts this scaffold:
 1. **Do not keep this document as the product's theory.** Replace
    `docs/program-theory.md` with an account of *that* product's problem,
    concepts, ownership, non-goals, and falsifiers.
-2. Use `skills/crystallize-program-theory/SKILL.md` (or the question set in
-   [AT-THEORY-8]) to interview the owner until a product-specific theory can
-   be written.
+2. Use `skills/crystallize-program-theory/SKILL.md` to interview the owner
+   until a product-specific theory can be written.
 3. Keep progressive disclosure: product theory stays short. When a subsystem
    needs its own generative model, non-goals, or ownership table, **extend the
    model with module theory** next to that code ([AT-THEORY-2.1])—do not bulk
@@ -41,30 +40,27 @@ mechanism** when product theory would otherwise grow unreadable.
 
 ---
 
-## What “program theory” means [AT-THEORY-0]
+## What this repository claims about theory [AT-THEORY-0]
 
-“Theory” here follows Peter Naur's *Programming as Theory Building* (1985).[^naur]
-It is not a formal mathematical theory and not a synonym for requirements or
-architecture diagrams. It is the **working explanatory model** that connects
-affairs in the world to the shape of a program (or, here, of a guidance
-system): what problem is being handled, which concepts exist, who owns them,
-what is deliberately out of scope, and what evidence would show the model is
-wrong.
+The definition — what a program theory *is*, how it differs from a spec, and
+why anyone should care — lives in the primer,
+`docs/specs/02-agent-theory-and-program-theory.md` [AT-REF-2]. Read that first
+if the term is new. This section holds something the primer cannot: the hub's
+**positions**, the contestable claims that make this repository the system it
+is rather than a neutral account of Naur.
 
-Naur's object is “a theory of how certain affairs of the world will be handled
-by, or supported by, a computer program.”[^naur] **Possession is practical, not
-mnemonic.** Someone has the theory when they can:
-
-- relate world affairs to program (or process) shape,
-- justify why that shape exists,
-- place a new demand without losing coherence,
-- diagnose surprises that do not fit.
-
-Memorizing this file is not possession. The fuller working theory is rebuilt
-from this account together with the operating-model spec, runbooks, skills,
-gates, consumer dogfood, and concrete surprises.
+“Theory” here follows Peter Naur's *Programming as Theory Building*
+(1985).[^naur] **Possession is practical, not mnemonic** — the primer lists the
+four things someone who holds a theory can do; memorizing this file is not one
+of them. The fuller working theory is rebuilt from this account together with
+the operating-model spec, runbooks, skills, gates, consumer dogfood, and
+concrete surprises.
 
 ### Intellectual lineage
+
+The right-hand column is the load-bearing one: what this repository **declines**
+to take from each source. Those refusals are positions, and they are where the
+account could turn out to be wrong.
 
 | Source | What we take | What we do not take |
 |--------|----------------|---------------------|
@@ -84,25 +80,19 @@ gates, consumer dogfood, and concrete surprises.
 
 ### Surfaces and questions
 
-| Surface | Question it answers |
-|---------|---------------------|
-| **Program theory** (this file in the hub; product-specific in consumers) | What problem and model make the system coherent? Why these concepts and boundaries? |
-| **Process / operating model** (`docs/specs/01-…`, agent-context, skills) | How do humans and agents plan, review, verify, and keep docs honest? |
-| **Product contracts** (specs / winning README sections in product repos) | What exact behavior is intended now? |
-| **Implementation rationale** | Why does the current realization have this shape? |
-| **Code and tests / gates** | How is behavior realized, and what evidence fires? |
-| **Plans and alternative records** | What change was considered, under which evidence? |
-
-Theory informs contracts; it does not replace them. Contracts must not silently
-contradict theory. Process exists to keep theory and contracts alive under
-agent labor—not as an end in itself.
+The surface-by-question table is in the primer [AT-REF-3]. The positions this
+repository takes on it: theory informs contracts and never replaces them;
+contracts must not silently contradict theory; and process exists to keep
+theory and contracts alive under agent labor—not as an end in itself.
 
 ---
 
 ## Purpose and desired feel [AT-THEORY-1]
 
-**Agent-theory** is a **project-neutral, repo-owned guidance system** for
-software work in which coding agents are first-class collaborators.
+**Agent Theory** is a practical discipline for building software with coding
+agents while keeping humans in possession of the program's theory. **This
+repository** is a project-neutral, repo-owned reference operating model and
+starter corpus for applying that discipline.
 
 It should feel like:
 
@@ -128,12 +118,12 @@ coherence (this function, this test, this PR) and weak at **global** product
 identity unless that identity is externalized, loaded at the right scope, and
 enforced when local work would redefine the product.
 
-Agent-theory supplies:
+Agent Theory supplies:
 
 1. **Orientation** — entry points and read orders so a zero-context agent can
    start without inventing a second constitution.
-2. **Artifact roles** — specs, plans, implementation docs, skills, lessons,
-   coalescing state; each answers a different question.
+2. **Artifact roles** — theory, specs, plans, implementation docs, skills,
+   lessons, coalescing state; each answers a different question.
 3. **Judgment protocol** — task class, independent review, hardening for risky
    work, documentation as a completion gate.
 4. **Theory transfer** — product program theory, **extended by module theory**
@@ -147,11 +137,11 @@ Agent-theory supplies:
 The **hub** is the portable process and meta-theory. **Consumer repos** own
 product theory, product contracts, and engineering specialization.
 
-### Module theory: the concrete extension of the model [AT-THEORY-2.1]
+### Module theory: the conceptual extension rule [AT-THEORY-2.1]
 
-**Module theory is how agents and humans are expected to grow product theory
-without destroying progressive disclosure.** It is not an optional essay genre
-and not a second process stack. It is the standard answer to:
+**Module theory is how agents and humans grow product theory without destroying
+progressive disclosure.** It is not an optional essay genre and not a second
+process stack. It is the standard answer to:
 
 > Product theory would become too long if we put this here, but agents still
 > need a generative model, ownership table, and non-goals before they change
@@ -173,36 +163,18 @@ code / tests               →  realization and evidence
 | **Must answer** | Problem, feel, whole-program model, top concepts, product non-goals | Module ownership table, local generative model, local non-goals, local ALT/REV, required action on entry |
 | **Must not** | Dump every subsystem rule | Require sibling module theories; redefine product-wide non-goals without promotion |
 
-**Concrete extension steps (consumers):**
+**Conceptual rules:** keep product theory short; put local generative depth next
+to the owning code (conventional name `MODULE-THEORY.md`); load module theory
+**on entry**, not on every session start; never require sibling module theories
+to place work here; promote product-scope decisions upstairs rather than
+stranding them forever in a module file.
 
-1. Keep product theory short and load-bearing for **product** identity.
-2. When a change set repeatedly needs orientation that is **not** product-wide,
-   write module theory **next to the owning code** (conventional name:
-   `MODULE-THEORY.md` in the module root, or a single agreed path documented
-   from product theory / AGENTS).
-3. Give the file the same metadata shape as product theory: Status, Owner,
-   Boundary, Verification, Required action (“read on entry to … before
-   changing …”).
-4. Include an **ownership table** (owner / consumer / propagator). Two modules
-   claiming owner of the same concept is a gate failure.
-5. State **what the module is not** and record rejected alternatives with
-   reconsider conditions.
-6. Point exact rules at contracts/fixtures; do not duplicate them as theory.
-7. If a decision is really product-scope, **promote** it to product theory
-   (or mark it parked-for-promotion); do not let module theory become a shadow
-   product constitution.
-8. Wire entry: agents working in that tree read module theory **after** product
-   theory (or product overview) and **before** changing the module’s classes,
-   rules, or public shape. Do not add every module theory to global session
-   `read_order`.
-
-**Module theory must be actionable without reading sibling modules.** Needing
-another module’s theory to place work in this one is a defect in the ownership
-table—report it, do not route around it.
+Operational drafting checklist, entry-wiring procedure, and ALT/REV field
+templates live in `skills/crystallize-program-theory/SKILL.md` — not here —
+so session startup does not carry a second operating manual.
 
 **When not to write module theory:** pure implementation detail, a one-off plan,
-or content that belongs in a winning contract. Prefer a plan or spec delta until
-a generative model or non-goal set stabilizes.
+or content that belongs in a winning contract.
 
 Humans and agents should share this sentence:
 
@@ -263,16 +235,19 @@ role is a defect, not a discussion.
 
 ---
 
-## What agent-theory is not [AT-THEORY-5]
+## What Agent Theory is not [AT-THEORY-5]
 
 - Not a substitute for a product program theory in consumers.
 - Not a claim that documents fully serialize tacit possession (Naur).
+- Not big design up front: theory begins partial and is refined feature by
+  feature through dialogue, specification, implementation, review, and
+  evidence.
 - Not a universal “more docs = better code” religion.
 - Not an application framework, agent runtime, or orchestrator product.
 - Not a requirement that every edit pay full class-5 ceremony (task class
   scales planning; verification floors remain).
 - Not speed-and-slop optimization; throughput factories with optional code
-  non-possession are a **different protocol**. Agent-theory optimizes
+  non-possession are a **different protocol**. Agent Theory optimizes
   **identity-preserving evolution under agent labor**.
 - Not finished extraction of every practice that will ever be needed;
   dogfood revises the hub.
@@ -280,9 +255,9 @@ role is a defect, not a discussion.
   here; arguments that it works — peer observation, comparison against
   lighter workflows, case studies — belong in external writing that cites
   this repository. Falsifiers and fit statements are self-knowledge and
-  stay; comparative advocacy does not. A repository that argues for itself
-  invites evaluation of the argument instead of use of the method, and the
-  two age on different clocks.
+  stay; comparative advocacy does not. **Factual provenance and adoption
+  links** (where the practices came from, which repositories use them) may
+  appear in the hub README; they are not efficacy arguments.
 
 ---
 
@@ -303,7 +278,11 @@ role is a defect, not a discussion.
   the transcript that built it? (3) does a week away leave the model intact,
   or does it have to be reread? (4) when the system misbehaves, is the feeling
   *betrayed by an invariant I know* or *surprised by a system I don't own*?
-  The fourth is the cheapest and the least deniable.
+  The fourth is the cheapest and the least deniable. Possession is perishable,
+  so probing recurs: at each release or each class-5 plan completion, run
+  **one** probe from this list — posed to an agent or self-administered — and
+  record the outcome in the plan or lessons. One probe, not a battery; the
+  drill keeps the claim falsifiable rather than adding ceremony.
 - **Bootstrap pollution:** If consumers run for months on the hub's
   program-theory text as if it were product identity, progressive disclosure
   failed.
@@ -315,8 +294,11 @@ role is a defect, not a discussion.
   theories that answer the *same* question differently, or that carry
   product-scope claims no apex account has ever had to reconcile.
 - **Opposite optimum:** Environments that correctly choose pure speed+slop
-  for short-lived or solo exploration should not be forced into full agent-
-  theory; the theory should state the fit, not annex all agentic work.
+  for short-lived or solo exploration should not be forced into full Agent
+  Theory; the theory should state the fit, not annex all agentic work.
+- **Theory as second operating manual:** If the mandatory startup theory file
+  accumulates interview scripts, full templates, and maintenance runbooks that
+  belong in skills, progressive disclosure and surface roles have failed.
 
 ---
 
@@ -332,149 +314,50 @@ needs a product rule.
 
 A program's theory evolves through pressure and practice. If you notice that
 you are doing something repeatedly, that is good evidence that you are
-circling around an unwritten theory rule that should be made explicit —
-asking the same question before every design discussion, writing the same
-kind of document next to different modules, correcting the same class of
-mistake. Naming it is usually the whole work; the practice was already
-load-bearing.
+circling around an unwritten theory rule that should be made explicit.
+Naming it is usually the whole work; the practice was already load-bearing.
 
-The converse is the admission test for any addition proposed here, by human
-or agent: **can you point at the practice it names?** A rule distilled from
-observed practice is a naming. A rule reasoned from analogy, with no practice
-behind it, is ceremony wearing a principle's clothes — it reads well and
-fails the first time someone asks what they would do differently with it.
+The admission test for any addition proposed here, by human or agent: **can
+you point at the practice it names?** A rule distilled from observed practice
+is a naming. A rule reasoned from analogy, with no practice behind it, is
+ceremony wearing a principle's clothes.
 
 This test is already mechanized in places: the promotion tier mints a skill
 only after a workflow recurs across three distinct citations, and the fold-up
-threshold is the same test applied across repositories. "Performative
-overengineering" in the review lens is what this test rejects.
+threshold is the same test applied across repositories.
 
-Worked examples: asking "is this *simplebroker*ness?" before a design
-discussion became program theory; `cms/ARCHITECTURE.md` (2025) and its
-siblings became module theory; hand-pruning the lessons ledger became
-coalescing. A proposed tool that would scan the ecosystem and report which
-falsifiers were firing went the other way — invented from analogy, with no
-practice behind it — and did not survive its first "what would you do
-differently?"
-
-### How to extend the process surface
+### How to extend (ladder)
 
 1. Prefer runbooks and skills for operational detail.
 2. Prefer the operating-model spec for normative process obligations.
 3. Prefer lessons + coalescing for durable corrections and sediment fold.
-4. Promote to this program-theory only when the **identity** of agent-theory
+4. Promote to this program-theory only when the **identity** of Agent Theory
    changes (new principle, new non-goal, new disclosure ladder).
+5. **Consumers:** product theory → module theory when depth is local →
+   contracts for exact behavior → real ALT/REV when refusals or revisions
+   happen. Use `skills/crystallize-program-theory/SKILL.md` for interviews,
+   templates, and entry wiring.
 
-### How consumers extend theory
-
-Treat extension as a **ladder**, not a pile of docs:
-
-1. **Product theory** — write `docs/program-theory.md` (replace stub). This is
-   the apex shared language for the product.
-2. **Module theory** — when product theory would become too verbose **or**
-   agents repeatedly need local generative rules/non-goals, **extend the model
-   with module theory** per [AT-THEORY-2.1] (conventional `MODULE-THEORY.md` at
-   the module root). This is the normal, expected extension—not an exception.
-3. **Contracts** — keep specs, fixtures, and codes as exact behavior; theory
-   stays judgment-shaped unless carefully dual-homed.
-4. **Decision cases** — record ALT/REV when agents re-propose rejected shapes
-   or a sweep revises a generative rule; park product-scope ALTs for promotion
-   rather than stranding them only in a module file forever.
-5. **Crystallize** — use `skills/crystallize-program-theory/SKILL.md` for either
-   product or module interviews; say which scope you are extending.
+Negative knowledge and revisions are **first-class when real**, not a quota.
+Do not pre-create empty ALT/REV slots. Field shapes and paste-ready templates
+live only in the crystallize skill.
 
 ### Hybrid with speed
 
 Inside a fixed identity envelope, high-throughput agent work is welcome.
 Theory maintenance refuses to spend speed on **accidentally redefining the
-product**. That is the value proposition relative to pure slop protocols.
-
-### How to record decisions [AT-THEORY-7.1]
-
-Negative knowledge and revisions are **first-class when real**, not a quota.
-
-**Do:** write an ALT when something competent is refused or deferred; write a
-REV when the current account of the theory changes.  
-**Do not:** pre-create empty `[ALT-001]` files, empty decision directories, or
-zero-length placeholders. Absence means none yet.
-
-Paste-ready shapes (same as the product bootstrap stub appendix):
-
-#### Rejected or deferred alternative
-
-```markdown
-### [ALT-<SCOPE>-<NNN>] Short title
-
-Disposition: rejected | deferred | adopted | superseded | invalidated
-Owner: <decision owner>
-Governs: <theory section, module theory, or contract reference>
-Source record: none | <plan path> | <commit or issue>
-Candidate: <what was proposed>
-Why plausible: <steelman>
-Evidence:
-- contemporaneous | owner-recalled | inferred | unknown: <source>
-Reason: <why this disposition>
-Current consequence: <what work must do now>
-Reconsider when: <observable condition — not vibes>
-Promoted to: none | <id if moved upstairs or into a contract>
-```
-
-#### Theory revision
-
-```markdown
-### [REV-<SCOPE>-<NNN>] Short title
-
-Current account: <revised theory — put current first>
-Supersedes: <short prior account; do not let it compete with current>
-Pressure: <what made the prior account inadequate>
-Evidence:
-- contemporaneous | owner-recalled | inferred | unknown: <source>
-```
-
-Use these under a “Revisions and decision cases” section of product or module
-theory. Module files may hold local ALTs; product-wide non-goals should be
-promoted to product theory when stable.
+product**.
 
 ---
 
-## Crystallizing a product program theory [AT-THEORY-8]
+## Crystallizing product or module theory [AT-THEORY-8]
 
-Prefer the skill `skills/crystallize-program-theory/SKILL.md` for an
-interview session. The questions below are the same spine for humans writing
-without the skill.
+The interview spine, one-question-at-a-time protocol, module drafting
+checklist, entry-wiring procedure, and ALT/REV field templates live in
+`skills/crystallize-program-theory/SKILL.md`. They are not duplicated here so
+mandatory session startup does not carry a second operating manual.
 
-Work **one question at a time** when interviewing. Look up facts from the
-repo; put **decisions** to the owner.
-
-### Spine questions
-
-1. **Problem world** — What affairs of the world does this program handle?
-   For whom? What fails if it does not exist?
-2. **Desired feel** — What should using it feel like in one paragraph?
-3. **Whole-program metaphor** — In three to seven bullets, what is the
-   mental model (not the file tree)?
-4. **Core concepts** — Name each concept, its meaning, and its **owner**
-   (this product / a module / the user / another system).
-5. **Matching surface** — How do CLI, API, UI, or docs express the same
-   model without inventing a second product?
-6. **Non-goals** — What will competent people propose that you will refuse?
-   Why? When would you reconsider?
-7. **Generative rule** — Is there one question that organizes a large part
-   of the design (as control locality might organize a taxonomy)?
-8. **Delivery / safety honesty** — Where can work be lost, duplicated, or
-   weakly authenticated? Name the guarantee narrowly.
-9. **Tensions** — What live tensions would falsify the account if they
-   worsened?
-10. **Extension by module theory** — What depth should become module theory
-    (ownership table, local generative rule, local non-goals) so product theory
-    stays short? Which path owns that file?
-11. **Possession test** — What surprises (bugs or bad agent paths) would
-    force a theory revision rather than a local patch?
-12. **Replacement check** — If this were only a README restatement, what
-    judgment would still be missing?
-
-Stop when the owner can **place a feature**, **refuse a category error**,
-and **predict a failure mode** without re-deriving the product from scratch.
+Stable code **[AT-THEORY-8]** names that operational surface by reference.
 
 ---
 
@@ -482,10 +365,11 @@ and **predict a failure mode** without re-deriving the product from scratch.
 
 ### [REV-AT-001] First draft externalization (2026-07-30)
 
-Current account: Agent-theory is a guidance system whose identity is shared
-language under agent labor; progressive theory disclosure with **module theory
-as the concrete extension of the product model**; Naur/Knuth/Ronacher lineage;
-consumer product theory replaces hub theory.
+Current account: Agent Theory is a discipline whose reference operating model
+is this repository; identity is shared language under agent labor; progressive
+theory disclosure with **module theory as the concrete extension of the product
+model**; Naur/Knuth/Ronacher lineage; consumer product theory replaces hub
+theory.
 Supersedes: Hub README framed only as neutral scaffold without an explicit
 program-theory account of the guidance system itself.
 Pressure: Dogfood showed orientation speeches (“what kind of product this is”)
@@ -497,13 +381,42 @@ Evidence:
 - contemporaneous: this first draft; later same-day clarification that module
   theory is the expected extension mechanism, not optional depth
 
+### [REV-AT-002] Theory surface vs operating procedure (2026-07-30)
+
+Current account: The mandatory startup theory account holds this repository's
+*positions* on theory (not its definition), purpose, mental model, concepts,
+principles, non-goals, falsifiers, the module-theory conceptual rule, and
+revisions. Definition, lineage summary, surface-by-question table, and the
+possession enumeration are the primer's
+(`docs/specs/02-agent-theory-and-program-theory.md`), which travels to
+consumers whose own theory file describes their product instead.
+Interview spine, ALT/REV field
+templates, module drafting checklist, and entry-wiring procedure live only in
+`skills/crystallize-program-theory/SKILL.md`. Bootstrap stub stays short and
+points at the skill. Stub gate: begin crystallization before *committing*
+product-scope behavior — not before all design exploration.
+Supersedes: Self-contained theory file that duplicated the full crystallization
+methodology and templates at startup load cost.
+Pressure: Independent review (2026-07-30): high context tax, three-way template
+sync, and contradiction with “different surfaces answer different questions.”
+Evidence:
+- contemporaneous: independent review findings 4 and 5 on the program-theory
+  wave; repair pass this revision records
+- contemporaneous: second pass the same day — the repair moved procedure out
+  but restated the definitional half in the new primer, leaving two accounts
+  to synchronize; resolved by splitting definition (primer) from position
+  (here) rather than by deleting either
+
 ---
 
 ## Related
 
-- `README.md` — human entry (this hub)
+- `README.md` — human entry (discipline + this reference repository)
+- `docs/specs/02-agent-theory-and-program-theory.md` — definitional primer
+  (what Agent Theory / program theory are; not this file's product-or-hub account)
 - `docs/specs/01-development-documentation-operating-model.md` — normative process
+  ([DOM-2], [DOM-3]: program theory as taxonomy and startup surface)
 - `docs/agent-context/` — shared execution context and runbooks
-- `skills/crystallize-program-theory/SKILL.md` — interview to write product or module theory
-- `bin/bootstrap-agent-theory` — install process scaffold + product theory stub
-  (module theory and ALT/REV are conventions + templates, not empty files)
+- `skills/crystallize-program-theory/SKILL.md` — interview, templates, module
+  drafting, entry wiring
+- `bin/bootstrap-agent-theory` — install process scaffold + short product theory stub

@@ -3,6 +3,7 @@ updated_at: 2026-07-30
 hub: docs/agent-context
 read_order:
   - docs/program-theory.md
+  - docs/agent-context/README.md
   - docs/agent-context/decision-hierarchy.md
   - docs/agent-context/principles.md
   - docs/agent-context/engineering-principles.md

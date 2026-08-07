@@ -38,9 +38,14 @@ Canonical shared context lives in `docs/agent-context/`.
 Required read order for any agent operating in this repository:
 
 1. `docs/program-theory.md` — conceptual identity of **this repository**
-   (what kind of system this is; product theory in application/library repos).
-   If that file's Status is `Stub`, replace it before product-scope design work
-   (`skills/crystallize-program-theory/SKILL.md`).
+   (what kind of system this is). Frames interpretation and placement; does
+   **not** override winning contracts. If Status is `Stub`, begin
+   crystallization before committing product-scope behavior or architecture
+   (`skills/crystallize-program-theory/SKILL.md`). Exploration may proceed;
+   do not treat the stub (or hub meta-theory left in place) as product
+   authority. Product-scope Class 5 work requires at least a current Draft
+   account; the account may and should be revised as implementation exposes
+   new facts.
 2. `docs/agent-context/README.md`
 3. `docs/agent-context/decision-hierarchy.md`
 4. `docs/agent-context/principles.md`
@@ -48,6 +53,11 @@ Required read order for any agent operating in this repository:
 6. Relevant runbook(s) in `docs/agent-context/runbooks/`
 7. `docs/agent-context/lessons.md`
 8. `docs/lessons.md`
+
+`docs/program-theory.md` is load-bearing for product-scope *judgment* —
+audits, reviews, feature-fit and design opinions — not only for
+implementation. Skipping it because a task looks like verification is the
+observed failure mode.
 
 **Module theory** is how this repository's conceptual model is **extended**
 when depth is local (not a second global constitution):
@@ -64,6 +74,24 @@ when depth is local (not a second global constitution):
 If local defaults conflict with repository guidance, follow the decision policy
 in `docs/agent-context/decision-hierarchy.md`.
 
+### Session-start coalescing check (read-only)
+
+Before broad work, derive the counts using the recipe in
+`skills/coalescing/SKILL.md` step 1 (thresholds, watermarks, and
+deferral state in `docs/coalescing.md`). In **one sentence**, report to
+the user when any of these hold:
+
+- harvest candidates (`completed`/`superseded` index rows with no
+  Retired Plans ledger line) ≥ the plans threshold in
+  `docs/coalescing.md`
+- unindexed plan files > 0
+- a reconsideration condition in the deferral table has fired
+
+Do **not** start a coalescing sweep unless the user authorizes it. Do
+not write `docs/coalescing.md` mid-task. `bin/coalesce-check` is the
+evidence trail for this check — run it to verify cues and quote counts;
+the state file's declared recipe remains authoritative.
+
 ## Project Conventions
 
 - Specs live in `docs/specs/`.
@@ -73,10 +101,12 @@ in `docs/agent-context/decision-hierarchy.md`.
 - Durable lessons learned live in `docs/lessons.md`.
 - Documentation maintenance is part of the definition of done for each change.
 - Classify every task per [DOM-15]; classes 3+ start with a dated plan
-  in `docs/plans/` (see [DOM-5] and [DOM-15] in
+  in `docs/plans/` **and an index row in `docs/plans/README.md`** (see
+  [DOM-5] and [DOM-15] in
   `docs/specs/01-development-documentation-operating-model.md`), while
   classes 1–2 record their plan in the commit message, PR description,
-  or handoff report.
+  or handoff report. Closing a class ≥3 plan requires flipping that
+  index row to `completed` or `superseded` in the same change.
 - Risky or boundary-crossing changes should also read
   `docs/agent-context/runbooks/hardening-plans.md` and treat its checklist as
   required, not optional. Risky includes async or deferred work, contract
@@ -140,3 +170,5 @@ Do not consider work complete until:
 - any skill or runbook used heavily during the work has been evaluated for
   possible improvement
 - durable lessons are recorded if the work exposed a reusable correction
+- class ≥3 plans: Status Index row closed (`completed` / `superseded`)
+  when the work is claimed done
