@@ -267,9 +267,9 @@ is reread):
   ([DOM-5] carve-out paragraph after the risky-trigger list; [DOM-14]
   additive-first bullet replaced by the two archive-rule bullets;
   [DOM-15] fixture table +2 rows), gates green
-  (`check-dom15-fixtures`, `check-doc-paths`). Mid-implementation
-  compliance claims are against this identifier; replace with the
-  commit SHA at landing.
+  (`check-dom15-fixtures`, `check-doc-paths`). Landed: commit
+  `2415252` is the promotion baseline identifier and the wave's
+  source SHA.
 - Backport source: SimpleBroker at `a38e6a9e3641075436ada9c05dcf4ba411b40c9d`.
 
 ## Proposed Spec Delta
