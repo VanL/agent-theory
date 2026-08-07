@@ -72,6 +72,14 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
+- 2026-08-07: A gate invoked through a pipeline reports the pipeline's
+  exit code, not the gate's. A verification battery that runs
+  `gate | head -1` (or any downstream filter) shows the filter's exit
+  status; the gate can be failing while the battery reads green. Invoke
+  gates directly and capture their exit codes; filter output only after
+  the exit code is recorded. (From the backport wave's pre-landing
+  review F1, where exactly this masked a live coalesce-check failure;
+  plan 2026-08-07-simplebroker-backport-wave, Review Log.)
 - 2026-07-14: Two staging-safety rules from the weft landing. (1) A
   blocking pre-commit check must actually halt the whole script — an
   `if/else` that skips only the commit lets the script tail run

@@ -526,7 +526,7 @@ edit; escalate loudly the moment a trigger fires.
 - `docs/plans/2026-04-07-development-documentation-foundation-plan.md`
 - `docs/plans/2026-04-07-plan-hardening-guidance-plan.md`
 - `docs/plans/2026-04-07-review-skills-bootstrap-plan.md`
-- `docs/plans/2026-04-07-specs-index-renumbering-plan.md`
+- retired: 2026-04-07-specs-index-renumbering-plan — source `2415252`; see the ledger in docs/plans/README.md
 - `docs/plans/2026-07-14-coalescing-layer-plan.md`
 - `docs/plans/2026-07-14-task-class-matrix-plan.md`
 - `docs/plans/2026-08-07-simplebroker-backport-wave-plan.md`

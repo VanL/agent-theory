@@ -5,7 +5,8 @@ Status: Active — promoted 2026-07-15 per the [DOM-14] promotion tier
 §16.3–§16.4; mm `implementation/41` RiskEvaluationApi contract; mm
 external-API/MCP contract plan §4/§5/§9). Provenance and citation SHAs:
 `docs/coalescing.md` run log and
-`docs/plans/2026-07-15-interface-review-skill-promotion-plan.md`.
+2026-07-15-interface-review-skill-promotion-plan at source `2415252`
+(retired; see the ledger in docs/plans/README.md).
 
 **This skill is the repeatable procedure for reviewing an agent-facing
 surface against `runbooks/designing-agent-facing-interfaces.md`. The
