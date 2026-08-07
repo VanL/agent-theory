@@ -6,6 +6,19 @@ against this file to detect staleness cheaply before deciding whether a
 propagation wave is worth running; the SHA pin remains the authoritative
 provenance (`skills/propagate-guidance/SKILL.md` step 0).
 
+## 2026-08-07 (register-conditioning adoption)
+
+- `docs/program-theory.md`: [REV-AT-003] adopted — guidance artifacts
+  carry a working register as well as propositions; composing
+  always-loaded surfaces (including citations) is a
+  capability-environment decision. Includes the experiment-status
+  statement (hypothesis, evidence deficit, standing falsifier) and the
+  direction-free Pressure record; register remains non-evidentiary.
+  [AT-THEORY-6] gains the register-without-transfer falsifier.
+- `skills/crystallize-program-theory/SKILL.md`: citation tests for
+  theory drafting — accurately represented and load-bearing; register
+  effects are drafting hypotheses, never evidence.
+
 ## 2026-08-07
 
 Backport wave from the SimpleBroker testbed (pin `a38e6a9`; plan

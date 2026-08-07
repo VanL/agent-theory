@@ -296,6 +296,14 @@ role is a defect, not a discussion.
 - **Opposite optimum:** Environments that correctly choose pure speed+slop
   for short-lived or solo exploration should not be forced into full Agent
   Theory; the theory should state the fit, not annex all agentic work.
+- **Register without transfer:** If predeclared, blinded paired
+  probes across the currently supported model mix show no repeatable
+  change in framing or correct concept use when register changes
+  while propositions are held constant, narrow the account to the
+  informational function. Apply the same test to citation anchors by
+  removing citation and lineage cues while preserving the
+  propositions attributed to them; if no material effect survives the
+  predeclared threshold, retain those citations only for provenance.
 - **Theory as second operating manual:** If the mandatory startup theory file
   accumulates interview scripts, full templates, and maintenance runbooks that
   belong in skills, progressive disclosure and surface roles have failed.
@@ -380,6 +388,46 @@ Evidence:
   consumer dogfood (2026-07)
 - contemporaneous: this first draft; later same-day clarification that module
   theory is the expected extension mechanism, not optional depth
+
+### [REV-AT-003] The corpus carries register as well as information (2026-08-06; adopted 2026-08-07)
+
+Current account: Guidance artifacts communicate propositions and also
+establish a working register: the vocabulary, distinctions, and
+intellectual lineages through which agents frame the work. The hub
+therefore treats composition of always-loaded surfaces as a
+capability-environment decision, not merely a style choice. Citations
+can participate in that environment when they are accurately
+represented and contribute concepts, distinctions, or refusals the
+account actually uses. The Naur, Knuth, and Ronacher references in
+this file are current examples. Register remains non-evidentiary:
+fluent form can camouflage error, so correctness continues to depend
+on executable gates and independent review. This corpus is, in part,
+an experiment in shaping the capability environment agents draw on.
+The working hypothesis is that register and citation composition
+affect output framing or correct concept use. No predeclared, blinded
+paired probe across the currently supported model mix has run; the
+motivating observations are confounded by fluency and do not support
+that hypothesis. The account stays narrow until the register
+falsifier in [AT-THEORY-6] has been exercised; the falsifier is the
+standing invitation to test it.
+Supersedes: The prior account treated the corpus primarily as an
+informational and ownership surface while leaving the role of
+register and citation selection unnamed.
+Pressure: The owner's deliberate use of the Naur, Knuth, and Ronacher
+lineage as part of the hub's conceptual frame, together with the
+simplebroker pre-release review cycle in which the same hardening
+register carried both sound and unsound proposals. The owner's
+motivating impression about register effects was a further pressure;
+its content is recorded in the backport plan's execution log
+(`docs/plans/2026-08-07-simplebroker-backport-wave-plan.md`) and is
+disqualified as evidence by this revision.
+Evidence:
+- contemporaneous: this file's intellectual-lineage table and
+  `docs/lessons.md` 2026-08-06 entries on well-formed plans and
+  register symmetry (same-worktree records of the same dialogue —
+  contemporaneous, not independent validation)
+- owner-recalled: citation selection was intended partly to establish
+  the conceptual register, confirmed 2026-08-06
 
 ### [REV-AT-002] Theory surface vs operating procedure (2026-07-30)
 

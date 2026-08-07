@@ -61,7 +61,7 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-28-guidance-gates-plan.md | retired-pending — soft-retired 2026-08-07 sweep; source `2415252` |
 | 2026-07-15-interface-review-skill-promotion-plan.md | retired-pending — soft-retired 2026-08-07 sweep; source `2415252` |
 | 2026-07-30-program-theory-and-module-theory.md | active — Class 3+P; landed `4acbad1` pre-review (deviation recorded); independent review 2026-07-30 + repair pass; propagation blocked until repair lands; full [DOM-16] still deferred |
-| 2026-08-06-register-conditioning-theory-revision-plan.md | draft — Class 5; round-1 ADOPT-WITH-EDITS applied; OD-3 amendment applied and independently reviewed 2026-08-07 (ADOPT-WITH-EDITS, edits applied); awaiting owner adoption of the full delta |
+| 2026-08-06-register-conditioning-theory-revision-plan.md | completed — Class 5; two independent reviews (delta + amendment); owner adopted 2026-08-07; [REV-AT-003], the register falsifier, and the crystallize citation tests landed |
 | 2026-08-07-simplebroker-backport-wave-plan.md | completed — Class 5+P; backport wave from SimpleBroker pin `a38e6a9`; three plan-review rounds + three pre-landing rounds (codex); OD-1/2/3/4 executed; landed 2026-08-07 |
 
 ## Retired Plans

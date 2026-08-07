@@ -1,12 +1,14 @@
 # Register-Conditioning Theory Revision Plan
 
 Date: 2026-08-06
-Status: draft — round-1 independent semantic review complete
-(ADOPT-WITH-EDITS; all edits applied); amended 2026-08-07 per OD-3 of
-`docs/plans/2026-08-07-simplebroker-backport-wave-plan.md` (owner
-confirmed); amendment independently reviewed 2026-08-07
-(ADOPT-WITH-EDITS, both edits applied); awaiting owner adoption of the
-full delta
+Status: completed — round-1 independent semantic review
+(ADOPT-WITH-EDITS, applied); OD-3 amendment applied and independently
+reviewed 2026-08-07 (ADOPT-WITH-EDITS, applied); owner adopted the
+full delta 2026-08-07. Landed: [REV-AT-003] appended to
+`docs/program-theory.md` [AT-THEORY-9] with both amendments; the
+register-without-transfer falsifier added to [AT-THEORY-6]; the
+citation-tests drafting line added to
+`skills/crystallize-program-theory/SKILL.md` §4
 Type: spec-authoring / theory revision (no code; three text deltas)
 
 ## Goal

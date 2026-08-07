@@ -147,6 +147,14 @@ theory required,” and promotion path for any product-scope ALT parked there.
 - How the model is extended (pointer to module theory convention)
 - Revisions/ALT if decided; related contracts
 
+Choose references on two tests: **accurately represented** and
+**load-bearing**. A load-bearing reference contributes a concept,
+distinction, refusal, or vocabulary the theory actually uses. Make
+that contribution explicit where it would otherwise be unclear; omit
+ornamental citations. Treat any register effect as a drafting
+hypothesis, never as evidence that the theory or its outputs are
+correct ([REV-AT-003]).
+
 **Module** — write `<module>/MODULE-THEORY.md` (or agreed path) with at least:
 
 - Status / Owner / Boundary / Verification / Required action (“read on entry
