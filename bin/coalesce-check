@@ -107,6 +107,10 @@ def main() -> int:
     # A SHA may appear many times; verify each occurrence in its own context.
     cues = sorted(set(CUE_RE.findall(text)))
 
+    # Known limitation (docs/lessons.md 2026-08-07): the ancestry check
+    # below hardcodes origin/main; a consumer with a different default
+    # branch gets false local-only-pin reports. Fix candidate: resolve
+    # the default via origin/HEAD, falling back to origin/main.
     remote_ok = git("rev-parse", "--verify", "origin/HEAD").returncode == 0 or \
         git("rev-parse", "--verify", "origin/main").returncode == 0
 

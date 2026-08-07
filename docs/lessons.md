@@ -72,6 +72,14 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
+- 2026-08-07: `bin/coalesce-check`'s publication check hardcodes
+  `origin/main`: a consumer whose default branch is not `main` gets
+  false local-only-pin reports even when SHAs are published. Known
+  limitation recorded at the gates plan's review (F4–F5, retired at
+  `2415252`); preserved here after post-deletion verification found it
+  written down nowhere surviving. Fix candidate for the next tooling
+  pass: resolve the default branch via `origin/HEAD` with
+  `origin/main` as fallback.
 - 2026-08-07: A gate invoked through a pipeline reports the pipeline's
   exit code, not the gate's. A verification battery that runs
   `gate | head -1` (or any downstream filter) shows the filter's exit
