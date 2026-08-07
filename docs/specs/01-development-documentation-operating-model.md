@@ -381,7 +381,9 @@ Requirements:
   material revision of durable guidance (golden rules, principles,
   runbooks, skills, or cross-repository rules) follows the ordinary
   [DOM-5]/[DOM-15] planning and review requirements before that
-  promotion is written
+  promotion is written, and its gate is the human owner — agent
+  review supports the promotion decision but does not substitute for
+  owner ratification
 - deferrals have real state: a checked-deferred record carries
   `checked_through` (date and SHA), the derived counts, the reason, and a
   reconsideration condition — so an unchanged count does not re-nag every
@@ -445,6 +447,14 @@ change requires — not by what the author chooses to produce:
 
 Rules:
 
+- ordinary maintenance — repairs, cleanups, and reversible
+  housekeeping performed under an existing procedure — defaults to
+  Class 2 when intent is evidenced and the work is reversible; it
+  escalates only when it explicitly changes ongoing procedure or
+  durable guidance, or another [DOM-5]/[DOM-6] trigger independently
+  fires. For durable-guidance promotions the gate is the **human
+  owner**: agent review supports the decision but does not substitute
+  for owner ratification (owner decision 2026-08-07)
 - the review and verification floors accumulate; planning artifacts
   **subsume**: a higher-class plan replaces the lower-class records, it
   does not add to them (a class-3 plan is the planning record — no

@@ -1,5 +1,15 @@
 # Corpus Changelog
 
+## 2026-08-07 (maintenance classification generalized)
+
+- [DOM-15] Rules, [DOM-14], `skills/coalescing/SKILL.md`: ordinary
+  maintenance under an existing procedure defaults to Class 2 when
+  reversible and intent-evidenced; it escalates only on an explicit
+  change to ongoing procedure or durable guidance, or an independent
+  trigger. Durable-guidance promotions gate on the **human owner**;
+  agent review supports but never substitutes (owner decision
+  2026-08-07).
+
 ## 2026-08-07 (retirement verification relaxed)
 
 - [DOM-14], `writing-plans.md` Plan Lifecycle, `skills/coalescing/SKILL.md`

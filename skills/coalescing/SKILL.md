@@ -92,7 +92,9 @@ repair-in-sweep doctrine, its commit `3706d73`, by owner direction
 If an in-boundary repair would promote or materially revise a golden
 rule, principle, runbook, skill, gate, or cross-repository rule, stop
 and classify it before editing. Routine-sweep authority does not waive
-the durable-guidance planning boundary.
+the durable-guidance planning boundary, and the promotion gate is the
+human owner — agent review supports the decision but does not
+substitute for owner ratification.
 
 Read the watermarks in `docs/coalescing.md`, then compute. The state
 file owns the repo-local ledger format: when it declares a derivation
