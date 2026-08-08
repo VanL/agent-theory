@@ -181,6 +181,12 @@ receiving repo's plan-metadata contract exactly.
   fixtures back to canonical brackets.
 - Term collisions get explicit disambiguation where they live
   (engram: documentation-coalescing vs product memory coalescing).
+- **The primer's identity tables use hub-relative labels** ("This
+  repository", "This hub repository") that are true in the hub and
+  false everywhere else — rename them to name the agent-theory hub
+  explicitly on every transplant. Observed twice: adapted at taut's
+  landing; missed at backstitch's and caught only by its scoped
+  review (finding A-01).
 - **No plan index at all** (mm: 535 unindexed plans): create a
   forward-only index with a declared boundary — "absence here is never
   a status claim" — and record backfill as the plans tier's
