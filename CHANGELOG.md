@@ -1,5 +1,14 @@
 # Corpus Changelog
 
+## 2026-08-07 (gate-wiring wording clarified)
+
+- `writing-specs.md`: the gate-wiring obligation is a **declared
+  execution path** — CI where wired, explicit manual execution
+  otherwise — not CI for every tool. Owner-directed after the taut
+  landing showed the prior wording false-flagging deliberate manual
+  sweep/propagation tooling. Back-ported to SimpleBroker in the same
+  session; taut already carries the corrected form.
+
 ## 2026-08-07 (maintenance classification generalized)
 
 - [DOM-15] Rules, [DOM-14], `skills/coalescing/SKILL.md`: ordinary

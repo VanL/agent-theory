@@ -171,14 +171,20 @@ reviewer's job includes checking rule-vs-code, not just rule-vs-intent.
   or names an explicit judgment floor for why the list stays ungated. New
   prose enumerations drift fastest precisely because no existing gate covers
   them yet (see `engineering-principles.md` §12).
-- Writing a gate is not wiring it: every gate names its execution path to
-  CI, or it is the same ungated-convention defect one level up. Examples
-  (not the exhaustive wiring set — adapt to the repository's actual CI):
-  a test-suite-borne subprocess check invoked portably, or a dedicated
-  workflow. A history-dependent gate (one that resolves commit SHAs or
-  retrieval cues) must either run on full history or detect a shallow
-  clone and skip loudly with a printed reason — silently passing and
-  falsely failing on a shallow clone are both invalid.
+- Writing a gate is not wiring it: every gate names its execution
+  path — CI where wired, explicit manual execution otherwise; an
+  **unstated** path is the same ungated-convention defect one level
+  up. The defect this rule targets is a gate that silently never runs
+  anywhere, not the existence of deliberate manual tooling. Wiring
+  examples (not the exhaustive set — adapt to the repository's actual
+  CI): a test-suite-borne subprocess check invoked portably, or a
+  dedicated workflow. A history-dependent gate (one that resolves
+  commit SHAs or retrieval cues) must either run on full history or
+  detect a shallow clone and skip loudly with a printed reason —
+  silently passing and falsely failing on a shallow clone are both
+  invalid. (Wording clarified 2026-08-07 by owner direction after the
+  taut landing; was: "names its execution path to CI", which read as
+  mandating CI for every tool.)
 
 ## Anti-Patterns
 
