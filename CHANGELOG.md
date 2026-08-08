@@ -1,5 +1,11 @@
 # Corpus Changelog
 
+Dated, human- and agent-comparable record of normative changes to the
+agent-theory corpus. Consumers compare their adoption/propagation pin date
+against this file to detect staleness cheaply before deciding whether a
+propagation wave is worth running; the SHA pin remains the authoritative
+provenance (`skills/propagate-guidance/SKILL.md` step 0).
+
 ## 2026-08-07 (gate-wiring wording clarified)
 
 - `writing-specs.md`: the gate-wiring obligation is a **declared
@@ -29,12 +35,6 @@
   recorded harvest gate from the current tree, verified retrieval from
   the source SHA, ref reachability, and two-step sequencing
   (soft-retire in one change, delete in a dedicated follow-up).
-
-Dated, human- and agent-comparable record of normative changes to the
-agent-theory corpus. Consumers compare their adoption/propagation pin date
-against this file to detect staleness cheaply before deciding whether a
-propagation wave is worth running; the SHA pin remains the authoritative
-provenance (`skills/propagate-guidance/SKILL.md` step 0).
 
 ## 2026-08-07 (register-conditioning adoption)
 
