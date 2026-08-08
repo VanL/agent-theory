@@ -6,6 +6,18 @@ against this file to detect staleness cheaply before deciding whether a
 propagation wave is worth running; the SHA pin remains the authoritative
 provenance (`skills/propagate-guidance/SKILL.md` step 0).
 
+## 2026-08-07 (ascension boundary)
+
+- `docs/program-theory.md`: [REV-AT-004] — admission to the hub has
+  two screens: the admission test (real practice) and the ascension
+  boundary (a generalization of the discipline itself). The hub
+  generalizes the discipline; product theories generalize the
+  products; recurring product-engineering rules are evidence for
+  product theories, never fold-up candidates. [AT-THEORY-7] gains
+  "What ascends here (and what does not)".
+- `skills/coalescing/SKILL.md` step 5 and the fold-up threshold row:
+  "generalizes" scoped to the discipline at the point of proposal.
+
 ## 2026-08-07 (gate-wiring wording clarified)
 
 - `writing-specs.md`: the gate-wiring obligation is a **declared

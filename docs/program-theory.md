@@ -334,6 +334,20 @@ This test is already mechanized in places: the promotion tier mints a skill
 only after a workflow recurs across three distinct citations, and the fold-up
 threshold is the same test applied across repositories.
 
+### What ascends here (and what does not)
+
+The hub generalizes the discipline; product theories generalize the
+products. A rule ascends to this repository only when it is a
+generalization of agent-theory itself — how humans and agents build,
+transfer theory, review, and refuse. An engineering rule recurring
+across consumer products is evidence for **their** theories, not a
+ticket upward: recurrence strengthens each product's account and may
+earn sibling records, while the hub records only the discipline-level
+residue of such episodes (for example, how a refusal failed to
+transfer between repositories — never the refused engineering design
+itself). The admission test above screens for reality; this boundary
+screens for kind, and a candidate must pass both.
+
 ### How to extend (ladder)
 
 1. Prefer runbooks and skills for operational detail.
@@ -388,6 +402,29 @@ Evidence:
   consumer dogfood (2026-07)
 - contemporaneous: this first draft; later same-day clarification that module
   theory is the expected extension mechanism, not optional depth
+
+### [REV-AT-004] Ascension is scoped by kind, not only by practice (2026-08-07)
+
+Current account: Admission to the hub has two screens: the
+[AT-THEORY-7] admission test (can you point at the practice?) and the
+ascension boundary (is it a generalization of the discipline?). Only
+generalizations of agent-theory itself ascend; product-engineering
+rules recurring across consumers are evidence for the product
+theories, never fold-up candidates. The discipline-level residue of an
+engineering episode can ascend even when the engineering rule cannot.
+Supersedes: The admission test standing alone, which screened for
+reality but not for kind — a real, genuinely recurring engineering
+rule could pass it and still not belong here.
+Pressure: A 2026-08-07 fork session proposed folding up a
+product-engineering position (destructive-operation preconditions as
+contract) that had truly recurred across two consumers with
+independent lineage; the owner rejected the elevation and stated the
+boundary, then judged the boundary's own formulation hub-worthy.
+Evidence:
+- contemporaneous: the fork dialogue; taut's [REV-THEORY-001] holding
+  the engineering position at product tier while its Pressure field
+  carries the discipline-level residue (cross-repository
+  refusal-transfer failure)
 
 ### [REV-AT-003] The corpus carries register as well as information (2026-08-06; adopted 2026-08-07)
 

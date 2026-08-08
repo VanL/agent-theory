@@ -37,7 +37,7 @@ and the script is the defect.
 | Plans | plans with status completed/superseded, not `exemplar`, and no retired-ledger line | 5 | none — the harvest gate and two-step retirement are the guards |
 | Unindexed | plan files under `docs/plans/*.md` (except README) missing from the Status Index | 0 (any positive is reportable) | none |
 | Promotion | distinct citations of the same workflow theme (judgment-clustered; see skill step 4) since the promotion watermark | 3 | n/a |
-| Fold-up (guidance repo only) | sibling-repo golden-rule candidates with independent lineage (not shared bootstrap ancestry) not yet reflected here | 2 independent incidents/adaptations | n/a |
+| Fold-up (guidance repo only) | sibling-repo discipline-scope golden-rule candidates with independent lineage (not shared bootstrap ancestry) not yet reflected here — generalizations of agent-theory itself, never recurring product-engineering rules ([AT-THEORY-7] ascension boundary) | 2 independent incidents/adaptations | n/a |
 
 Thresholds are declared here so the trigger check is mechanical, and they
 are per-repo values: consumer repos calibrate their own (mm's volume needs

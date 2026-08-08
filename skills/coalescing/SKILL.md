@@ -284,7 +284,12 @@ For each completed or superseded plan:
 
 Any repository's sweep may find a rule that generalizes: **propose it
 upward** to the guidance repo's ledger/principles with SHA-pinned
-provenance (repo, source SHA, date range). **In the guidance repo**,
+provenance (repo, source SHA, date range). "Generalizes" means
+generalizes **the discipline** — process, theory transfer, review,
+refusal-recording. A product-engineering rule recurring across repos
+is evidence for each product's theory, never a fold-up candidate; only
+the discipline-level residue of such an episode ascends
+([AT-THEORY-7], "What ascends here"). **In the guidance repo**,
 candidates are tracked in its state file's fold-up tier and accepted
 only with the independence check below. Independence check first: two repos exhibiting the same
 rule counts as fold-up evidence only when the incidents or adaptations are
