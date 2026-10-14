@@ -260,14 +260,14 @@ When future work adds product code:
    their record in the commit history
 2. add or update the governing spec first
 3. create a dated plan for classes 3 and above
-3. for risky work, harden the plan before implementation by making invariants,
+4. for risky work, harden the plan before implementation by making invariants,
    hidden couplings, anti-mocking guidance, rollback or rollout, and one-way
    doors explicit
-4. run independent plan review and feed the results back into the plan
-5. add or update the relevant implementation note for the touched area
-6. update the repository map when new entry points become important
-7. decide whether repeated workflow knowledge should become or update a skill
-8. capture reusable corrections in `docs/lessons.md`
+5. run independent plan review and feed the results back into the plan
+6. add or update the relevant implementation note for the touched area
+7. update the repository map when new entry points become important
+8. decide whether repeated workflow knowledge should become or update a skill
+9. capture reusable corrections in `docs/lessons.md`
 """
 
 

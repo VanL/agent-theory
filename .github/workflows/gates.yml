@@ -33,6 +33,9 @@ jobs:
       - name: check-doc-paths --scaffold
         run: python3 bin/check-doc-paths --scaffold
 
+      - name: check-doc-paths --self-test
+        run: python3 bin/check-doc-paths --self-test
+
       - name: coalesce-check
         run: python3 bin/coalesce-check
 

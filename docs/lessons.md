@@ -72,14 +72,52 @@ incident log; these are the durable rules distilled from it.
 
 ## Lessons
 
-- 2026-08-07: `bin/coalesce-check`'s publication check hardcodes
-  `origin/main`: a consumer whose default branch is not `main` gets
-  false local-only-pin reports even when SHAs are published. Known
+- 2026-10-14: **Same-family harness subagents share framing bias on review;
+  different-family CLIs are Tier-1, subagents are Tier-2 fallback.** In
+  SimpleBroker's 2026-10-14 remediation plan cycle (`simplebroker` `8a5578a`),
+  an in-harness research subagent verified line numbers and missed two real
+  issues that an external cross-family CLI review (`codex`) caught on the first
+  pass: an internal helper call site that bypassed the proposed fix and an
+  over-complicated 3-step `os.register_at_fork` lock dance where resetting the
+  lock object in `after_in_child` sufficed. Native subagents are ideal for
+  parallel codebase research and bounded implementation slices, but for
+  `[DOM-11]` review they remain a Tier-2 fallback permitted only after two
+  bounded, logged Tier-1 CLI attempts fail (`[DOM-11]`,
+  `engineering-principles.md` §8, `review-loops-and-agent-bootstrap.md` §2).
+- 2026-10-14: **Repeated retry-budget or lock-tuning patches without a phase
+  boundary are a theory-possession stop-condition.** Across `simplebroker`
+  (`5410aff`) and `weft` (`9b7ada69`), agents facing SQLite/process contention
+  defaulted to widening sleeps, multiplying retry budgets, or sprinkling test
+  `time.sleep()` calls — treating symptom frequency rather than schedule
+  causes. When a contention fix does not reduce lock hold duration, statement
+  count, or phase overlap, stop and surface the contention model to the owner
+  (`engineering-principles.md` §4, `testing-patterns.md` Pattern 9).
+- 2026-10-14: **When investigation falsifies a task's premise, return with the
+  correction before editing.** In `weft` (`ff91368e`) and `simplebroker`
+  (`8a5578a`), tasks framed as "fix X" or "heal Y" turned out on code
+  inspection to be existing behavior, a harness artifact, or a category error.
+  Improvising a nearby unrequested edit to "deliver something" hides the
+  premise failure; returning with file-and-line evidence of the false premise
+  is a completed turn (`principles.md`, `writing-plans.md`).
+- 2026-10-14: **Static complexity thresholds are visibility signals, not split
+  triggers — govern suppressions in a registry and never let a governance tool
+  suppress itself.** Across `simplebroker` (`49da9b2`, `00b837f`) and `taut`
+  (`eabc272`), blanket `C901`/`PLR0912` ignores hid state-machine branching
+  while artificial helper splits broke single-screen readability. Removing
+  blanket ignores, recording justified complex hotspots in a test-enforced
+  manifest paired with state-machine transition contracts, and keeping
+  governance tools at zero suppressions turns complexity into an architectural
+  radar (`engineering-principles.md` §14).
+- 2026-08-07: (revised 2026-10-14; resolved in `bin/coalesce-check` via
+  `resolve_remote_ref()`, which checks `origin/HEAD` with `origin/main` as
+  fallback — converged independently in `taut` `3d038f5` and `weft`
+  `7c245c91`; was: fix candidate for the next tooling pass)
+  `bin/coalesce-check`'s publication check previously hardcoded
+  `origin/main`: a consumer whose default branch is not `main` got
+  false local-only-pin reports even when SHAs were published. Known
   limitation recorded at the gates plan's review (F4–F5, retired at
   `2415252`); preserved here after post-deletion verification found it
-  written down nowhere surviving. Fix candidate for the next tooling
-  pass: resolve the default branch via `origin/HEAD` with
-  `origin/main` as fallback.
+  written down nowhere surviving.
 - 2026-08-07: A gate invoked through a pipeline reports the pipeline's
   exit code, not the gate's. A verification battery that runs
   `gate | head -1` (or any downstream filter) shows the filter's exit
@@ -132,7 +170,11 @@ incident log; these are the durable rules distilled from it.
   ("it's not our conventions — Django changed") from the mm Django/DRF
   fold; fold-up candidate for [DOM-14]'s decay guidance alongside the
   citation-driven decay rule.
-- 2026-07-15: A coalescing fold's verification has three tiers, and only
+- 2026-07-15: (revised 2026-10-14; graduated into `[DOM-14]` and
+  `skills/coalescing/SKILL.md` step 2.3 after second and third independent
+  lineages in `taut` `6ae85c7` and `simplebroker` `5410aff`; was: candidate
+  for the coalescing skill after a second section confirms the pattern)
+  A coalescing fold's verification has three tiers, and only
   the first two are automatic: text fidelity (lesson → distillation,
   grep both directions), symbol liveness (named functions/files/flags
   still exist), and **behavioral parity** (the code still does what the
@@ -142,8 +184,7 @@ incident log; these are the durable rules distilled from it.
   is a status claim requiring reproduction. The mm Containers/CI fold
   shipped ten such claims verified only to tier two; an owner question
   forced tier three (all ten reproduced, one apparent drift resolved as
-  the rule's own blessed fallback case). Candidate for the coalescing
-  skill after a second section confirms the pattern.
+  the rule's own blessed fallback case).
 - 2026-07-15: A true-negative validates the check, not the phenomenon —
   it does not mint fold-up lineage. Weft ran the framework-fact expiry
   check at a real pin bump, zero expiries fired; the drafting agent (who

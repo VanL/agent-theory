@@ -2,90 +2,89 @@
 
 ## Purpose and Scope
 
-This document explains why the repository is organized around shared agent
-context, specs, dated plans, implementation docs, reusable skills, independent
-reviews, and a lessons ledger.
+This document explains why the repository separates shared agent context,
+program theory, behavioral specs, dated execution plans, implementation notes,
+reusable skills, independent reviews, and lessons learned into distinct files.
 
-The current implementation surface is the documentation system itself. Product
-code has not been added yet, so the repository's main architecture is the
-documentation operating model.
-
-Conceptual identity of this repository (Agent Theory as discipline and this
-corpus as reference operating model; progressive theory disclosure; consumer
-replacement of program theory) lives in `docs/program-theory.md`. This file
-remains realization rationale for the doc layout, not a second program theory.
+In the Agent Theory hub, the documentation and verification scripts *are* the
+system. The conceptual identity of Agent Theory lives in
+`docs/program-theory.md`; this file explains the practical layout of the
+documentation directories.
 
 ## Governing Spec References
 
-- `docs/specs/01-development-documentation-operating-model.md` [DOM-2]
-- `docs/specs/01-development-documentation-operating-model.md` [DOM-3]
-- `docs/specs/01-development-documentation-operating-model.md` [DOM-4]
-- `docs/specs/01-development-documentation-operating-model.md` [DOM-7]
-- `docs/specs/01-development-documentation-operating-model.md` [DOM-8]
+- `docs/specs/01-development-documentation-operating-model.md` `[DOM-2]`
+- `docs/specs/01-development-documentation-operating-model.md` `[DOM-3]`
+- `docs/specs/01-development-documentation-operating-model.md` `[DOM-4]`
+- `docs/specs/01-development-documentation-operating-model.md` `[DOM-7]`
+- `docs/specs/01-development-documentation-operating-model.md` `[DOM-8]`
 
 ## Design Rationale
 
-### Shared Agent Context
+### One Shared Agent Context (`docs/agent-context/`)
 
-The repository keeps durable guidance in `docs/agent-context/` so multiple
-agent tools can consume one source of truth. Root files such as `AGENTS.md` and
-tool-specific aliases are intentionally thin entry points rather than separate
-policy documents.
+Keeping durable rules and runbooks in `docs/agent-context/` lets every coding
+agent (`claude`, `codex`, `gemini`, and IDE harnesses) read one source of
+truth. Root files such as `AGENTS.md` and `CLAUDE.md` stay thin entry points
+rather than separate, drifting policy documents. Where the filesystem supports
+symlinks, `CLAUDE.md` symlinks directly to `AGENTS.md`.
 
-When the environment supports it, tool-specific root aliases should be symlinks
-to `AGENTS.md` instead of copied content. This reduces drift. In this
-repository, `CLAUDE.md` is such an alias.
+### Independent Review as a Built-In Step
 
-### Independent Review as a First-Class Step
+An agent that writes a plan or patch tends to share its own framing blind
+spots. Treating independent review (`[DOM-11]`) as a required step—run by a
+different model family via `skills/call-agent/SKILL.md`, with same-family
+fallback permitted only after recorded Tier-1 unavailability—catches false
+premises and weak tests before changes land.
 
-Agent authors are prone to blind spots, especially in plans. The repository
-therefore treats independent review as part of the operating model rather than
-optional polish. When available, a different agent family is preferred so the
-review is less likely to mirror the original model's assumptions.
+### Reusable Skills (`skills/`)
 
-### Reusable Skills
+Step-by-step procedures for recurring tasks—such as running an independent
+review, crystallizing a program theory, debugging a failure, or coalescing old
+plans—are too detailed to load on every session start. Storing them in
+`skills/` keeps session startup lean while giving agents an explicit playbook
+when those tasks arise.
 
-Some recurring workflow knowledge is too detailed or task-shaped to live only
-in broad runbooks. The `skills/` directory exists so repeated operational
-knowledge such as running, testing, debugging, or release flows can become a
-reusable instruction surface instead of remaining buried in lessons or plans.
+### Safe Bootstrap Installer (`bin/bootstrap-agent-theory`)
 
-### Bootstrap Scaffold
+`bin/bootstrap-agent-theory` installs the starter files and verification gates
+into a target repository. By default it only creates missing files: it never
+overwrites an existing `AGENTS.md` without `--force` and never invents product
+architecture.
 
-The repository also includes a small scaffold command in
-`bin/bootstrap-agent-theory` so the neutral starter set can be installed into
-another repository. The command is intentionally simple: it copies the reusable
-starter corpus, generates a few repo-owned placeholder docs, and stops. It does
-not attempt to merge with existing `AGENTS.md` files or infer repo-specific
-engineering rules.
+### Why Theory, Specs, Plans, and Implementation Docs Stay Separate
 
-### Separate Specs, Plans, and Implementation Docs
+Combining every kind of documentation into one file makes it hard to tell what
+is a current requirement versus an old plan or an aspirational idea. Here, each
+surface answers one question:
 
-The split exists because each document answers a different question:
+- **Program theory** (`docs/program-theory.md`) answers *what kind of system
+  this is and what it refuses to do*.
+- **Specs** (`docs/specs/`) answer *what exact behavior must hold right now*.
+- **Plans** (`docs/plans/`) answer *how a specific change is being executed and
+  verified*.
+- **Implementation docs** (`docs/implementation/`) answer *why the code is
+  structured this way and where to edit it*.
 
-- specs answer what should be true
-- plans answer how a specific change will be executed without breaking
-  load-bearing boundaries
-- implementation docs answer why the current design exists and where it lives
+### Documentation as a Completion Gate
 
-Combining those roles makes documents harder to trust and easier to let drift.
-
-### Documentation As a Delivery Gate
-
-The repository treats documentation maintenance as part of completion because
-the main failure mode in agentic development is silent drift between intent,
-execution, and implementation.
+The most common failure mode in agent-assisted development is silent drift
+between what the docs say and what the code actually does. Treating
+documentation updates and path/fixture gate checks as part of the completion
+gate prevents that drift from accumulating.
 
 ## Boundaries and Invariants
 
-- `docs/agent-context/` is the canonical shared context surface.
+- `docs/program-theory.md` holds the repository's conceptual model and
+  non-goals.
+- `docs/agent-context/` is the canonical shared context and runbook directory.
 - `docs/specs/` is the source of truth for intended behavior.
-- `docs/plans/` contains dated execution records.
-- `docs/implementation/` explains rationale and edit points.
-- `skills/` stores reusable task-scoped workflow instructions.
-- `docs/lessons.md` is the one canonical lessons ledger.
-
-These roles should stay distinct even as the repository grows.
+- `docs/plans/` holds dated execution plans and the plan status index.
+- `docs/implementation/` explains design rationale, boundaries, and key edit
+  points.
+- `skills/` stores reusable task-specific workflows.
+- `docs/lessons.md` is the single lessons ledger, paired with
+  `docs/coalescing.md`.
 
 ## Key Files
 
@@ -93,41 +92,43 @@ These roles should stay distinct even as the repository grows.
 |------|---------|
 | `AGENTS.md` | Primary agent entry point |
 | `CLAUDE.md` | Symlink alias for Claude-style tooling |
-| `bin/bootstrap-agent-theory` | Scaffold command for installing the neutral starter set into another repository |
-| `docs/agent-context/README.md` | Shared context hub |
+| `bin/bootstrap-agent-theory` | Installer that copies the starter scaffold into another repository |
+| `docs/agent-context/README.md` | Shared context overview and read order |
 | `docs/specs/00-specs-index.md` | Numbered entry point for specs |
-| `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec |
-| `docs/agent-context/runbooks/hardening-plans.md` | Required companion for risky or boundary-crossing implementation plans |
-| `bin/check-dom15-fixtures` | Structural gate for the [DOM-15] classification fixture table (scaffolded) |
-| `bin/check-doc-paths` | Path-claim integrity gate for guidance surfaces (scaffolded) |
-| `bin/coalesce-check` | Coalescing state SHA/cue evidence trail (scaffolded) |
+| `docs/specs/01-development-documentation-operating-model.md` | Governing operating-model spec (`[DOM-*]`) |
+| `docs/agent-context/runbooks/hardening-plans.md` | Required checklist for risky or boundary-crossing plans |
+| `bin/check-dom15-fixtures` | Gate verifying the `[DOM-15]` classification fixture table |
+| `bin/check-doc-paths` | Gate verifying that backticked `docs/`, `skills/`, and `bin/` paths exist |
+| `bin/coalesce-check` | Gate verifying commit SHAs and retrieval cues in `docs/coalescing.md` |
 | `docs/plans/2026-04-07-development-documentation-foundation-plan.md` | Foundation plan modeling the workflow |
 | `docs/plans/2026-04-07-review-skills-bootstrap-plan.md` | Plan adding review, skills, and bootstrap guidance |
-| `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that hardened the repository's planning guidance |
+| `docs/plans/2026-04-07-plan-hardening-guidance-plan.md` | Plan that hardened the planning guidance |
 | `docs/implementation/00-implementation-index.md` | Numbered entry point for implementation docs |
-| `docs/implementation/02-repository-map.md` | Quick pointer map for important docs |
-| `docs/implementation/03-agent-inventory.md` | Current observed agent availability and refresh guidance |
+| `docs/implementation/02-repository-map.md` | Quick pointer map for key repository files |
+| `docs/implementation/03-agent-inventory.md` | Observed agent CLI availability and review preferences |
 | `skills/README.md` | Skill directory conventions and promotion criteria |
 
 ## Change Guidance
 
-When future work adds product code:
+When making changes in an Agent Theory repository:
 
-1. classify the task per [DOM-15] — planning artifacts and review scale
-   with the class; the verification floor never does. The rationale:
-   uniform heavyweight ceremony decays into performative compliance,
-   which is high-variance; a right-sized mandatory floor gets genuine
-   compliance. Classes 1–2 keep their record in the commit history
-2. add or update the governing spec first
-3. create a dated plan for classes 3 and above
-3. for risky work, harden the plan before implementation by making invariants,
-   hidden couplings, anti-mocking guidance, rollback or rollout, and one-way
-   doors explicit
-4. run independent plan review and feed the results back into the plan
-5. add or update the relevant implementation note for the touched area
-6. update the repository map when new entry points become important
-7. decide whether repeated workflow knowledge should become or update a skill
-8. capture reusable corrections in `docs/lessons.md`
+1. **Classify the task per `[DOM-15]`.** Planning ceremony scales with the task
+   class (`0–5`), while verification standards stay strict across all classes.
+   Small changes (Classes `1–2`) record their rationale in the commit message;
+   Classes `3–5` use a dated plan in `docs/plans/`.
+2. **Update the governing spec first** (or alongside the code) whenever
+   intended behavior changes.
+3. **Write a dated plan** in `docs/plans/` and register it in
+   `docs/plans/README.md` for Class `3+` work.
+4. **Harden risky plans before coding** using
+   `docs/agent-context/runbooks/hardening-plans.md` (invariants, hidden
+   couplings, anti-mocking rules, rollback/rollout order, and one-way doors).
+5. **Run an independent review** (`skills/call-agent/SKILL.md`) on the plan and
+   the finished change, and address every finding.
+6. **Update implementation docs and `docs/implementation/02-repository-map.md`**
+   when design rationale, ownership, or entry points change.
+7. **Promote recurring workflows into `skills/`** and record reusable
+   corrections in `docs/lessons.md`.
 
 ## Related Plans
 

@@ -59,7 +59,10 @@ Risky plans are blocked if they do not make explicit:
 | 2026-07-15-coalescing-method-refinements-plan.md | completed — Class 5+P; six skill refinements landed; [DOM-14] trigger bullet promoted, verification/decay bullets held skill-only per grok review |
 | 2026-07-30-program-theory-and-module-theory.md | active — Class 3+P; landed `4acbad1` pre-review (deviation recorded); independent review 2026-07-30 + repair pass; propagation blocked until repair lands; full [DOM-16] still deferred |
 | 2026-08-06-register-conditioning-theory-revision-plan.md | completed — Class 5; two independent reviews (delta + amendment); owner adopted 2026-08-07; [REV-AT-003], the register falsifier, and the crystallize citation tests landed |
+| 2026-08-07-commit-subject-principle-promotion-plan.md | draft — guidance promotion (lesson → engineering-principles §16); codex round 1 ADOPT-WITH-EDITS applied; awaiting owner adoption |
 | 2026-08-07-simplebroker-backport-wave-plan.md | completed — Class 5+P; backport wave from SimpleBroker pin `a38e6a9`; three plan-review rounds + three pre-landing rounds (codex); OD-1/2/3/4 executed; landed 2026-08-07 |
+| 2026-08-11-plan-metadata-gate-plan.md | draft — Class 4+P (escalated from 3+P at codex round 1); plan-metadata structural gate (`bin/check-plan-metadata`) + review-state marker + handoff declaration; four codex review rounds (1 BLOCKED, 2 scoped blocker, 3 FAIL on N1/N2, 4 PASS); awaiting owner ratification before implementation |
+| 2026-10-14-ecosystem-fold-up-wave-plan.md | completed — Class 5+P; five-repository ecosystem fold-up wave (`simplebroker`, `taut`, `weft`, `backstitch`, `mm` → `agent-theory`) + human-readability and STE100 pass; five Tier-1 review rounds (`codex` + `claude`, Verdict: `APPROVE`); landed 2026-10-14 |
 
 ## Retired Plans
 

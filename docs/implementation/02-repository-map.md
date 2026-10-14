@@ -58,6 +58,7 @@ Quick pointers to the key documents in this repository.
 | `docs/implementation/03-agent-inventory.md` | Current observed agent availability and review preference |
 | `docs/lessons.md` | Canonical lessons ledger |
 | `docs/coalescing.md` | Coalescing state per [DOM-14]: thresholds, watermarks, deferrals, run log |
+| `docs/lore/` | Dated primary-source records (external-session transcripts, prediction notes); historical, never normative |
 
 ## Skills
 
