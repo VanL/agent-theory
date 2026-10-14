@@ -70,9 +70,10 @@ when depth is local (not a second global constitution):
   read it before changing that module's public shape, rules, or ownership.
 - Do **not** load every module theory at session start.
 - Do **not** bulk local depth into `docs/program-theory.md`; extend with
-  module theory instead. Rules and checklist: the "module theory" /
-  progressive-disclosure section of `docs/program-theory.md` (and
-  `skills/crystallize-program-theory/SKILL.md` to write one).
+  module theory instead. Rules and checklist:
+  `docs/specs/01-development-documentation-operating-model.md` (`[DOM-2]`),
+  `docs/specs/02-agent-theory-and-program-theory.md` (`[AT-REF-4]`), and
+  `skills/crystallize-program-theory/SKILL.md`.
 
 If local defaults conflict with repository guidance, follow the decision policy
 in `docs/agent-context/decision-hierarchy.md`.

@@ -208,6 +208,16 @@ receiving repo's plan-metadata contract exactly.
   references, the weft pattern), or local-homes-only (no codes at all).
   Never silently renumber or restyle a repo's own code family — their
   traceability tooling and citations depend on it.
+- **Repos that have not yet crystallized `docs/program-theory.md`**
+  (mm, engram at the 2026-10-14 wave): keep `docs/program-theory.md`
+  out of `read_order` and un-fenced path-scanned prose until the
+  interactive owner interview runs (`skills/crystallize-program-theory/SKILL.md`),
+  and point module-theory rules at local `[DOM-2]` / `[AT-REF-4]` or
+  module-theory homes rather than an absent apex file.
+- **`bin/coalesce-check` shallow-clone ordering**: run local
+  working-tree index checks (`plan_index_result()`) before the
+  `is_shallow_repository` early return so shallow CI clones skip only
+  history-dependent SHA/cue checks, never local table/index integrity.
 
 ### 5. Gates — theirs, then ours
 

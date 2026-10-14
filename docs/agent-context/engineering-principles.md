@@ -268,7 +268,9 @@ helpers merely to lower a linter score. When a cohesive function legitimately
 exceeds a static complexity threshold, record it in a governed suppression
 registry (`Group ID | Rules | Approved cardinality | Protected invariant | Real
 proof | Rejected alternatives | Owner approval`) reconciled by an executable
-gate. A governance or policy-checking tool may never suppress itself. When
+gate. A governance or policy-checking tool may never exempt or suppress its own
+policy check on itself (registered lint exceptions in the governed suppression
+registry remain verified by the suppression-index gate). When
 probing linter rule changes or unused suppressions (`RUF100`), mutate a copy of
 the real project configuration rather than running `--isolated`, which ignores
 project rule selections and settings.

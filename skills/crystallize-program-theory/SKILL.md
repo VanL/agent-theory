@@ -9,8 +9,9 @@ Interview the product owner relentlessly until a theory file can be written:
   unit (typical path: `<module>/MODULE-THEORY.md`).
 
 Module theory is not a lesser document. It is how the model grows when product
-theory would become too long for general entry. See hub
-`docs/program-theory.md` [AT-THEORY-2.1].
+theory would become too long for general entry. See
+`docs/specs/02-agent-theory-and-program-theory.md` `[AT-REF-4]` (and the
+`agent-theory` hub's `[AT-THEORY-2.1]`).
 
 The result is a transfer surface for agents and humans—not a requirements dump
 and not a copy of the agent-theory hub's own theory.
@@ -30,15 +31,16 @@ owns the answers, environment facts are looked up rather than asked.
 
 ## When Not To Use
 
-- Editing the **hub's** theory of agent-theory itself (edit
-  `docs/program-theory.md` in this repository under normal review).
+- Editing the **`agent-theory` hub's** meta-theory of agent-theory itself (edit
+  the hub's `docs/program-theory.md` under normal review rather than running a
+  product-owner interview).
 - Pure process changes with no product-identity impact.
 - Writing exact behavioral contracts (use specs / writing-specs runbook).
 
 ## Governing References
 
 - Definitional primer: `docs/specs/02-agent-theory-and-program-theory.md`
-- Hub meta-theory: `docs/program-theory.md` [AT-THEORY-0]–[AT-THEORY-8]
+- Hub meta-theory (in the `agent-theory` hub repository): `[AT-THEORY-0]`–`[AT-THEORY-8]`
 - Operating model: `docs/specs/01-development-documentation-operating-model.md`
 - Spec writing: `docs/agent-context/runbooks/writing-specs.md`
 
@@ -69,7 +71,7 @@ State that:
 - Possession stays practical; the file is a transfer surface.
 - Hub agent-theory text must not stand as product identity.
 - **Module theory is how we extend the product model** when depth is local
-  ([AT-THEORY-2.1])—not optional color commentary.
+  (`[AT-REF-4]` / hub `[AT-THEORY-2.1]`)—not optional color commentary.
 - You will ask **one question at a time**, give a **recommended answer**
   when useful, and wait for the owner.
 
@@ -79,8 +81,8 @@ understanding on the spine—or they explicitly ask for a draft from answers so 
 
 ### 2. Interview (one question at a time)
 
-This skill owns the interview spine ([AT-THEORY-8] by reference from hub
-program theory). For each item:
+This skill owns the interview spine (referenced by the `agent-theory` hub's
+`[AT-THEORY-8]`). For each item:
 
 1. Ask the question.
 2. Offer a short recommended direction grounded in repo evidence when possible.

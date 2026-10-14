@@ -265,9 +265,12 @@ editing). For each completed or superseded plan:
    containing the plan file).
 4. Physical deletion is a dedicated follow-up change, made after
    re-checking each `retired-pending` plan's harvest gate from the
-   current tree — retrieval from the source SHA verified, the SHA
-   reachable from a retained ref. Second-agent verification is
-   optional, not required: deletion of source-pinned plans is
+   current tree — retrieval from the source SHA verified
+   (`git cat-file -e <source_sha>:docs/plans/<plan>.md`), the SHA
+   reachable from a retained ref (`git merge-base --is-ancestor <source_sha> <ref>`;
+   `bin/coalesce-check` verifies object existence and remote default-branch
+   ancestry, flagging unpushed branch commits as `local-only pin`). Second-agent
+   verification is optional, not required: deletion of source-pinned plans is
    reversible archive maintenance (owner decision 2026-08-07). Never
    soft-retire and delete in the same change.
 5. A plan that fails the gate stays in the tree at its current status;
