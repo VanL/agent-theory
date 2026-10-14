@@ -87,7 +87,7 @@ All foreign citations in `docs/coalescing.md`, `CHANGELOG.md`, and this plan use
 
 ## Spec Baseline & Proposed Spec Delta (`docs/specs/01-development-documentation-operating-model.md`)
 
-- **Baseline**: `docs/specs/01-development-documentation-operating-model.md` at `d52e12a` (`[DOM-10]` lines 269–288, `[DOM-11]` lines 289–306, `[DOM-14]` lines 344–422).
+- **Baseline**: `docs/specs/01-development-documentation-operating-model.md` at `d52e12a` (`[DOM-10]` lines 269–288, `[DOM-11]` lines 289–306, `[DOM-14]` lines 344–422); landed at commit `ac093db`.
 - **Promotion Strategy**: **Strategy D — Direct spec promotion in the same wave** (`writing-plans.md` §4c). The exact normative text promoted into `docs/specs/01-development-documentation-operating-model.md` is:
 
 ### Exact Delta 1 — `[DOM-10]` (appended paragraph)
