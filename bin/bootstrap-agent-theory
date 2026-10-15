@@ -48,6 +48,8 @@ COPIED_FILES = [
     "skills/debugging/SKILL.md",
     "skills/interface-review/SKILL.md",
     "skills/crystallize-program-theory/SKILL.md",
+    "skills/test-audit/SKILL.md",
+    "skills/test-audit/SWEEP.md",
 ]
 
 GENERATED_FILES = {
@@ -338,6 +340,7 @@ Quick pointers to the key guidance documents in this repository.
 | `skills/call-agent/SKILL.md` | Invoke an independent reviewer agent (read-only postures, probes) |
 | `skills/interface-review/SKILL.md` | Review an agent-facing surface against `designing-agent-facing-interfaces.md` |
 | `skills/crystallize-program-theory/SKILL.md` | Interview owner; write product (or module) program theory |
+| `skills/test-audit/SKILL.md` | Test authoring gate, sensitivity check, and test-surface audit workflow (with `skills/test-audit/SWEEP.md`) |
 
 ## Update Guidance
 

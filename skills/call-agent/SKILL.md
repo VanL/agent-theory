@@ -63,8 +63,12 @@ directly to a native subagent.
 Per review-loops §3–§4: embed the plan/delta content verbatim in the
 prompt (do not assume the reviewer can find files), list the files it
 should read, include the review stance (errors, bad ideas, latent
-ambiguities, performative overengineering, plus verifying the plan's
-causal premise in code and confirming proposed tests are falsifiable),
+ambiguities, performative overengineering, verifying the plan's causal
+premise in code and confirming proposed tests are falsifiable, and — for
+plan reviews — analyzing the plan as a whole, including all amendments,
+with two lenses: (1) is this what an expert developer would do and think
+well-crafted or elegant? (2) is there a known algorithm or computer
+science principle that should be applied here?),
 and demand explicit [P1]/[P2] markers plus a PASS/BLOCKED verdict when
 gating (for plan reviews, derived from the two gate questions in
 review-loops §4; scoped-change reviews use `no blocker`/`blocker: F<ids>`).

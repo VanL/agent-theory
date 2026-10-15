@@ -92,9 +92,10 @@ checklist.
 
 ### Testing or Debugging
 
-Read `agent-context/runbooks/testing-patterns.md` (and `../skills/debugging/SKILL.md`
-when diagnosing a bug). Prefer tests that exercise real code paths over heavy
-mocking.
+Read `agent-context/runbooks/testing-patterns.md` (plus
+`../skills/test-audit/SKILL.md` when auditing or pruning tests and
+`../skills/debugging/SKILL.md` when diagnosing a bug). Prefer tests that
+exercise real code paths over heavy mocking.
 
 ## Core Documentation Standards
 

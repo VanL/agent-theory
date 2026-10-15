@@ -99,13 +99,17 @@ before finalizing non-goals.
 
 1. **Problem world** — What affairs of the world does this program handle?
    For whom? What fails if it does not exist?
-2. **Desired feel** — What should using it feel like in one paragraph?
+2. **Desired feel & compositional idiom** — What should using and extending it
+   feel like? What are the core composable operations new work must build on
+   rather than inventing side doors?
 3. **Whole-program metaphor** — In three to seven bullets, what is the
    mental model (not the file tree)?
 4. **Core concepts** — Name each concept, its meaning, and its **owner**
    (this product / a module / the user / another system).
-5. **Matching surface** — How do CLI, API, UI, or docs express the same
-   model without inventing a second product?
+5. **Matching surface & taste anchors** — How do CLI, API, UI, or docs express
+   the same model without inventing a second product? What is the command/API
+   grammar (e.g., top-level reflex verbs vs. `noun verb`, projected domain
+   nouns, concrete taste-anchor examples)?
 6. **Non-goals** — What will competent people propose that you will refuse?
    Why? When would you reconsider?
 7. **Generative rule** — Is there one question that organizes a large part
@@ -145,7 +149,10 @@ theory required,” and promotion path for any product-scope ALT parked there.
 - Status / Owner / Boundary / Verification / Required action
 - What program theory means (short; link Naur)
 - Purpose and desired feel; whole-program mental model
-- Core concepts and ownership; principles; non-goals; falsifiers
+- Core concepts, ownership, and surface idiom / taste anchors (command or API
+  grammar + composable operations to build on — *taste up front*, while leaving
+  internal storage schemas to vertical implementation slices; `[REV-AT-005]`)
+- Principles; non-goals; falsifiers
 - How the model is extended (pointer to module theory convention)
 - Revisions/ALT if decided; related contracts
 

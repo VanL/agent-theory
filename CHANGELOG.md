@@ -6,6 +6,21 @@ against this file to detect staleness cheaply before deciding whether a
 propagation wave is worth running; the SHA pin remains the authoritative
 provenance (`skills/propagate-guidance/SKILL.md` step 0).
 
+## 2026-10-15 (whole-plan review lenses, test-audit skill promotion, and taste-up-front boundary)
+
+- **Whole-plan review lenses** (`docs/specs/01-development-documentation-operating-model.md` `[DOM-11]`, `docs/agent-context/engineering-principles.md` §8, `docs/agent-context/runbooks/review-loops-and-agent-bootstrap.md` §3–§4, `docs/agent-context/runbooks/writing-plans.md` §8 & §10, and `skills/call-agent/SKILL.md` §2):
+  - Plan reviews evaluate the plan as a whole, including all amendments, through two explicit lenses in addition to point-defect checks: (1) is this what an expert developer would do and think well-crafted or elegant? (2) is there a known algorithm or computer science principle that should be applied here?
+- **Promoted `skills/test-audit/` (`SKILL.md` and `SWEEP.md`)** (`skills/README.md`, `docs/README.md`, `docs/implementation/02-repository-map.md`, `docs/agent-context/runbooks/external-skill-suites.md`, and `bin/bootstrap-agent-theory`):
+  - Two-part test-suite quality audit and single-file execution guide ported from SimpleBroker (`f18b9c6` / `5410aff`), generalized for the ecosystem with the October 2026 contention-witness vs stress-budget boundary folded into `Exercise Production Behavior` and `Junk Patterns`.
+- **Communicating program feel ("taste up front") vs. BDUF** (`docs/program-theory.md` `[REV-AT-005]`, `docs/specs/02-agent-theory-and-program-theory.md` `[AT-REF-2]` & `[AT-REF-4]`, and `skills/crystallize-program-theory/SKILL.md` spine Q2, Q5, and §4):
+  - Clarified that encoding intrinsic feel, command/API grammar, and core composable operations up front with concrete "taste anchors" belongs in `docs/program-theory.md` and is distinct from Big Design Up Front (locking in premature internal schemas or building horizontal framework layers in isolation).
+- **2026-10-14 propagation wave adaptation back-ports (`b6f2141`)**:
+  - `AGENTS.md`: module-theory rules pointer directed to `[DOM-2]`, `[AT-REF-4]`, and `skills/crystallize-program-theory/SKILL.md`.
+  - `skills/crystallize-program-theory/SKILL.md`: attributed `[AT-THEORY-*]` citations to the `agent-theory` hub paired with local `[AT-REF-4]`.
+  - `docs/agent-context/engineering-principles.md` §14: clarified that a governance or policy-checking tool may never exempt or suppress its own policy check on itself.
+  - `skills/coalescing/SKILL.md` step 3.4: distinguished `git cat-file -e` object verification from `git merge-base --is-ancestor` retained-ref reachability and `bin/coalesce-check` remote-ancestry checks.
+  - `skills/propagate-guidance/SKILL.md` step 4: recorded adaptation notes for uncrystallized `docs/program-theory.md` repositories and `bin/coalesce-check` shallow-clone ordering.
+
 ## 2026-10-14 (five-repo ecosystem fold-up wave)
 
 Cross-repository fold-up wave across `simplebroker` (`8a5578a`), `taut`

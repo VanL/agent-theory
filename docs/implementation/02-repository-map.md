@@ -73,6 +73,7 @@ Quick pointers to the key documents in this repository.
 | `skills/propagate-guidance/SKILL.md` | Hub-native: land a guidance wave in a sibling repo (not scaffolded) |
 | `skills/interface-review/SKILL.md` | Review an agent-facing surface (REST/MCP/CLI/doc) against `designing-agent-facing-interfaces.md` |
 | `skills/crystallize-program-theory/SKILL.md` | Grill-style interview; write product or module program theory |
+| `skills/test-audit/SKILL.md` | Test authoring gate, sensitivity check, and test-surface audit workflow (with `skills/test-audit/SWEEP.md` for subsystem sweeps) |
 
 ## Update Guidance
 

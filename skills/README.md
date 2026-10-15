@@ -15,8 +15,8 @@ Common candidates:
 
 - running the project
 - adding new code in a recurring subsystem
-- testing
-- debugging
+- testing and test-surface auditing (`test-audit`)
+- debugging (`debugging`)
 - release or deployment
 - crystallizing product program theory (`crystallize-program-theory`)
 

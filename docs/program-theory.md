@@ -264,6 +264,14 @@ other as canonical, treat that overlap as a documentation bug and fix it.
 9. **Extend theory by scope, not by making the root file longer.** Keep
    `docs/program-theory.md` short and add `<module>/MODULE-THEORY.md` files for
    subsystem depth (`[AT-THEORY-2.1]`).
+10. **Encode program "feel" and composable operations up front ("taste up
+    front", not BDUF; `[REV-AT-005]`).** Coding agents cannot infer aesthetic
+    taste or ergonomic feel from abstract box-and-arrow boundaries alone. A
+    product's program theory should communicate its **feel**—its command/API
+    grammar (e.g., top-level reflex verbs vs. `noun verb`), its core composable
+    operations (*"here are our operations, build on these"*), and concrete taste
+    anchors—while leaving internal storage schemas and implementation machinery
+    to be proved through vertical end-to-end slices.
 
 ---
 
@@ -273,8 +281,12 @@ other as canonical, treat that overlap as a documentation bug and fix it.
   files gives you a process scaffold; you still have to write your product's
   `docs/program-theory.md`.
 - **Not a claim that markdown files can replace a human's mental model** (Naur).
-- **Not big design up front.** A program theory starts small and is revised as
-  features are specified, built, reviewed, and tested.
+- **Not big design up front.** Fixing a program's **feel, command grammar,
+  composable operations, and trust boundaries** up front is *taste up front*,
+  not BDUF (`[REV-AT-005]`). What Agent Theory refuses is locking in premature
+  internal schemas or building horizontal framework layers in isolation before
+  testing a vertical slice against reality. A program theory starts partial and
+  is revised as features are specified, built, reviewed, and tested.
 - **Not a "more documentation is always better" philosophy.** Unread or
   duplicate documentation is a liability; coalescing exists to shrink it.
 - **Not an application framework, agent runtime, or multi-agent orchestrator.**
@@ -530,6 +542,39 @@ workflow.
   - *Contemporaneous:* The 2026-08-07 review dialogue and `taut`'s
     `[REV-THEORY-001]`, which kept the runtime rule in `taut`'s product theory
     while recording the cross-repository review lesson for the hub.
+
+### [REV-AT-005] Program feel, command grammar, and composable operations belong in program theory ("taste up front", not BDUF) (2026-10-15)
+
+- **Current account:** A product's program theory (`docs/program-theory.md`)
+  must communicate not only problem boundaries and concept ownership, but also
+  the program's **intrinsic feel and compositional idiom**: how its surface
+  speaks (e.g., top-level reflex verbs vs. `noun verb` grammar), which core
+  operations new work must compose from rather than inventing side doors, and
+  concrete "taste anchors" (illustrative commands or API idioms). Encoding
+  taste, idiom, and composable operations up front is **not** Big Design Up
+  Front (BDUF)—coding agents cannot infer aesthetic or ergonomic taste from
+  abstract box-and-arrow diagrams alone. What Agent Theory avoids as BDUF is
+  locking in premature internal storage schemas or building horizontal framework
+  layers in isolation before proving a vertical end-to-end slice against
+  reality (`[AT-THEORY-4]` §10, `[AT-THEORY-5]`, `[AT-REF-2]`, `[AT-REF-4]`).
+- **Supersedes:** Leaving the role of concrete command grammar and composable
+  operational feel implicit in `docs/program-theory.md`, where the warning that
+  a program theory is "not a list of API endpoints" could be misread as a rule
+  to strip concrete taste anchors out of product theories.
+- **Why it changed (pressure):** While crystallizing `enzan`'s program theory on
+  2026-10-15, an agent flagged concrete CLI grammar and operation examples in
+  `docs/program-theory.md` as potential BDUF to be moved out of the theory file.
+  The owner corrected that framing: communicating the **feel** of a program
+  (major verbs at the top level, `noun verb` elsewhere, core operations to build
+  on) has been an intentional part of product program theories from the start
+  across the ecosystem, and needed to be crystallized explicitly in
+  `agent-theory`.
+- **Evidence:**
+  - *Owner-recalled:* Practice across prior product theories (`weft`,
+    `simplebroker`, `engram`, `taut`) and explicit owner crystallization on
+    2026-10-15.
+  - *Contemporaneous:* `enzan`'s `docs/program-theory.md` (`[THEORY-3]`,
+    `[THEORY-4]`, `[ALT-ENZ-009]`).
 
 ---
 
